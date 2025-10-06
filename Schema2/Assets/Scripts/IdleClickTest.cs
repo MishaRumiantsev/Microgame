@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using System;
 
 public class IdleClickTest : MonoBehaviour
 {
@@ -38,6 +39,31 @@ public class IdleClickTest : MonoBehaviour
         pasiveMoney++;
     }
 
-    
+    private const string LastQuitTimeKey = "LastQuitTime";
 
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            // Game gained focus → player returned
+            if (PlayerPrefs.HasKey(LastQuitTimeKey))
+            {
+                string lastQuitTimeString = PlayerPrefs.GetString(LastQuitTimeKey);
+                DateTime lastQuitTime = DateTime.Parse(lastQuitTimeString);
+
+                TimeSpan timeAway = DateTime.Now - lastQuitTime;
+
+                Debug.Log($"Player was away for {timeAway.TotalSeconds:F0} seconds");
+
+                // Example: give idle rewards
+                //GiveIdleRewards(timeAway);
+            }
+        }
+        else
+        {
+            // Game lost focus → player leaving
+            PlayerPrefs.SetString(LastQuitTimeKey, DateTime.Now.ToString());
+            PlayerPrefs.Save();
+        }
+    }
 }
