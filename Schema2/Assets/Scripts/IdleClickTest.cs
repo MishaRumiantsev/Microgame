@@ -4,29 +4,30 @@ using System;
 
 public class IdleClickTest : MonoBehaviour
 {
-    public int money;
     public int pasiveMoney;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI pasiveMoneyText;
     int pUpgrade;
+
+    public PlayerDataPrefs PDF;
 
     void Start()
     {
         LoadPlayerData();
         LoadIdleTime();
         if (pUpgrade > 0)
-            for (int i = 0; i < pUpgrade; i++) PasiveMoneyUpgrade(); 
+            for (int i = 0; i < pUpgrade; i++) PasiveMoneyUpgrade();
     }
 
     void Update()
     {
-        moneyText.text = $"Money: {money}";
+        moneyText.text = $"Money: {PDF.money}";
         pasiveMoneyText.text = $"pMoney: {pasiveMoney}";
     }
 
     public void OnClick()
     {
-        money++;
+        PDF.money++;
         SavePlayerData();
     }
 
@@ -34,6 +35,11 @@ public class IdleClickTest : MonoBehaviour
     {
         InvokeRepeating(nameof(PasiveMoney), 0f, 0.5f);
         pUpgrade++;
+    }
+
+    public void OnClickYesReward(TimeSpan timeAway)
+    {
+        GiveIdleRewards(timeAway);
     }
 
     void PasiveMoneyUpgrade()
@@ -78,19 +84,19 @@ public class IdleClickTest : MonoBehaviour
 
     private void SavePlayerData()
     {
-        PlayerPrefs.SetInt("Money", money);
+        PlayerPrefs.SetInt("Money", PDF.money);
         PlayerPrefs.SetInt("PasiveMoney", pasiveMoney);
         PlayerPrefs.SetInt("Upgrades", pUpgrade);
         PlayerPrefs.Save();
-        Debug.Log($"💾 Saved: money={money}, pMoney={pasiveMoney}");
+        Debug.Log($"Saved: money={PDF.money}, pMoney={pasiveMoney}");
     }
 
     private void LoadPlayerData()
     {
-        money = PlayerPrefs.GetInt("Money", 0);
+        PDF.money = PlayerPrefs.GetInt("Money", 0);
         pasiveMoney = PlayerPrefs.GetInt("PasiveMoney", 0);
         pUpgrade = PlayerPrefs.GetInt("Upgrades", 0);
-        Debug.Log($"📦 Loaded: money={money}, pMoney={pasiveMoney}");
+        Debug.Log($"Loaded: money={PDF.money}, pMoney={pasiveMoney}");
     }
 
     private void DeletePLayerData()
@@ -98,7 +104,7 @@ public class IdleClickTest : MonoBehaviour
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
 
-        money = 0;
+        PDF.money = 0;
         pasiveMoney = 0;
         pUpgrade = 0;
         CancelInvoke();
@@ -121,16 +127,15 @@ public class IdleClickTest : MonoBehaviour
             DateTime lastQuitTime = DateTime.Parse(saved);
             TimeSpan timeAway = DateTime.UtcNow - lastQuitTime;
 
-            Debug.Log($"⏳ Away for {timeAway.TotalSeconds:F0} seconds");
-            GiveIdleRewards(timeAway);
+            Debug.Log($"Away for {timeAway.TotalSeconds:F0} seconds");
         }
     }
 
     private void GiveIdleRewards(TimeSpan timeAway)
     {
         int earned = Mathf.FloorToInt((float)timeAway.TotalSeconds * 2f);
-        money += earned;
+        PDF.money += earned;
         SavePlayerData();
-        Debug.Log($"💰 Earned {earned} while away!");
+        Debug.Log($"Earned {earned} while away!");
     }
 }
