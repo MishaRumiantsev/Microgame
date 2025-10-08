@@ -6,6 +6,7 @@ public class IdleClickTest : MonoBehaviour
 {
     public int money;
     public int pasiveMoney;
+    public int clicks;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI pasiveMoneyText;
 
@@ -25,6 +26,7 @@ public class IdleClickTest : MonoBehaviour
     public void OnClick() 
     {
         money++;
+        clicks++;
     }
 
     //invoke cancelen, tijd verlagen en dan weer aanzetten
