@@ -3,26 +3,24 @@ using UnityEngine;
 
 public class SellPoint : MonoBehaviour
 {
-    long currentResources;
-    long coins;
+    float currentResources;
     bool active;
     float sellSpeed;
     Timer timer;
 
+    [SerializeField] Coins coins;
     [SerializeField] TextMeshProUGUI statusText;
     [SerializeField] TextMeshProUGUI currentResourcesText;
-    [SerializeField] TextMeshProUGUI coinsText;
 
     private void Start()
     {
         timer = GetComponent<Timer>();
-        coins = 0;
         sellSpeed = 5f;
         active = false;
     }
-    public void AddResources(long pResoursec)
+    public void AddResources(float pResources)
     {
-        currentResources += pResoursec;
+        currentResources += pResources;
         currentResourcesText.text = currentResources.ToString();
     }
     public void OnClick()
@@ -40,8 +38,7 @@ public class SellPoint : MonoBehaviour
         timer.OnTimerComplete -= EndSelling;
         active = false;
         statusText.text = "Inactive";
-        coins += currentResources;
-        coinsText.text = $"Coins: {coins}";
+        coins.ChangeCoins(currentResources);
         currentResources = 0;
         currentResourcesText.text = currentResources.ToString();
     }

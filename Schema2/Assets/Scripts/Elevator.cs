@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-    long currentLoad;
-    long maxLoad;
+    float currentLoad;
+    float maxLoad;
 
     float loadTime;
     float unloadTime;
@@ -105,10 +105,9 @@ public class Elevator : MonoBehaviour
     void EndLoad()
     {
         timer.OnTimerComplete -= EndLoad;
-        long freeToLoad = maxLoad - currentLoad;
-        long loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentIncome);
-        floorsManager.floors[currentFloor].currentIncome -= loaded;
-        floorsManager.floors[currentFloor].UpdateIncome();
+        float freeToLoad = maxLoad - currentLoad;
+        float loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentIncome);
+        floorsManager.floors[currentFloor].ChangeCurrentIncome(-loaded);
         currentLoad += loaded;
         currentLoadText.text = currentLoad.ToString();
         ChooseNextTargetFloor();

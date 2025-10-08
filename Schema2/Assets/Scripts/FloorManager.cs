@@ -3,28 +3,60 @@ using UnityEngine;
 
 public class FloorManager : MonoBehaviour
 {
-    long income;
-    long maxIncome;
-    public long currentIncome;
+    int basisIncome;
+    int basisMaxIncome;
+    float maxIncome;
+    float income;
+    public float currentIncome;
+
     int level;
+    int basisPrice;
+    float price;
+
+    float priceIncreaseFactor;
+    float incomeIncreaseFactor;
+    float durationIncreaseFactor;
+    float maxIncomeIncreaseFactor;
+
+    float basisDuration;
     float duration;
     Timer timer;
 
+    bool currentIncomeChanged;
+
+    [SerializeField] Coins coins;
+    [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] TextMeshProUGUI status;
     [SerializeField] TextMeshProUGUI currentIncomeText;
 
 
     private void Start()
     {
+        incomeIncreaseFactor = 1.2f;
+        durationIncreaseFactor = 0.95f;
+        maxIncomeIncreaseFactor = 1.5f;
+        priceIncreaseFactor = 1.5f;
+
         timer = GetComponent<Timer>();
         timer.OnTimerComplete += AddToCurrentIncome;
-        currentIncome = 0;
+
+        ChangeCurrentIncome(0);
     }
     private void Update()
     {
         if (timer.isRunning)
         {
             UpdateProgressBar();
+        } 
+        else if (status.text != "inactive")
+        {
+            status.text = "inactive";
+        }
+        if (currentIncomeChanged)
+        {
+            currentIncomeText.text = currentIncome.ToString();
+            currentIncomeChanged = false;
         }
     }
     public void OnClick()
@@ -34,31 +66,69 @@ public class FloorManager : MonoBehaviour
             timer.StartTimer(duration);
         }
     }
+    public void Upgrade()
+    {
+        if (coins.TrySpendCoins(price))
+        {
+            level++;
+            levelText.text = level.ToString();
+            CalculateDuration();
+            CalculateIncome();
+            CalculateMaxIncome();
+            CalculatePrice();
+        }
+    }
 
+    public void ChangeCurrentIncome(float pAmount)
+    {
+        currentIncome += pAmount;
+        if (currentIncome > maxIncome)
+        {
+            currentIncome = maxIncome;
+        }
+        currentIncomeChanged = true;
+    }
     void UpdateProgressBar()
     {
         status.text = $"Working {timer.timeRemainingPercentage}%";
     }
     void AddToCurrentIncome()
     {
-        status.text = $"Inactive";
-        currentIncome += income;
-        if (currentIncome > maxIncome)
-        {
-            currentIncome = maxIncome;
-        }
-        UpdateIncome();
+        ChangeCurrentIncome(income);
     }
-    public void SetUpFloor(int pLevel, long pIncome, float pDuration)
+    public void SetUpFloor(int pLevel, int pBasisIncome, int pBasisPrice, float pBasisDuration)
     {
         level = pLevel;
-        income = pIncome;
-        maxIncome = pIncome * 5;
+        levelText.text = level.ToString();
+
+        basisPrice = pBasisPrice;
+        basisIncome = pBasisIncome;
+        basisDuration = pBasisDuration;
+
+        basisMaxIncome = pBasisIncome * 5;
+
         currentIncome = 0;
-        duration = pDuration;
+
+        CalculateIncome();
+        CalculateDuration();
+        CalculateMaxIncome();
+        CalculatePrice();
     }
-    public void UpdateIncome()
+    void CalculateIncome()
     {
-        currentIncomeText.text = currentIncome.ToString();
+        income = basisIncome * Mathf.Pow(incomeIncreaseFactor, level);
+    }
+    void CalculateDuration()
+    {
+        duration = basisDuration * Mathf.Pow(durationIncreaseFactor, level);
+    }
+    void CalculateMaxIncome()
+    {
+        maxIncome = basisMaxIncome * Mathf.Pow(maxIncomeIncreaseFactor,level);
+    }
+    void CalculatePrice()
+    {
+        price = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
+        priceText.text = price.ToString();
     }
 }
