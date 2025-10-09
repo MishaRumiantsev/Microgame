@@ -11,19 +11,25 @@ public class Elevator : MonoBehaviour
     float loadTime;
     float unloadTime;
     float travelTime;
+    float elapsedTime;
+    bool isMoving;
+
 
     string status;
     int currentFloor;
     int targetFloor;
 
+
     Timer timer;
+
     Vector3 defaultPosition;
+    Vector3 startPosition;
+    Vector3 targetPosition;
+    [SerializeField] List<Transform> elevatorPositions;
 
     [SerializeField] SellPoint sellPoint;
-    [SerializeField] List<Transform> elevatorPositions;
     [SerializeField] FloorsManager floorsManager;
     [SerializeField] TextMeshProUGUI statusText;
-    [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI currentLoadText;
     private void Start()
     {
@@ -38,7 +44,25 @@ public class Elevator : MonoBehaviour
         status = "inactive";
         currentFloor = -1;
 
+        isMoving = false;
+
         timer = GetComponent<Timer>();
+    }
+    private void Update()
+    {
+        if (isMoving)
+        {
+            if (elapsedTime < travelTime)
+            {
+                elapsedTime += Time.deltaTime;
+                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / travelTime);
+            }
+            else
+            {
+                transform.position = targetPosition;
+                isMoving = false;
+            }
+        }
     }
     public void OnClick()
     {
@@ -77,12 +101,17 @@ public class Elevator : MonoBehaviour
         targetFloor = -1;
         travelTime = targetFloor - currentFloor;
         travelTime = Mathf.Abs(travelTime);
+        if (currentLoad == maxLoad)
+        {
+            travelTime *= 1.2f;
+        }
     }
     void SendToFloor()
     {
         status = $"Move to {targetFloor}";
         statusText.text = status;
         timer.StartTimer(travelTime);
+        StartMoving();
         if (targetFloor != -1)
         {
             timer.OnTimerComplete += StartLoad;
@@ -98,7 +127,6 @@ public class Elevator : MonoBehaviour
         currentFloor = targetFloor;
         status = $"Load from {currentFloor}";
         statusText.text = status;
-        UpdateElevator();
         timer.StartTimer(loadTime);
         timer.OnTimerComplete += EndLoad;
     }
@@ -124,7 +152,6 @@ public class Elevator : MonoBehaviour
     {
         timer.OnTimerComplete -= StartUnload;
         currentFloor = targetFloor;
-        UpdateElevator();
         status = "Unload";
         statusText.text = status;
         timer.StartTimer(unloadTime);
@@ -139,16 +166,18 @@ public class Elevator : MonoBehaviour
         status = "inactive";
         statusText.text = status;
     }
-    void UpdateElevator()
+    void StartMoving()
     {
-        nameText.text = $"Elevator ({currentFloor})";
-        if (currentFloor != -1)
+        isMoving = true;
+        startPosition = transform.position;
+        if (targetFloor != -1)
         {
-            gameObject.transform.position = elevatorPositions[currentFloor].position;
+            targetPosition = elevatorPositions[targetFloor].position;
         }
         else
         {
-            gameObject.transform.position = defaultPosition;
+            targetPosition = defaultPosition;
         }
+        elapsedTime = 0f;
     }
 }

@@ -66,7 +66,7 @@ public class FloorManager : MonoBehaviour
             timer.StartTimer(duration);
         }
     }
-    public void Upgrade()
+    public void LevelUp()
     {
         if (coins.TrySpendCoins(price))
         {
