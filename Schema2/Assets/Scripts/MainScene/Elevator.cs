@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
+
     float currentLoad;
+
     float maxLoad;
 
     float loadTime;
@@ -19,25 +21,26 @@ public class Elevator : MonoBehaviour
     int currentFloor;
     int targetFloor;
 
-
     Timer timer;
+    NumberFormatter formatter;
 
     Vector3 defaultPosition;
     Vector3 startPosition;
     Vector3 targetPosition;
     [SerializeField] List<Transform> elevatorPositions;
-
+    [SerializeField] TextMeshProUGUI currentLoadText;
     [SerializeField] SellPoint sellPoint;
     [SerializeField] FloorsManager floorsManager;
     [SerializeField] TextMeshProUGUI statusText;
-    [SerializeField] TextMeshProUGUI currentLoadText;
     private void Start()
     {
+        formatter = new NumberFormatter();
+
         defaultPosition = gameObject.transform.position;
 
         maxLoad = 100;
         currentLoad = 0;
-        currentLoadText.text = currentLoad.ToString();
+        currentLoadText.text = formatter.Format(currentLoad);
 
         loadTime = 3;
         unloadTime = 3;
@@ -138,7 +141,7 @@ public class Elevator : MonoBehaviour
         float loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentResources);
         floorsManager.floors[currentFloor].ChangeCurrentResources(-loaded);
         currentLoad += loaded;
-        currentLoadText.text = currentLoad.ToString();
+        currentLoadText.text = formatter.Format(currentLoad);
         ChooseNextTargetFloor();
         if (currentFloor != targetFloor)
         {
@@ -163,7 +166,7 @@ public class Elevator : MonoBehaviour
         timer.OnTimerComplete -= EndUnload;
         sellPoint.AddResources(currentLoad);
         currentLoad = 0;
-        currentLoadText.text = currentLoad.ToString();
+        currentLoadText.text = formatter.Format(currentLoad);
         status = "inactive";
         statusText.text = status;
     }
