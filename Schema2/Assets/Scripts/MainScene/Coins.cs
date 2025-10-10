@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-    float coins;
+    public float coins;
     [SerializeField] TextMeshProUGUI coinsText;
     private void Start()
     {
