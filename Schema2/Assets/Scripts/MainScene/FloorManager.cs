@@ -30,22 +30,18 @@ public class FloorManager : MonoBehaviour
     float durationIncreaseFactor;
     Timer timer;
 
-    // variabelen voor het beheren van de duur van de verdieping
     int floorPrice;
     bool isUnlocked;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] GameObject locked;
     [SerializeField] GameObject unlocked;
 
-    NumberFormatter formatter;
     [SerializeField] Coins coins;
     [SerializeField] TextMeshProUGUI status;
 
 
     private void Start()
     {
-        formatter = new NumberFormatter();
-
         incomeIncreaseFactor = 1.2f;
         durationIncreaseFactor = 0.95f;
         maxResourcesIncreaseFactor = 1.5f;
@@ -53,7 +49,6 @@ public class FloorManager : MonoBehaviour
 
         timer = GetComponent<Timer>();
         timer.OnTimerComplete += AddToCurrentResources;
-
 
         ChangeCurrentResources(0);
     }
@@ -69,7 +64,7 @@ public class FloorManager : MonoBehaviour
         }
         if (currentResourcesChanged)
         {
-            currentResourcesText.text = formatter.Format(currentResources);
+            currentResourcesText.text = currentResources.ToString();
             currentResourcesChanged = false;
         }
     }
