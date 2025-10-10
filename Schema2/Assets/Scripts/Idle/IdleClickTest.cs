@@ -8,13 +8,15 @@ public class IdleClickTest : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI pasiveMoneyText;
     int pUpgrade;
+    bool hasClickedRewards = false;
+    bool hasGottenRewards = false;
 
     public PlayerDataPrefs PDF;
 
     void Start()
     {
         LoadPlayerData();
-        LoadIdleTime();
+        //LoadIdleTime();
         if (pUpgrade > 0)
             for (int i = 0; i < pUpgrade; i++) PasiveMoneyUpgrade();
     }
@@ -37,9 +39,10 @@ public class IdleClickTest : MonoBehaviour
         pUpgrade++;
     }
 
-    public void OnClickYesReward(TimeSpan timeAway)
+    public void OnClickYesReward()
     {
-        GiveIdleRewards(timeAway);
+        LoadIdleTime();
+        hasClickedRewards = true;
     }
 
     void PasiveMoneyUpgrade()
@@ -68,7 +71,7 @@ public class IdleClickTest : MonoBehaviour
         else
         {
             LoadPlayerData();
-            LoadIdleTime();
+            //LoadIdleTime();
         }
     }
 
@@ -128,14 +131,22 @@ public class IdleClickTest : MonoBehaviour
             TimeSpan timeAway = DateTime.UtcNow - lastQuitTime;
 
             Debug.Log($"Away for {timeAway.TotalSeconds:F0} seconds");
+
+            if (hasClickedRewards && !hasGottenRewards)
+            {
+                int earned = Mathf.FloorToInt((float)timeAway.TotalSeconds * 2f);
+                PDF.money += earned;
+                SavePlayerData();
+                hasGottenRewards = true;
+            }
         }
     }
 
-    private void GiveIdleRewards(TimeSpan timeAway)
-    {
-        int earned = Mathf.FloorToInt((float)timeAway.TotalSeconds * 2f);
-        PDF.money += earned;
-        SavePlayerData();
-        Debug.Log($"Earned {earned} while away!");
-    }
+    //public void GiveIdleRewards()
+    //{
+    //    int earned = Mathf.FloorToInt((float)timeAway.TotalSeconds * 2f);
+    //    PDF.money += earned;
+    //    SavePlayerData();
+    //    Debug.Log($"Earned {earned} while away!");
+    //}
 }
