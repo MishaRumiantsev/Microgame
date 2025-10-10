@@ -1,22 +1,22 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-    public float coins;
     [SerializeField] TextMeshProUGUI coinsText;
-    private void Start()
+    private void Update()
     {
         ChangeCoins(0);
     }
     public void ChangeCoins(float pAmount)
     {
-        coins += pAmount;
-        coinsText.text = $"Coins: {coins}";
+        PlayerDataManager.Coins += Convert.ToInt32(pAmount);
+        coinsText.text = $"Coins: {PlayerDataManager.Coins}";
     }
     public bool TrySpendCoins(float pAmount)
     {
-        if (coins >= pAmount)
+        if (PlayerDataManager.Coins >= pAmount)
         {
             ChangeCoins(-pAmount);
             return true;
@@ -24,5 +24,10 @@ public class Coins : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void GiveCoins(float pAmount)
+    {
+        ChangeCoins(100000);
     }
 }
