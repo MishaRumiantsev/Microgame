@@ -17,6 +17,7 @@ public class SellPoint : MonoBehaviour
         timer = GetComponent<Timer>();
         sellSpeed = 5f;
         active = false;
+        currentResourcesText.text = currentResources.ToString();
     }
     public void AddResources(float pResources)
     {

@@ -81,7 +81,7 @@ public class Elevator : MonoBehaviour
         {
             for (int i = 0; i < floorsManager.floors.Count; i++)
             {
-                if (floorsManager.floors[i].currentIncome > 0 && i > currentFloor)
+                if (floorsManager.floors[i].currentResources > 0 && i > currentFloor)
                 {
                     targetFloor = i;
                     travelTime = targetFloor - currentFloor;
@@ -134,8 +134,8 @@ public class Elevator : MonoBehaviour
     {
         timer.OnTimerComplete -= EndLoad;
         float freeToLoad = maxLoad - currentLoad;
-        float loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentIncome);
-        floorsManager.floors[currentFloor].ChangeCurrentIncome(-loaded);
+        float loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentResources);
+        floorsManager.floors[currentFloor].ChangeCurrentResources(-loaded);
         currentLoad += loaded;
         currentLoadText.text = currentLoad.ToString();
         ChooseNextTargetFloor();
