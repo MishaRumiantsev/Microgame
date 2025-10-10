@@ -37,6 +37,7 @@ public class Elevator : MonoBehaviour
 
         maxLoad = 100;
         currentLoad = 0;
+        currentLoadText.text = currentLoad.ToString();
 
         loadTime = 3;
         unloadTime = 3;
