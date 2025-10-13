@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6921466073457133480}
-  - component: {fileID: 9086209322970310325}
+  - component: {fileID: 1709137994242097305}
   m_Layer: 0
   m_Name: PopUpManager
   m_TagString: Untagged
@@ -25,14 +25,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6559943989724725761}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9086209322970310325
+--- !u!114 &1709137994242097305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6559943989724725761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fd66109cb0c314b8ed6a4525738e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 45c768f5dded60a42abcca1732bff4f2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PopUpManager
+  m_EditorClassIdentifier: Assembly-CSharp::PopUpManagerUI
   BattlePass_PopUp: {fileID: 6136860907887847876, guid: be1b4c672d0ef4049bff6b79bffb8bdb, type: 3}
   Achievements_PopUp: {fileID: 1794842950844988532, guid: f454a29e1d289d2449e8b8311c28eea2, type: 3}
   Stats_PopUp: {fileID: 4551647661226378046, guid: 65ebdc72f7f35df449d7df9487e9ab8d, type: 3}
