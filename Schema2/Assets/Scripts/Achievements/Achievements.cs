@@ -32,7 +32,7 @@ public class Achievements : MonoBehaviour
     void Start()
     {
         achievements.Add(new AchievementList { achievementName = "Rich", achievementDescription = "Get 10 coins", amountOfCoinsNeeded = 10, isAchievementActive = false });
-        achievements.Add(new AchievementList { achievementName = "Richer", achievementDescription = "Get 1000 coins", amountOfCoinsNeeded = 1000, isAchievementActive = false });
+        achievements.Add(new AchievementList { achievementName = "Richer", achievementDescription = "Get 20 coins", amountOfCoinsNeeded = 20, isAchievementActive = false });
         achievements.Add(new AchievementList { achievementName = "Richest", achievementDescription = "Get 10.000 coins",amountOfCoinsNeeded = 10000, isAchievementActive = false });
         achievements.Add(new AchievementList { achievementName = "SO RICH", achievementDescription = "Get 100.000 coins", amountOfCoinsNeeded = 100000, isAchievementActive = false });
         achievements.Add(new AchievementList { achievementName = "MILLIONAIRE", achievementDescription = "Get 1.000.000 coins", amountOfCoinsNeeded = 1000000, isAchievementActive = false });
