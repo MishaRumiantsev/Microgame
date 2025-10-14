@@ -5,29 +5,28 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
+    // variabelen voor het beheren van current load
     float currentLoad;
+    [SerializeField] TextMeshProUGUI currentLoadText;
 
-    float maxLoad;
-
-    float loadTime;
-    float unloadTime;
-    float travelTime;
-    float elapsedTime;
-    bool isMoving;
-
-
-    string status;
+    public float loadTime;
+    public float maxLoad;
+ 
+    // variabelen voor het beheren van de liftbeweging
     int currentFloor;
     int targetFloor;
-
-    Timer timer;
-    NumberFormatter formatter;
-
+    bool isMoving;
+    float elapsedTime;
+    float travelTime;
     Vector3 defaultPosition;
     Vector3 startPosition;
     Vector3 targetPosition;
     [SerializeField] List<Transform> elevatorPositions;
-    [SerializeField] TextMeshProUGUI currentLoadText;
+
+    string status;
+    Timer timer;
+    NumberFormatter formatter;
+
     [SerializeField] SellPoint sellPoint;
     [SerializeField] FloorsManager floorsManager;
     [SerializeField] TextMeshProUGUI statusText;
@@ -37,12 +36,10 @@ public class Elevator : MonoBehaviour
 
         defaultPosition = gameObject.transform.position;
 
-        maxLoad = 100;
         currentLoad = 0;
         currentLoadText.text = formatter.Format(currentLoad);
 
         loadTime = 3;
-        unloadTime = 3;
 
         status = "inactive";
         currentFloor = -1;
@@ -78,6 +75,9 @@ public class Elevator : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// kiest volgende doelverdieping voor de lift
+    /// </summary>
     void ChooseNextTargetFloor()
     {
         if (currentLoad != maxLoad)
@@ -99,6 +99,9 @@ public class Elevator : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// kiest sellPoint als volgende doelverdieping
+    /// </summary>
     void ChooseStorage()
     {
         targetFloor = -1;
@@ -109,6 +112,9 @@ public class Elevator : MonoBehaviour
             travelTime *= 1.2f;
         }
     }
+    /// <summary>
+    /// stuurt de lift naar de doelverdieping 
+    /// </summary>
     void SendToFloor()
     {
         status = $"Move to {targetFloor}";
@@ -124,6 +130,9 @@ public class Elevator : MonoBehaviour
             timer.OnTimerComplete += StartUnload;
         }
     }
+    /// <summary>
+    /// start het laadprocess van de lift
+    /// </summary>
     void StartLoad()
     {
         timer.OnTimerComplete -= StartLoad;
@@ -133,6 +142,9 @@ public class Elevator : MonoBehaviour
         timer.StartTimer(loadTime);
         timer.OnTimerComplete += EndLoad;
     }
+    /// <summary>
+    /// Voltooid het laadprocess van de lift
+    /// </summary>
     void EndLoad()
     {
         timer.OnTimerComplete -= EndLoad;
@@ -151,15 +163,21 @@ public class Elevator : MonoBehaviour
             StartLoad();
         }
     }
+    /// <summary>
+    /// start het unlaadprocess van de lift
+    /// </summary>
     void StartUnload()
     {
         timer.OnTimerComplete -= StartUnload;
         currentFloor = targetFloor;
         status = "Unload";
         statusText.text = status;
-        timer.StartTimer(unloadTime);
+        timer.StartTimer(loadTime);
         timer.OnTimerComplete += EndUnload;
     }
+    /// <summary>
+    /// Voltooid het unlaadprocess van de lift
+    /// </summary>
     void EndUnload()
     {
         timer.OnTimerComplete -= EndUnload;
@@ -169,6 +187,9 @@ public class Elevator : MonoBehaviour
         status = "inactive";
         statusText.text = status;
     }
+    /// <summary>
+    /// start beweging process van de lift
+    /// </summary>
     void StartMoving()
     {
         isMoving = true;

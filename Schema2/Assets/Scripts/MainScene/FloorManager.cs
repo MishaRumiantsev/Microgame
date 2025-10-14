@@ -44,8 +44,6 @@ public class FloorManager : MonoBehaviour
 
     private void Start()
     {
-        formatter = new NumberFormatter();
-
         incomeIncreaseFactor = 1.2f;
         durationIncreaseFactor = 0.95f;
         maxResourcesIncreaseFactor = 1.5f;
@@ -89,7 +87,7 @@ public class FloorManager : MonoBehaviour
         if (coins.TrySpendCoins(currentUpgradePrice))
         {
             level++;
-            levelText.text = level.ToString();
+            levelText.text = formatter.Format(level);
             CalculateDuration();
             CalculateIncome();
             CalculateMaxResources();
@@ -126,6 +124,8 @@ public class FloorManager : MonoBehaviour
     }
     public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked)
     {
+        formatter = new NumberFormatter();
+
         isUnlocked = pIsUnlocked;
         floorPrice = pFloorPrice;
 
@@ -181,6 +181,6 @@ public class FloorManager : MonoBehaviour
     void CalculateUpgradePrice()
     {
         currentUpgradePrice = basisUpgradePrice * Mathf.Pow(upgradePriceIncreaseFactor, level);
-        currentPriceUpgradeText.text = currentUpgradePrice.ToString();
+        currentPriceUpgradeText.text = formatter.Format(currentUpgradePrice);
     }
 }
