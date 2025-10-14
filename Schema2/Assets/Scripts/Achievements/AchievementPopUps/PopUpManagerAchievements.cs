@@ -4,12 +4,12 @@ using UnityEngine.UIElements;
 public class PopUpManagerAchievements : MonoBehaviour
 {
     //[SerializeField] private GameObject popupPanel;
-    [SerializeField] private float displayTime = 2f;
+    [SerializeField] private float displayTime = 5f;
     [SerializeField] private TextMeshProUGUI popupTitle;
     [SerializeField] private TextMeshProUGUI popupDescription;
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject popupButton;
-
+    public AudioSource AchievementSound;
     void Start()
     {
         popupPanel.SetActive(false);
@@ -20,6 +20,7 @@ public class PopUpManagerAchievements : MonoBehaviour
 
    public void ShowPopup(string title, string description)
     {
+        AchievementSound.Play();
         popupTitle.text = title;
         popupDescription.text = description;
         popupPanel.SetActive(true);
