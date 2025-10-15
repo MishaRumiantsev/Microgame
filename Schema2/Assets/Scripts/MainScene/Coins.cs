@@ -11,7 +11,18 @@ public class Coins : MonoBehaviour
     }
     public void ChangeCoins(float pAmount)
     {
-        PlayerDataManager.Coins += Convert.ToInt32(pAmount);
+        int intAmount = Convert.ToInt32(pAmount);
+        if (intAmount > 0)
+        {
+            PlayerDataManager.Coins += intAmount;
+            PlayerDataManager.totalCoins += intAmount;
+        }
+        else if (intAmount < 0)
+        {
+            PlayerDataManager.Coins += intAmount;
+            // Do not change totalCoins when spending
+        }
+        
         coinsText.text = $"Coins: {PlayerDataManager.Coins}";
     }
     public bool TrySpendCoins(float pAmount)
