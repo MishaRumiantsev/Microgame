@@ -137,9 +137,15 @@ public class PlayerDataManager : MonoBehaviour
         set => Instance.playerData.totalCoins = value;
     }
 
+    public static int totalSpent
+    {
+        get => Instance.playerData.totalCoins - Instance.playerData.coins;
+    }
+
     public static int gainedOffline
     {
         get => Instance.playerData.gainedOffline;
         set => Instance.playerData.gainedOffline = value;
     }
+    
 }
