@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System;
+using JetBrains.Annotations;
 
 public class PlayerDataManager : MonoBehaviour
 {
@@ -91,6 +92,8 @@ public class PlayerDataManager : MonoBehaviour
             playerData.coins += coinsEarned;
             Debug.Log($"You were away for {hoursAway:F2} hours and earned {coinsEarned} coins!");
         }
+
+        gainedOffline = coinsEarned;
     }
 
     private void OnApplicationPause(bool pause)
@@ -128,4 +131,15 @@ public class PlayerDataManager : MonoBehaviour
         set => Instance.playerData.prestigeCoins = value;
     }
 
+    public static int totalCoins
+    {
+        get => Instance.playerData.totalCoins;
+        set => Instance.playerData.totalCoins = value;
+    }
+
+    public static int gainedOffline
+    {
+        get => Instance.playerData.gainedOffline;
+        set => Instance.playerData.gainedOffline = value;
+    }
 }
