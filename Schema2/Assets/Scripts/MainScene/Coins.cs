@@ -9,12 +9,11 @@ public class Coins : MonoBehaviour
     private void Start()
     {
         formatter = new NumberFormatter();
-        ChangeCoins(1000);
     }
     public void ChangeCoins(float pAmount)
     {
         PlayerDataManager.Coins += Convert.ToInt32(pAmount);
-        coinsText.text = $"Coins: {formatter.Format(PlayerDataManager.Coins)}";
+        coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}";
     }
     public bool TrySpendCoins(float pAmount)
     {

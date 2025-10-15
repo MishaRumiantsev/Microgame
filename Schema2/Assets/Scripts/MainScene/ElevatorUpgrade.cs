@@ -33,40 +33,31 @@ public class ElevatorUpgrade : MonoBehaviour
         formatter = new NumberFormatter();
 
         level = 0;
-        levelText.text = $"Level: {formatter.Format(level + 1)}";
+        levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
+        levelTextInUpgradeWindow.text = formatter.FormatNumber(level + 1);
 
         maxLoadIncreaseFactor = 1.2f;
         basisMaxLoad = 100;
 
-        priceIncreaseFactor = 1.4f;
-        basisPrice = 300;
+        priceIncreaseFactor = 1.2f;
+        basisPrice = 150;
+
+        loadTimeText.text = formatter.FormatTime(elevator.loadTime);
 
         CalculateMaxLoad();
-        SetMultieplier(1);
+        SetMultiplier(1);
     }
 
-    void CalculateMaxLoad()
+    public void OpenWindow()
     {
-        elevator.maxLoad = basisMaxLoad * Mathf.Pow(maxLoadIncreaseFactor, level);
-    }
-
-    public void OpenUpgradeWindow()
-    {
-        UpdateUpgradeWindow();
         upgradeWindow.SetActive(true);
     }
-    public void CloseUpgradeWindow()
+    public void CloseWindow()
     {
         upgradeWindow.SetActive(false);
 
     }
-    void UpdateUpgradeWindow()
-    {
-        levelTextInUpgradeWindow.text = formatter.Format(level + 1);
-        maxLoadText.text = formatter.Format(elevator.maxLoad);
-        loadTimeText.text = $"{elevator.loadTime}s";
-    }
-    public void SetMultieplier(int pUpgradeMultiplier)
+    public void SetMultiplier(int pUpgradeMultiplier)
     {
         upgradeMultiplier = pUpgradeMultiplier;
 
@@ -82,19 +73,25 @@ public class ElevatorUpgrade : MonoBehaviour
     {
         float nextLevelPrice = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
         totalPrice = nextLevelPrice * (Mathf.Pow(priceIncreaseFactor, levelsToUpgrade) - 1) / (priceIncreaseFactor - 1);
-        priceText.text = formatter.Format(totalPrice);
+        priceText.text = formatter.FormatNumber(totalPrice);
+    }
+    void CalculateMaxLoad()
+    {
+        elevator.maxLoad = basisMaxLoad * Mathf.Pow(maxLoadIncreaseFactor, level);
+        maxLoadText.text = formatter.FormatNumber(elevator.maxLoad);
     }
     public void LevelUp()
     {
         if (coins.TrySpendCoins(totalPrice))
         {
             level += levelsToUpgrade;
+            levelTextInUpgradeWindow.text = formatter.FormatNumber(level + 1);
 
-            SetMultieplier(upgradeMultiplier);
+            SetMultiplier(upgradeMultiplier);
             CalculateMaxLoad();
 
-            levelText.text = $"Level: {formatter.Format(level + 1)}";
-            UpdateUpgradeWindow();
+            levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
+            levelTextInUpgradeWindow.text = formatter.FormatNumber(level + 1);
         }
     }
 }

@@ -37,7 +37,7 @@ public class Elevator : MonoBehaviour
         defaultPosition = gameObject.transform.position;
 
         currentLoad = 0;
-        currentLoadText.text = formatter.Format(currentLoad);
+        currentLoadText.text = formatter.FormatNumber(currentLoad);
 
         loadTime = 3;
 
@@ -152,7 +152,7 @@ public class Elevator : MonoBehaviour
         float loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentResources);
         floorsManager.floors[currentFloor].ChangeCurrentResources(-loaded);
         currentLoad += loaded;
-        currentLoadText.text = formatter.Format(currentLoad);
+        currentLoadText.text = formatter.FormatNumber(currentLoad);
         ChooseNextTargetFloor();
         if (currentFloor != targetFloor)
         {
@@ -183,7 +183,7 @@ public class Elevator : MonoBehaviour
         timer.OnTimerComplete -= EndUnload;
         sellPoint.AddResources(currentLoad);
         currentLoad = 0;
-        currentLoadText.text = formatter.Format(currentLoad);
+        currentLoadText.text = formatter.FormatNumber(currentLoad);
         status = "inactive";
         statusText.text = status;
     }
