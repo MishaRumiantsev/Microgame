@@ -10,6 +10,7 @@ public class AchievementList
     public string achievementDescription;
     public int amountOfCoinsNeeded;
     public bool isAchievementActive;
+    public bool achieved;
 }
 public class Achievements : MonoBehaviour
 {
@@ -26,16 +27,18 @@ public class Achievements : MonoBehaviour
     public bool vijfdeVerdieping = false;
     public bool bladSchaapSlak = false;*/
     public GetCoinsFromButton GetCoins;
+    public PlayerDataManager playerDataManager;
     public List<AchievementList> achievements = new List<AchievementList>();
     [SerializeField] private PopUpManagerAchievements popUpManagerAchievements;
+    public int totalcoins = PlayerDataManager.totalCoins;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        achievements.Add(new AchievementList { achievementName = "Rich", achievementDescription = "Get 10 coins", amountOfCoinsNeeded = 10, isAchievementActive = false });
-        achievements.Add(new AchievementList { achievementName = "Richer", achievementDescription = "Get 20 coins", amountOfCoinsNeeded = 20, isAchievementActive = false });
-        achievements.Add(new AchievementList { achievementName = "Richest", achievementDescription = "Get 10.000 coins",amountOfCoinsNeeded = 10000, isAchievementActive = false });
-        achievements.Add(new AchievementList { achievementName = "SO RICH", achievementDescription = "Get 100.000 coins", amountOfCoinsNeeded = 100000, isAchievementActive = false });
-        achievements.Add(new AchievementList { achievementName = "MILLIONAIRE", achievementDescription = "Get 1.000.000 coins", amountOfCoinsNeeded = 1000000, isAchievementActive = false });
+        achievements.Add(new AchievementList { achievementName = "Rich", achievementDescription = "Get 10 coins", amountOfCoinsNeeded = 10, isAchievementActive = false, achieved = false });
+        achievements.Add(new AchievementList { achievementName = "Richer", achievementDescription = "Get 20 coins", amountOfCoinsNeeded = 20, isAchievementActive = false, achieved = false });
+        achievements.Add(new AchievementList { achievementName = "Richest", achievementDescription = "Get 10.000 coins",amountOfCoinsNeeded = 10000, isAchievementActive = false, achieved = false });
+        achievements.Add(new AchievementList { achievementName = "SO RICH", achievementDescription = "Get 100.000 coins", amountOfCoinsNeeded = 100000, isAchievementActive = false, achieved = false });
+        achievements.Add(new AchievementList { achievementName = "MILLIONAIRE", achievementDescription = "Get 1.000.000 coins", amountOfCoinsNeeded = 1000000, isAchievementActive = false, achieved = false });
         //achievements.Add(new AchievementList { achievementName = "Extra space", amountOfCoinsNeeded = 2000, isAchievementActive = false });
         //achievements.Add(new AchievementList { achievementName = "Third flood", amountOfCoinsNeeded = 3000, isAchievementActive = false });
         //achievements.Add(new AchievementList { achievementName = "So much space...", amountOfCoinsNeeded = 4000, isAchievementActive = false });
@@ -46,15 +49,17 @@ public class Achievements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetCoins.testCoin == 5)
+        if (totalcoins == 10)
         {
-            //Debug.Log("testing 5");
+            Debug.Log("TestTest");
         }
         foreach (var achievement in achievements)
         {
-            if (achievement.isAchievementActive == false && GetCoins.testCoin >= achievement.amountOfCoinsNeeded)
+            
+            if (achievement.isAchievementActive == false && totalcoins >= achievement.amountOfCoinsNeeded && achievement.achieved == false)
             {
                 achievement.isAchievementActive = true;
+                achievement.achieved = true;
                 Debug.Log($"Achievement unlocked: {achievement.achievementName} ({achievement.amountOfCoinsNeeded} coins)");
                 popUpManagerAchievements.ShowPopup(achievement.achievementName, achievement.achievementDescription);
                 //string title = achievement.achievementName;
