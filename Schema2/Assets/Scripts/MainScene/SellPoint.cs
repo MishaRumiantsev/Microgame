@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class SellPoint : MonoBehaviour
     bool active;
     float sellSpeed;
     Timer timer;
+    NumberFormatter formatter;
 
     [SerializeField] Coins coins;
     [SerializeField] TextMeshProUGUI statusText;
@@ -14,6 +16,7 @@ public class SellPoint : MonoBehaviour
 
     private void Start()
     {
+        formatter = new NumberFormatter();
         timer = GetComponent<Timer>();
         sellSpeed = 5f;
         active = false;
@@ -22,7 +25,7 @@ public class SellPoint : MonoBehaviour
     public void AddResources(float pResources)
     {
         currentResources += pResources;
-        currentResourcesText.text = currentResources.ToString();
+        currentResourcesText.text = formatter.FormatNumber(currentResources);
     }
     public void OnClick()
     {
@@ -41,6 +44,6 @@ public class SellPoint : MonoBehaviour
         statusText.text = "Inactive";
         coins.ChangeCoins(currentResources);
         currentResources = 0;
-        currentResourcesText.text = currentResources.ToString();
+        currentResourcesText.text = formatter.FormatNumber(currentResources);
     }
 }

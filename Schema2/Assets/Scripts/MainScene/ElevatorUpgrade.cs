@@ -18,6 +18,9 @@ public class ElevatorUpgrade : MonoBehaviour
     float priceIncreaseFactor;
     float totalPrice;
 
+    int siblingIndex;
+    [SerializeField] Transform elevatorContainer;
+
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] TextMeshProUGUI loadTimeText;
     [SerializeField] TextMeshProUGUI maxLoadText;
@@ -31,6 +34,8 @@ public class ElevatorUpgrade : MonoBehaviour
     {
         elevator = GetComponent<Elevator>();
         formatter = new NumberFormatter();
+
+        siblingIndex = elevatorContainer.GetSiblingIndex();
 
         level = 0;
         levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
@@ -50,10 +55,12 @@ public class ElevatorUpgrade : MonoBehaviour
 
     public void OpenWindow()
     {
+        elevatorContainer.SetAsLastSibling();
         upgradeWindow.SetActive(true);
     }
     public void CloseWindow()
     {
+        elevatorContainer.SetSiblingIndex(siblingIndex);
         upgradeWindow.SetActive(false);
 
     }

@@ -21,7 +21,7 @@ public class FloorManager : MonoBehaviour
     Timer timer;
     FloorUpgrade upgrader;
     NumberFormatter formatter;
-    [SerializeField] Coins coins;
+    public Coins coins;
     [SerializeField] TextMeshProUGUI status;
 
     private void Update()
@@ -76,11 +76,12 @@ public class FloorManager : MonoBehaviour
             locked.SetActive(false);
         }
     }
-    public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked)
+    public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
     {
         formatter = new NumberFormatter();
         timer = GetComponent<Timer>();
         upgrader = GetComponent<FloorUpgrade>();
+        coins = pCoins;
         timer.OnTimerComplete += AddToCurrentResources;
 
         ChangeCurrentResources(0);

@@ -9,6 +9,8 @@ public class Coins : MonoBehaviour
     private void Start()
     {
         formatter = new NumberFormatter();
+        coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}";
+
     }
     public void ChangeCoins(float pAmount)
     {

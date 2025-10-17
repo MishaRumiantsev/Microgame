@@ -11,8 +11,6 @@ public class FloorUpgrade : MonoBehaviour
     float maxResourcesIncreaseFactor;
     float durationIncreaseFactor;
 
-
-
     int basisPrice;
     float totalPrice;
     float priceIncreaseFactor;
@@ -24,7 +22,9 @@ public class FloorUpgrade : MonoBehaviour
 
     NumberFormatter formatter;
     FloorManager floor;
-    [SerializeField] Coins coins;
+
+    int siblingIndex;
+    [SerializeField] Transform floorContainer;
 
     [SerializeField] GameObject upgradeWindow;
     [SerializeField] TextMeshProUGUI levelTextInUpgradeWindow;
@@ -38,6 +38,8 @@ public class FloorUpgrade : MonoBehaviour
     public void UpdateStats(int pLevel, int pBasisIncome, int pBasisPrice, float pBasisDuration)
     {
         formatter = new NumberFormatter();
+
+        int siblingIndex = floorContainer.GetSiblingIndex();
 
         basisIncome = pBasisIncome;
         incomeIncreaseFactor = 1.2f;
@@ -97,7 +99,7 @@ public class FloorUpgrade : MonoBehaviour
     }
     public void LevelUp()
     {
-        if (coins.TrySpendCoins(totalPrice))
+        if (floor.coins.TrySpendCoins(totalPrice))
         {
             level += levelsToUpgrade;
             levelTextInUpgradeWindow.text = formatter.FormatNumber(level + 1);
@@ -113,10 +115,12 @@ public class FloorUpgrade : MonoBehaviour
     }
     public void OpenWindow()
     {
+        floorContainer.SetAsLastSibling();
         upgradeWindow.SetActive(true);
     }
     public void CloseWindow()
     {
+        floorContainer.SetSiblingIndex(siblingIndex);
         upgradeWindow.SetActive(false);
     }
 
