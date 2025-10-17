@@ -16,6 +16,7 @@ public class PopUpManagerUI : MonoBehaviour
     public GameObject Stats_PopUp;
     public GameObject Dealers_PopUp;
     public GameObject Prestige_PopUp;
+    public GameObject FloorUpgrade_PopUp;
 
     private void Awake()
     {
