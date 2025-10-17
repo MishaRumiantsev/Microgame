@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SellPoint : MonoBehaviour
 {
-    float currentResources;
     bool active;
     float sellSpeed;
     Timer timer;
@@ -20,16 +19,16 @@ public class SellPoint : MonoBehaviour
         timer = GetComponent<Timer>();
         sellSpeed = 5f;
         active = false;
-        currentResourcesText.text = currentResources.ToString();
+        currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
     }
     public void AddResources(float pResources)
     {
-        currentResources += pResources;
-        currentResourcesText.text = formatter.FormatNumber(currentResources);
+        PlayerDataManager.storedSellPointCoins += Convert.ToInt32(pResources);
+        currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
     }
     public void OnClick()
     {
-        if (currentResources > 0 && !active)
+        if (PlayerDataManager.storedSellPointCoins > 0 && !active)
         {
             active = true;
             timer.StartTimer(sellSpeed);
@@ -42,8 +41,8 @@ public class SellPoint : MonoBehaviour
         timer.OnTimerComplete -= EndSelling;
         active = false;
         statusText.text = "Inactive";
-        coins.ChangeCoins(currentResources);
-        currentResources = 0;
-        currentResourcesText.text = formatter.FormatNumber(currentResources);
+        coins.ChangeCoins(PlayerDataManager.storedSellPointCoins);
+        PlayerDataManager.storedSellPointCoins = 0;
+        currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
     }
 }
