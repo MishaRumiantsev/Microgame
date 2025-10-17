@@ -3,32 +3,14 @@ using UnityEngine;
 
 public class FloorManager : MonoBehaviour
 {
-    // variabelen voor het beheren van inkomen
-    int basisIncome;
-    float currentIncome;
-    float incomeIncreaseFactor;
+    public float income;
+    public float maxResources;
+    public float duration;
 
-    // variabelen voor het beheren van hoevelheid van resources in verdieping
-    int basisMaxResources;
-    float currentMaxResources;
-    float maxResourcesIncreaseFactor;
+
     public float currentResources;
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;
-
-    // variabelen voor het beheren van upgrade system
-    int level;
-    int basisUpgradePrice;
-    float currentUpgradePrice;
-    float upgradePriceIncreaseFactor;
-    [SerializeField] TextMeshProUGUI levelText;
-    [SerializeField] TextMeshProUGUI currentPriceUpgradeText;
-
-    // variabelen voor het beheren van de duur van de productie
-    float basisDuration;
-    float duration;
-    float durationIncreaseFactor;
-    Timer timer;
 
     int floorPrice;
     bool isUnlocked;
@@ -36,22 +18,12 @@ public class FloorManager : MonoBehaviour
     [SerializeField] GameObject locked;
     [SerializeField] GameObject unlocked;
 
-    [SerializeField] Coins coins;
+    Timer timer;
+    FloorUpgrade upgrader;
+    NumberFormatter formatter;
+    public Coins coins;
     [SerializeField] TextMeshProUGUI status;
 
-
-    private void Start()
-    {
-        incomeIncreaseFactor = 1.2f;
-        durationIncreaseFactor = 0.95f;
-        maxResourcesIncreaseFactor = 1.5f;
-        upgradePriceIncreaseFactor = 1.5f;
-
-        timer = GetComponent<Timer>();
-        timer.OnTimerComplete += AddToCurrentResources;
-
-        ChangeCurrentResources(0);
-    }
     private void Update()
     {
         if (timer.isRunning)
@@ -64,7 +36,7 @@ public class FloorManager : MonoBehaviour
         }
         if (currentResourcesChanged)
         {
-            currentResourcesText.text = currentResources.ToString();
+            currentResourcesText.text = formatter.FormatNumber(currentResources);
             currentResourcesChanged = false;
         }
     }
@@ -77,29 +49,14 @@ public class FloorManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// Verhoogt level van de verdieping als speler genoeg coins heeft
-    /// </summary>
-    public void LevelUp()
-    {
-        if (coins.TrySpendCoins(currentUpgradePrice))
-        {
-            level++;
-            levelText.text = level.ToString();
-            CalculateDuration();
-            CalculateIncome();
-            CalculateMaxResources();
-            CalculateUpgradePrice();
-        }
-    }
-    /// <summary>
     /// Wijzigt de hoeveelheeid resources op verdieping 
     /// </summary>
     public void ChangeCurrentResources(float pAmount)
     {
         currentResources += pAmount;
-        if (currentResources > currentMaxResources)
+        if (currentResources > maxResources)
         {
-            currentResources = currentMaxResources;
+            currentResources = maxResources;
         }
         currentResourcesChanged = true;
     }
@@ -109,7 +66,7 @@ public class FloorManager : MonoBehaviour
     }
     void AddToCurrentResources()
     {
-        ChangeCurrentResources(currentIncome);
+        ChangeCurrentResources(income);
     }
     public void BuyFloor()
     {
@@ -119,8 +76,16 @@ public class FloorManager : MonoBehaviour
             locked.SetActive(false);
         }
     }
-    public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked)
+    public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
     {
+        formatter = new NumberFormatter();
+        timer = GetComponent<Timer>();
+        upgrader = GetComponent<FloorUpgrade>();
+        coins = pCoins;
+        timer.OnTimerComplete += AddToCurrentResources;
+
+        ChangeCurrentResources(0);
+
         isUnlocked = pIsUnlocked;
         floorPrice = pFloorPrice;
 
@@ -133,49 +98,8 @@ public class FloorManager : MonoBehaviour
             priceText.text = floorPrice.ToString();
         }
 
-        level = pLevel;
-        levelText.text = level.ToString();
-
-        basisUpgradePrice = pBasisUpgradePrice;
-        basisIncome = pBasisIncome;
-        basisDuration = pBasisDuration;
-
-        basisMaxResources = pBasisIncome * 5;
-
         currentResources = 0;
 
-        CalculateIncome();
-        CalculateDuration();
-        CalculateMaxResources();
-        CalculateUpgradePrice();
-    }
-    /// <summary>
-    /// berekent currentIncome afhankelijk van level
-    /// </summary>
-    void CalculateIncome()
-    {
-        currentIncome = basisIncome * Mathf.Pow(incomeIncreaseFactor, level);
-    }
-    /// <summary>
-    /// berekent duration afhankelijk van level
-    /// </summary>
-    void CalculateDuration()
-    {
-        duration = basisDuration * Mathf.Pow(durationIncreaseFactor, level);
-    }
-    /// <summary>
-    /// berekent MaxResources afhankelijk van level
-    /// </summary>
-    void CalculateMaxResources()
-    {
-        currentMaxResources = basisMaxResources * Mathf.Pow(maxResourcesIncreaseFactor, level);
-    }
-    /// <summary>
-    /// berekent upgradePrice afhankelijk van level
-    /// </summary>
-    void CalculateUpgradePrice()
-    {
-        currentUpgradePrice = basisUpgradePrice * Mathf.Pow(upgradePriceIncreaseFactor, level);
-        currentPriceUpgradeText.text = currentUpgradePrice.ToString();
+        upgrader.UpdateStats(pLevel, pBasisIncome, pBasisUpgradePrice, pBasisDuration);
     }
 }
