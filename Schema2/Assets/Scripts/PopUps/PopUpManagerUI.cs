@@ -44,11 +44,16 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void CloseCurrentPopUp()
     {
-        // Destroy the current pop up if it exists
+        Debug.Log($"Attempting to close popup. currentPopUp is {(currentPopUp == null ? "null" : "not null")}");
         if (currentPopUp != null)
         {
             Destroy(currentPopUp);
             currentPopUp = null;
+            Debug.Log("Popup destroyed.");
+        }
+        else
+        {
+            Debug.LogWarning("No popup to close.");
         }
     }
 

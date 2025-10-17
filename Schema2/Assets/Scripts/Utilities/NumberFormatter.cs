@@ -14,6 +14,14 @@ public class NumberFormatter
             indexOfSuffixes++;
         }
         formattedNumber = pNumber.ToString("0.##");
+        while (formattedNumber.Length > 4)
+        {
+            formattedNumber = formattedNumber.Substring(0, formattedNumber.Length - 1);
+        }
+        if (formattedNumber.EndsWith("."))
+        {
+            formattedNumber = formattedNumber.Substring(0, formattedNumber.Length - 1);
+        }
         formattedNumber += numberSuffixes[indexOfSuffixes];
         return formattedNumber;
     }
