@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: aaada877613dd2348bd6ed29d1a8f27d
+guid: c5149836247e5c74888391f3aaa46f3c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2332336965099413804
-    second: BattlePassIcon_0
+      213: -6587147728498345361
+    second: Dealers_0
+  - first:
+      213: -1379514254724408478
+    second: Dealers_1
+  - first:
+      213: -4924572977008540599
+    second: Dealers_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BattlePassIcon_0
+      name: Dealers_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +134,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c21634dcc102e5020800000000000000
-      internalID: 2332336965099413804
+      spriteID: f6ab5d78a00c594a0800000000000000
+      internalID: -6587147728498345361
       vertices: []
       indices: 
       edges: []
@@ -138,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3d4fab67ed97298459275932c164b754
+    spriteID: f7a082c190fd958418bbd898fd05baca
     internalID: 0
     vertices: []
     indices: 
@@ -150,7 +156,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      BattlePassIcon_0: 2332336965099413804
+      Dealers_0: -6587147728498345361
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4264567200470301260}
   - component: {fileID: 5264645451272335245}
   - component: {fileID: 5359058006261507009}
-  - component: {fileID: 2232750903942269250}
+  - component: {fileID: 7044429414410714145}
   m_Layer: 6
   m_Name: Achievements_PopUp
   m_TagString: Untagged
@@ -332,7 +332,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794842950844988532}
   m_CullTransparentMesh: 1
---- !u!114 &2232750903942269250
+--- !u!114 &7044429414410714145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2232750903942269250}
+      - m_Target: {fileID: 7044429414410714145}
         m_TargetAssemblyTypeName: ClosePopUp, Assembly-CSharp
         m_MethodName: ClosePopUpButton
         m_Mode: 1
