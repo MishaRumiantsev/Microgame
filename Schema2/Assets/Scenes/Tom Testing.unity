@@ -1603,8 +1603,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Coins: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7fb9b6847387e04796f0653b5dd6c63, type: 2}
+  m_sharedMaterial: {fileID: 6463285643191260667, guid: f7fb9b6847387e04796f0653b5dd6c63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4350,8 +4350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015258789, y: 1351.939}
-  m_SizeDelta: {x: 100, y: 577.1113}
+  m_AnchoredPosition: {x: -0.000015258789, y: 1340.544}
+  m_SizeDelta: {x: 100, y: 597.5703}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &704732448
 MonoBehaviour:
@@ -5899,7 +5899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233, y: 687.25}
+  m_AnchoredPosition: {x: 233, y: 674}
   m_SizeDelta: {x: 374.8085, y: 155.9221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063503915
@@ -6032,7 +6032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233, y: 843.17}
+  m_AnchoredPosition: {x: 233, y: 829.92}
   m_SizeDelta: {x: 374.8085, y: 155.9221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1064156332
