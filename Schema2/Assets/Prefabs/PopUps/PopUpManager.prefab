@@ -49,3 +49,4 @@ MonoBehaviour:
   Stats_PopUp: {fileID: 4551647661226378046, guid: 65ebdc72f7f35df449d7df9487e9ab8d, type: 3}
   Dealers_PopUp: {fileID: 8691223733227331617, guid: 3526e91f21c37b643b51009abac2d22c, type: 3}
   Prestige_PopUp: {fileID: 5413021478736434146, guid: 6a00bdca667c1bf47a782ad982778f31, type: 3}
+  FloorUpgrade_PopUp: {fileID: 8251845019681128388, guid: ed2e7bd6f2e80b940918f199058e8cec, type: 3}

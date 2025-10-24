@@ -18,6 +18,7 @@ public class PopUpManagerUI : MonoBehaviour
     public GameObject Prestige_PopUp;
     public GameObject FloorUpgrade_PopUp;
 
+
     private void Awake()
     {
         // Ensures only one PopUpManager exists
@@ -91,5 +92,14 @@ public class PopUpManagerUI : MonoBehaviour
         // Spawn the Prestige pop up prefab
         Debug.Log("Prestige Button Clicked");
         ShowPopUp(Prestige_PopUp);
+    }
+    public void FloorLevelButton(int floorIndex)
+    {
+        Debug.Log("Clicked");
+        ShowPopUp(FloorUpgrade_PopUp);
+        FloorUpgradePopUp popUpScript = currentPopUp.GetComponent<FloorUpgradePopUp>();
+        FloorsManager floorsManager = FindFirstObjectByType<FloorsManager>();
+        popUpScript.floorUpgrade = floorsManager.floors[floorIndex].GetComponent<FloorUpgrade>();
+        popUpScript.floor = floorsManager.floors[floorIndex].GetComponent<FloorManager>();
     }
 }
