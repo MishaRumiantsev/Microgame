@@ -16,6 +16,8 @@ public class PopUpManagerUI : MonoBehaviour
     public GameObject Stats_PopUp;
     public GameObject Dealers_PopUp;
     public GameObject Prestige_PopUp;
+    public GameObject FloorUpgrade_PopUp;
+
 
     private void Awake()
     {
@@ -44,11 +46,16 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void CloseCurrentPopUp()
     {
-        // Destroy the current pop up if it exists
+        Debug.Log($"Attempting to close popup. currentPopUp is {(currentPopUp == null ? "null" : "not null")}");
         if (currentPopUp != null)
         {
             Destroy(currentPopUp);
             currentPopUp = null;
+            Debug.Log("Popup destroyed.");
+        }
+        else
+        {
+            Debug.LogWarning("No popup to close.");
         }
     }
 
@@ -85,5 +92,14 @@ public class PopUpManagerUI : MonoBehaviour
         // Spawn the Prestige pop up prefab
         Debug.Log("Prestige Button Clicked");
         ShowPopUp(Prestige_PopUp);
+    }
+    public void FloorLevelButton(int floorIndex)
+    {
+        Debug.Log("Clicked");
+        ShowPopUp(FloorUpgrade_PopUp);
+        FloorUpgradePopUp popUpScript = currentPopUp.GetComponent<FloorUpgradePopUp>();
+        FloorsManager floorsManager = FindFirstObjectByType<FloorsManager>();
+        popUpScript.floorUpgrade = floorsManager.floors[floorIndex].GetComponent<FloorUpgrade>();
+        popUpScript.floor = floorsManager.floors[floorIndex].GetComponent<FloorManager>();
     }
 }

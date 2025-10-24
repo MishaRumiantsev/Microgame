@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6921466073457133480}
-  - component: {fileID: 1709137994242097305}
+  - component: {fileID: 1179005970456195070}
   m_Layer: 0
   m_Name: PopUpManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1709137994242097305
+--- !u!114 &1179005970456195070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,3 +49,4 @@ MonoBehaviour:
   Stats_PopUp: {fileID: 4551647661226378046, guid: 65ebdc72f7f35df449d7df9487e9ab8d, type: 3}
   Dealers_PopUp: {fileID: 8691223733227331617, guid: 3526e91f21c37b643b51009abac2d22c, type: 3}
   Prestige_PopUp: {fileID: 5413021478736434146, guid: 6a00bdca667c1bf47a782ad982778f31, type: 3}
+  FloorUpgrade_PopUp: {fileID: 8251845019681128388, guid: ed2e7bd6f2e80b940918f199058e8cec, type: 3}
