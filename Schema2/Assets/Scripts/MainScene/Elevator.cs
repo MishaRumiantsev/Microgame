@@ -18,9 +18,9 @@ public class Elevator : MonoBehaviour
     bool isMoving;
     float elapsedTime;
     float travelTime;
-    Vector3 defaultPosition;
     Vector3 startPosition;
     Vector3 targetPosition;
+    [SerializeField] Transform defaultPosition;
     [SerializeField] List<Transform> elevatorPositions;
 
     string status;
@@ -34,7 +34,6 @@ public class Elevator : MonoBehaviour
     {
         formatter = new NumberFormatter();
 
-        defaultPosition = gameObject.transform.position;
 
         currentLoad = 0;
         currentLoadText.text = formatter.FormatNumber(currentLoad);
@@ -203,7 +202,7 @@ public class Elevator : MonoBehaviour
         }
         else
         {
-            targetPosition = defaultPosition;
+            targetPosition = defaultPosition.position;
         }
         elapsedTime = 0f;
     }
