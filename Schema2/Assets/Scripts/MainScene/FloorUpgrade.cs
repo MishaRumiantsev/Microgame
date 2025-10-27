@@ -77,7 +77,6 @@ public class FloorUpgrade : MonoBehaviour
 
         if (upgradeMultiplier == -1)
         {
-
             float nextLevelPrice = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
             levelsToUpgrade = Mathf.FloorToInt(Mathf.Log(1 + PlayerDataManager.Coins * (priceIncreaseFactor - 1) / nextLevelPrice, priceIncreaseFactor));
             while (levelsToUpgrade > 1)
@@ -100,8 +99,6 @@ public class FloorUpgrade : MonoBehaviour
     {
         float nextLevelPrice = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
         totalPrice = nextLevelPrice * (Mathf.Pow(priceIncreaseFactor, levelsToUpgrade) - 1) / (priceIncreaseFactor - 1);
-        Debug.Log($"Coins : {PlayerDataManager.Coins}");
-        Debug.Log($"Total price: {totalPrice}");
         enoughCoins = PlayerDataManager.Coins >= totalPrice;
     }
     public void LevelUp()

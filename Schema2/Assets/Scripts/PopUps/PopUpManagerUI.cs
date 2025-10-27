@@ -17,6 +17,7 @@ public class PopUpManagerUI : MonoBehaviour
     public GameObject Dealers_PopUp;
     public GameObject Prestige_PopUp;
     public GameObject FloorUpgrade_PopUp;
+    public GameObject ElevatorUpgrade_PopUp;
 
 
     private void Awake()
@@ -97,8 +98,10 @@ public class PopUpManagerUI : MonoBehaviour
     {
         ShowPopUp(FloorUpgrade_PopUp);
         FloorUpgradePopUp popUpScript = currentPopUp.GetComponent<FloorUpgradePopUp>();
-        FloorsManager floorsManager = FindFirstObjectByType<FloorsManager>();
-        popUpScript.floorUpgrade = floorsManager.floors[floorIndex].GetComponent<FloorUpgrade>();
-        popUpScript.floor = floorsManager.floors[floorIndex].GetComponent<FloorManager>();
+        popUpScript.index = floorIndex;
+    }
+    public void ElevatorLevelButton()
+    {
+        ShowPopUp(ElevatorUpgrade_PopUp);
     }
 }

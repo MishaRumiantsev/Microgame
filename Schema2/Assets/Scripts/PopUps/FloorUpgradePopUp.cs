@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class FloorUpgradePopUp : MonoBehaviour
 {
-    public FloorUpgrade floorUpgrade;
-    public FloorManager floor;
+    public int index;
+    FloorUpgrade floorUpgrade;
+    FloorManager floor;
     NumberFormatter formatter;
 
     [SerializeField] TextMeshProUGUI incomeText;
@@ -16,17 +17,26 @@ public class FloorUpgradePopUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI upgradeText;
     [SerializeField] TextMeshProUGUI priceText;
+
     [SerializeField] Button upgradeButton;
     [SerializeField] List<Toggle> toggles;
 
     private void Start()
     {
         formatter = new NumberFormatter();
+
+        FloorsManager floorsManager = FindFirstObjectByType<FloorsManager>();
+        floor = floorsManager.floors[index].GetComponent<FloorManager>();
+        floorUpgrade = floorsManager.floors[index].GetComponent<FloorUpgrade>();
+
         UpdateWindow();
     }
     private void Update()
     {
-        upgradeButton.interactable = floorUpgrade.enoughCoins;
+        if (upgradeButton.interactable != floorUpgrade.enoughCoins)
+        {
+            upgradeButton.interactable = floorUpgrade.enoughCoins;
+        }
     }
     public void LevelUp()
     {
