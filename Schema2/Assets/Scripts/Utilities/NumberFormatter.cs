@@ -18,7 +18,7 @@ public class NumberFormatter
         {
             formattedNumber = formattedNumber.Substring(0, formattedNumber.Length - 1);
         }
-        if (formattedNumber.EndsWith("."))
+        if (formattedNumber.EndsWith(".") || formattedNumber.EndsWith(","))
         {
             formattedNumber = formattedNumber.Substring(0, formattedNumber.Length - 1);
         }

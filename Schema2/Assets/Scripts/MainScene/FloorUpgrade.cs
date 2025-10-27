@@ -20,10 +20,18 @@ public class FloorUpgrade : MonoBehaviour
     int upgradeMultiplier;
     [SerializeField] TextMeshProUGUI levelText;
 
+    public bool enoughCoins;
+
     NumberFormatter formatter;
     FloorManager floor;
 
-
+    private void Update()
+    {
+        if (!enoughCoins && totalPrice <= PlayerDataManager.Coins)
+        {
+            enoughCoins = true;
+        }
+    }
     public void UpdateStats(int pLevel, int pBasisIncome, int pBasisPrice, float pBasisDuration)
     {
         formatter = new NumberFormatter();
@@ -69,8 +77,22 @@ public class FloorUpgrade : MonoBehaviour
 
         if (upgradeMultiplier == -1)
         {
+
             float nextLevelPrice = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
             levelsToUpgrade = Mathf.FloorToInt(Mathf.Log(1 + PlayerDataManager.Coins * (priceIncreaseFactor - 1) / nextLevelPrice, priceIncreaseFactor));
+            while (levelsToUpgrade > 1)
+            {
+                totalPrice = nextLevelPrice * (Mathf.Pow(priceIncreaseFactor, levelsToUpgrade) - 1) / (priceIncreaseFactor - 1);
+                if (totalPrice <= PlayerDataManager.Coins)
+                {
+                    break;
+                }
+                levelsToUpgrade--;
+            }
+            if (levelsToUpgrade <= 0)
+            {
+                levelsToUpgrade = 1;
+            }
         }
         CalculateTotalPrice();
     }
@@ -78,6 +100,9 @@ public class FloorUpgrade : MonoBehaviour
     {
         float nextLevelPrice = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
         totalPrice = nextLevelPrice * (Mathf.Pow(priceIncreaseFactor, levelsToUpgrade) - 1) / (priceIncreaseFactor - 1);
+        Debug.Log($"Coins : {PlayerDataManager.Coins}");
+        Debug.Log($"Total price: {totalPrice}");
+        enoughCoins = PlayerDataManager.Coins >= totalPrice;
     }
     public void LevelUp()
     {

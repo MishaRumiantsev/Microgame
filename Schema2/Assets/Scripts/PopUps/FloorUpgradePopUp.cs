@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloorUpgradePopUp : MonoBehaviour
 {
@@ -14,10 +16,17 @@ public class FloorUpgradePopUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI upgradeText;
     [SerializeField] TextMeshProUGUI priceText;
+    [SerializeField] Button upgradeButton;
+    [SerializeField] List<Toggle> toggles;
+
     private void Start()
     {
         formatter = new NumberFormatter();
         UpdateWindow();
+    }
+    private void Update()
+    {
+        upgradeButton.interactable = floorUpgrade.enoughCoins;
     }
     public void LevelUp()
     {
@@ -26,9 +35,28 @@ public class FloorUpgradePopUp : MonoBehaviour
     }
     public void SetMultiplier(int multiplier)
     {
-        floorUpgrade.SetMultiplier(multiplier);
-        priceText.text = formatter.FormatNumber(floorUpgrade.totalPrice);
-        upgradeText.text = $"Upgrade x{floorUpgrade.levelsToUpgrade}";
+        int toggleIndex = 0;
+        switch (multiplier) 
+        { 
+            case 1:
+                toggleIndex = 0; 
+                break;
+            case 10:
+                toggleIndex = 1; 
+                break;
+            case 50:
+                toggleIndex = 2;
+                break;
+            case -1:
+                toggleIndex = 3;
+                break;
+        }
+        if (toggles[toggleIndex].isOn)
+        {
+            floorUpgrade.SetMultiplier(multiplier);
+            priceText.text = formatter.FormatNumber(floorUpgrade.totalPrice);
+            upgradeText.text = $"Upgrade x{floorUpgrade.levelsToUpgrade}";
+        }
     }
     public void UpdateWindow()
     {

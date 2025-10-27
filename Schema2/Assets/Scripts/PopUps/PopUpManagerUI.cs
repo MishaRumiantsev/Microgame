@@ -95,7 +95,6 @@ public class PopUpManagerUI : MonoBehaviour
     }
     public void FloorLevelButton(int floorIndex)
     {
-        Debug.Log("Clicked");
         ShowPopUp(FloorUpgrade_PopUp);
         FloorUpgradePopUp popUpScript = currentPopUp.GetComponent<FloorUpgradePopUp>();
         FloorsManager floorsManager = FindFirstObjectByType<FloorsManager>();
