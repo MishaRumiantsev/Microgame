@@ -3,7 +3,6 @@ using UnityEngine;
 public class FlappyBird : MonoBehaviour
 {
     [SerializeField] private float velocity = 1.5f;
-    [SerializeField] private float rotationspeed;
 
     private Rigidbody2D rb;
 
@@ -16,7 +15,7 @@ public class FlappyBird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            rb.angularVelocity = Vector2.up * velocity;
+            rb.linearVelocity = Vector2.up * velocity;
         }
     }
 }
