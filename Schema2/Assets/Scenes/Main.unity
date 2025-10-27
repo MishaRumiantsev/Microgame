@@ -1307,14 +1307,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.45
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -793.1902, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6220,6 +6220,14 @@ PrefabInstance:
     - target: {fileID: 2062608696818198725, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PrestigeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529465758175876391, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 246.7824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529465758175876391, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1149.4629
       objectReference: {fileID: 0}
     - target: {fileID: 7164979445026306591, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
