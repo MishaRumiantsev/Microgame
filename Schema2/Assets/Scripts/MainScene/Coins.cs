@@ -5,12 +5,17 @@ using UnityEngine;
 public class Coins : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI coinsText;
-    private void Update()
+    NumberFormatter formatter;
+    private void Start()
     {
-        ChangeCoins(0);
+        formatter = new NumberFormatter();
+        coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}";
+
     }
     public void ChangeCoins(float pAmount)
     {
+        PlayerDataManager.Coins += Convert.ToInt32(pAmount);
+        coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}";
         int intAmount = Convert.ToInt32(pAmount);
         if (intAmount > 0)
         {
@@ -31,7 +36,8 @@ public class Coins : MonoBehaviour
         {
             ChangeCoins(-pAmount);
             return true;
-        } else
+        }
+        else
         {
             return false;
         }

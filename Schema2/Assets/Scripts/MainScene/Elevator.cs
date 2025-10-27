@@ -5,42 +5,41 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
+    // variabelen voor het beheren van current load
     float currentLoad;
-    float maxLoad;
+    [SerializeField] TextMeshProUGUI currentLoadText;
 
-    float loadTime;
-    float unloadTime;
-    float travelTime;
-    float elapsedTime;
-    bool isMoving;
+    public float loadTime;
+    public float maxLoad;
 
-
-    string status;
+    // variabelen voor het beheren van de liftbeweging
     int currentFloor;
     int targetFloor;
-
-
-    Timer timer;
-
+    bool isMoving;
+    float elapsedTime;
+    float travelTime;
     Vector3 defaultPosition;
     Vector3 startPosition;
     Vector3 targetPosition;
     [SerializeField] List<Transform> elevatorPositions;
 
+    string status;
+    Timer timer;
+    NumberFormatter formatter;
+
     [SerializeField] SellPoint sellPoint;
     [SerializeField] FloorsManager floorsManager;
     [SerializeField] TextMeshProUGUI statusText;
-    [SerializeField] TextMeshProUGUI currentLoadText;
     private void Start()
     {
+        formatter = new NumberFormatter();
+
         defaultPosition = gameObject.transform.position;
 
-        maxLoad = 100;
         currentLoad = 0;
-        currentLoadText.text = currentLoad.ToString();
+        currentLoadText.text = formatter.FormatNumber(currentLoad);
 
         loadTime = 3;
-        unloadTime = 3;
 
         status = "inactive";
         currentFloor = -1;
@@ -76,13 +75,17 @@ public class Elevator : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// kiest volgende doelverdieping voor de lift
+    /// </summary>
     void ChooseNextTargetFloor()
     {
         if (currentLoad != maxLoad)
         {
             for (int i = 0; i < floorsManager.floors.Count; i++)
             {
-                if (floorsManager.floors[i].currentResources > 0 && i > currentFloor)
+            FloorManager floor = floorsManager.floors[i].GetComponent<FloorManager>();
+                if (floor.currentResources > 0 && i > currentFloor)
                 {
                     targetFloor = i;
                     travelTime = targetFloor - currentFloor;
@@ -97,6 +100,9 @@ public class Elevator : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// kiest sellPoint als volgende doelverdieping
+    /// </summary>
     void ChooseStorage()
     {
         targetFloor = -1;
@@ -107,6 +113,9 @@ public class Elevator : MonoBehaviour
             travelTime *= 1.2f;
         }
     }
+    /// <summary>
+    /// stuurt de lift naar de doelverdieping 
+    /// </summary>
     void SendToFloor()
     {
         status = $"Move to {targetFloor}";
@@ -122,6 +131,9 @@ public class Elevator : MonoBehaviour
             timer.OnTimerComplete += StartUnload;
         }
     }
+    /// <summary>
+    /// start het laadprocess van de lift
+    /// </summary>
     void StartLoad()
     {
         timer.OnTimerComplete -= StartLoad;
@@ -131,14 +143,19 @@ public class Elevator : MonoBehaviour
         timer.StartTimer(loadTime);
         timer.OnTimerComplete += EndLoad;
     }
+    /// <summary>
+    /// Voltooid het laadprocess van de lift
+    /// </summary>
     void EndLoad()
     {
         timer.OnTimerComplete -= EndLoad;
         float freeToLoad = maxLoad - currentLoad;
-        float loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentResources);
-        floorsManager.floors[currentFloor].ChangeCurrentResources(-loaded);
+        FloorManager floor = floorsManager.floors[currentFloor].GetComponent<FloorManager>();
+
+        float loaded = Math.Min(freeToLoad, floor.currentResources);
+        floor.ChangeCurrentResources(-loaded);
         currentLoad += loaded;
-        currentLoadText.text = currentLoad.ToString();
+        currentLoadText.text = formatter.FormatNumber(currentLoad);
         ChooseNextTargetFloor();
         if (currentFloor != targetFloor)
         {
@@ -149,24 +166,33 @@ public class Elevator : MonoBehaviour
             StartLoad();
         }
     }
+    /// <summary>
+    /// start het unlaadprocess van de lift
+    /// </summary>
     void StartUnload()
     {
         timer.OnTimerComplete -= StartUnload;
         currentFloor = targetFloor;
         status = "Unload";
         statusText.text = status;
-        timer.StartTimer(unloadTime);
+        timer.StartTimer(loadTime);
         timer.OnTimerComplete += EndUnload;
     }
+    /// <summary>
+    /// Voltooid het unlaadprocess van de lift
+    /// </summary>
     void EndUnload()
     {
         timer.OnTimerComplete -= EndUnload;
         sellPoint.AddResources(currentLoad);
         currentLoad = 0;
-        currentLoadText.text = currentLoad.ToString();
+        currentLoadText.text = formatter.FormatNumber(currentLoad);
         status = "inactive";
         statusText.text = status;
     }
+    /// <summary>
+    /// start beweging process van de lift
+    /// </summary>
     void StartMoving()
     {
         isMoving = true;

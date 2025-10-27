@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e9155278782092a458cd3f2d32178780
+guid: 46a8b85c57b092b4f9b060822e157691
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2794824402406879001
-    second: Schema2_version2_0
+      213: -1183894010670039384
+    second: Toren4-top_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Schema2_version2_0
+      name: Toren4-top_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 19
-        width: 612
-        height: 602
+        x: 42
+        y: 69
+        width: 45
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e0d1fc730ac639d0800000000000000
-      internalID: -2794824402406879001
+      spriteID: 8aebc4a7ba6f19fe0800000000000000
+      internalID: -1183894010670039384
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Schema2_version2_0: -2794824402406879001
+      Toren4-top_0: -1183894010670039384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
