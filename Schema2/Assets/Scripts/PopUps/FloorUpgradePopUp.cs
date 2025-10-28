@@ -50,12 +50,15 @@ public class FloorUpgradePopUp : MonoBehaviour
     }
     public void SetMultiplier(int multiplier)
     {
-        int toggleIndex = GetToggleIndex(multiplier);
-        if (toggles[toggleIndex].isOn)
+        if (floorUpgrade != null)
         {
-            floorUpgrade.SetMultiplier(multiplier);
-            priceText.text = formatter.FormatNumber(floorUpgrade.totalPrice);
-            upgradeText.text = $"Upgrade x{floorUpgrade.levelsToUpgrade}";
+            int toggleIndex = GetToggleIndex(multiplier);
+            if (toggles[toggleIndex].isOn)
+            {
+                floorUpgrade.SetMultiplier(multiplier);
+                priceText.text = formatter.FormatNumber(floorUpgrade.totalPrice);
+                upgradeText.text = $"Upgrade x{floorUpgrade.levelsToUpgrade}";
+            }
         }
     }
     int GetToggleIndex(int pMultiplier)
