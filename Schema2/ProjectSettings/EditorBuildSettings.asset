@@ -19,7 +19,10 @@ EditorBuildSettings:
     guid: 4235abfbc1dabe84085dec8c35beb261
   - enabled: 1
     path: Assets/Scenes/TestSceneMisha.unity
-    guid: 1bb6f3ed71465024f9c12fb2f27cf4b6
+    guid: 9c5f40eac9a2cfb4cb8f4fa34aae61d7
+  - enabled: 0
+    path: Assets/Scenes/FlappyBird.unity
+    guid: 48aadb447b66a2b49809205c5ae721ae
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
