@@ -6,6 +6,7 @@ public class Fallingobject : MonoBehaviour
     public float zigZagSpeed = 2f;
     public float zigZagWidth = 2f;
     private float startX;
+    private float rotationSpeed = 10f;
 
     void Start()
     {
@@ -17,8 +18,9 @@ public class Fallingobject : MonoBehaviour
         float x = startX + Mathf.Sin(Time.time * zigZagSpeed) * zigZagWidth;
         float y = transform.position.y - fallSpeed * Time.deltaTime;
         transform.position = new Vector3(x, y, transform.position.z);
-
+        transform.Rotate(Vector3.forward, - rotationSpeed * Time.deltaTime);
         HandleInput();
+        
     }
 
     void HandleInput()
@@ -44,5 +46,9 @@ public class Fallingobject : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void Rotation()
+    {
+        
     }
 }

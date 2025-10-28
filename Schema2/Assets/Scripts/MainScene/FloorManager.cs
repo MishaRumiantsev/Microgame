@@ -62,7 +62,7 @@ public class FloorManager : MonoBehaviour
     }
     void UpdateProgressBar()
     {
-        imageStatus.fillAmount = timer.timeRemainingPercentage / 100f;
+        imageStatus.fillAmount = timer.progresPercentage / 100f;
     }
     void AddToCurrentResources()
     {

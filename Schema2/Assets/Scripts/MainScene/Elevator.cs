@@ -18,9 +18,10 @@ public class Elevator : MonoBehaviour
     bool isMoving;
     float elapsedTime;
     float travelTime;
-    Vector3 startPosition;
-    Vector3 targetPosition;
+
     [SerializeField] Transform defaultPosition;
+    [SerializeField] Transform startPosition;
+    [SerializeField] Transform targetPosition;
     [SerializeField] List<Transform> elevatorPositions;
 
     string status;
@@ -33,7 +34,6 @@ public class Elevator : MonoBehaviour
     private void Start()
     {
         formatter = new NumberFormatter();
-
 
         currentLoad = 0;
         currentLoadText.text = formatter.FormatNumber(currentLoad);
@@ -54,11 +54,11 @@ public class Elevator : MonoBehaviour
             if (elapsedTime < travelTime)
             {
                 elapsedTime += Time.deltaTime;
-                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / travelTime);
+                transform.position = Vector3.Lerp(startPosition.position, targetPosition.position, elapsedTime / travelTime);
             }
             else
             {
-                transform.position = targetPosition;
+                transform.position = targetPosition.position;
                 isMoving = false;
             }
         }
@@ -83,7 +83,7 @@ public class Elevator : MonoBehaviour
         {
             for (int i = 0; i < floorsManager.floors.Count; i++)
             {
-            FloorManager floor = floorsManager.floors[i].GetComponent<FloorManager>();
+                FloorManager floor = floorsManager.floors[i].GetComponent<FloorManager>();
                 if (floor.currentResources > 0 && i > currentFloor)
                 {
                     targetFloor = i;
@@ -195,14 +195,14 @@ public class Elevator : MonoBehaviour
     void StartMoving()
     {
         isMoving = true;
-        startPosition = transform.position;
+        startPosition.position = transform.position;
         if (targetFloor != -1)
         {
-            targetPosition = elevatorPositions[targetFloor].position;
+            targetPosition.position = elevatorPositions[targetFloor].position;
         }
         else
         {
-            targetPosition = defaultPosition.position;
+            targetPosition.position = defaultPosition.position;
         }
         elapsedTime = 0f;
     }

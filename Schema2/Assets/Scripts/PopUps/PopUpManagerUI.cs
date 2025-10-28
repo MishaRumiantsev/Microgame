@@ -24,6 +24,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     public GameObject Prestige_PopUp;
     public GameObject FloorUpgrade_PopUp;
+    public GameObject ElevatorUpgrade_PopUp;
 
     string sceneName;
     int sceneNumber;
@@ -122,11 +123,12 @@ public class PopUpManagerUI : MonoBehaviour
     }
     public void FloorLevelButton(int floorIndex)
     {
-        Debug.Log("Clicked");
         ShowPopUp(FloorUpgrade_PopUp);
         FloorUpgradePopUp popUpScript = currentPopUp.GetComponent<FloorUpgradePopUp>();
-        FloorsManager floorsManager = FindFirstObjectByType<FloorsManager>();
-        popUpScript.floorUpgrade = floorsManager.floors[floorIndex].GetComponent<FloorUpgrade>();
-        popUpScript.floor = floorsManager.floors[floorIndex].GetComponent<FloorManager>();
+        popUpScript.index = floorIndex;
+    }
+    public void ElevatorLevelButton()
+    {
+        ShowPopUp(ElevatorUpgrade_PopUp);
     }
 }
