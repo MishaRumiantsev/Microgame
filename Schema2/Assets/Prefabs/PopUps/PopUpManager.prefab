@@ -108,3 +108,4 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+  FloorUpgrade_PopUp: {fileID: 8251845019681128388, guid: ed2e7bd6f2e80b940918f199058e8cec, type: 3}
