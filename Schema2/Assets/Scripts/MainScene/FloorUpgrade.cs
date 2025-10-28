@@ -17,7 +17,7 @@ public class FloorUpgrade : MonoBehaviour
 
     public int level;
     public int levelsToUpgrade;
-    int upgradeMultiplier;
+    public int upgradeMultiplier;
     [SerializeField] TextMeshProUGUI levelText;
 
     public bool enoughCoins;

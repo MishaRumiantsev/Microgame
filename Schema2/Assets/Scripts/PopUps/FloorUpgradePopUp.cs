@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class FloorUpgradePopUp : MonoBehaviour
@@ -29,6 +30,10 @@ public class FloorUpgradePopUp : MonoBehaviour
         floor = floorsManager.floors[index].GetComponent<FloorManager>();
         floorUpgrade = floorsManager.floors[index].GetComponent<FloorUpgrade>();
 
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        ExecuteEvents.Execute(toggles[GetToggleIndex(floorUpgrade.upgradeMultiplier)].gameObject, pointer, ExecuteEvents.pointerDownHandler);
+        ExecuteEvents.Execute(toggles[GetToggleIndex(floorUpgrade.upgradeMultiplier)].gameObject, pointer, ExecuteEvents.pointerUpHandler);
+
         UpdateWindow();
     }
     private void Update()
@@ -45,28 +50,28 @@ public class FloorUpgradePopUp : MonoBehaviour
     }
     public void SetMultiplier(int multiplier)
     {
-        int toggleIndex = 0;
-        switch (multiplier) 
-        { 
-            case 1:
-                toggleIndex = 0; 
-                break;
-            case 10:
-                toggleIndex = 1; 
-                break;
-            case 50:
-                toggleIndex = 2;
-                break;
-            case -1:
-                toggleIndex = 3;
-                break;
-        }
+        int toggleIndex = GetToggleIndex(multiplier);
         if (toggles[toggleIndex].isOn)
         {
             floorUpgrade.SetMultiplier(multiplier);
             priceText.text = formatter.FormatNumber(floorUpgrade.totalPrice);
             upgradeText.text = $"Upgrade x{floorUpgrade.levelsToUpgrade}";
         }
+    }
+    int GetToggleIndex(int pMultiplier)
+    {
+        switch (pMultiplier)
+        {
+            case 1:
+                return 0;
+            case 10:
+                return 1;
+            case 50:
+                return 2;
+            case -1:
+                return 3;
+        }
+        return 0;
     }
     public void UpdateWindow()
     {

@@ -11,7 +11,7 @@ public class ElevatorUpgrade : MonoBehaviour
     int basisMaxLoad;
     float maxLoadIncreaseFactor;
 
-    int upgradeMultiplier;
+    public int upgradeMultiplier;
     public int levelsToUpgrade;
 
     int basisPrice;

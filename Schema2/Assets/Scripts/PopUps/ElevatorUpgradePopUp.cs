@@ -1,8 +1,9 @@
 
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class ElevatorUpgradePopUp : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class ElevatorUpgradePopUp : MonoBehaviour
         elevator = FindFirstObjectByType<Elevator>();
         elevatorUpgrade = FindFirstObjectByType<ElevatorUpgrade>();
 
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        ExecuteEvents.Execute(toggles[GetToggleIndex(elevatorUpgrade.upgradeMultiplier)].gameObject, pointer, ExecuteEvents.pointerDownHandler);
+        ExecuteEvents.Execute(toggles[GetToggleIndex(elevatorUpgrade.upgradeMultiplier)].gameObject, pointer, ExecuteEvents.pointerUpHandler);
+
         UpdateWindow();
     }
     private void Update()
@@ -37,28 +42,28 @@ public class ElevatorUpgradePopUp : MonoBehaviour
     }
     public void SetMultiplier(int multiplier)
     {
-        int toggleIndex = 0;
-        switch (multiplier)
-        {
-            case 1:
-                toggleIndex = 0;
-                break;
-            case 10:
-                toggleIndex = 1;
-                break;
-            case 50:
-                toggleIndex = 2;
-                break;
-            case -1:
-                toggleIndex = 3;
-                break;
-        }
+        int toggleIndex = GetToggleIndex(multiplier);
         if (toggles[toggleIndex].isOn)
         {
             elevatorUpgrade.SetMultiplier(multiplier);
             priceText.text = formatter.FormatNumber(elevatorUpgrade.totalPrice);
             upgradeText.text = $"Upgrade x{elevatorUpgrade.levelsToUpgrade}";
         }
+    }
+    int GetToggleIndex(int pMultiplier)
+    {
+        switch (pMultiplier)
+        {
+            case 1:
+                return 0;
+            case 10:
+                return 1;
+            case 50:
+                return 2;
+            case -1:
+                return 3;
+        }
+        return 0;
     }
     public void LevelUp()
     {
