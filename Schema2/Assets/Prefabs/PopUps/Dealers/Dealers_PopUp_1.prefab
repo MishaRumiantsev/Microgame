@@ -241,6 +241,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7902937036513724026}
+  - {fileID: 3625405739919487593}
   m_Father: {fileID: 2217601114706853600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -416,7 +417,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8745978277014018376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 539957301799841777}
+        m_TargetAssemblyTypeName: Dealer, Assembly-CSharp
+        m_MethodName: BuyDealer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &978960344014810910
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,13 +762,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 58fceeb276060b740a70808589b3a173, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 3852882852962822477}
+        m_TargetAssemblyTypeName: Dealer, Assembly-CSharp
+        m_MethodName: BuyDealer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -838,6 +851,150 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1418653750999430743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8410445866136398170}
+  - component: {fileID: 9116937555929855470}
+  - component: {fileID: 566947564461254358}
+  m_Layer: 6
+  m_Name: DealerIrlPictureLocked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8410445866136398170
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418653750999430743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5965948536778213701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 160}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &9116937555929855470
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418653750999430743}
+  m_CullTransparentMesh: 1
+--- !u!114 &566947564461254358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418653750999430743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 78d2bc36a4b5f3a4983fc55ca47935e8, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!1 &1440145305521572884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1509934553602403069}
+  - component: {fileID: 1002035068778247122}
+  - component: {fileID: 3543059529291228612}
+  m_Layer: 6
+  m_Name: DealerIrlPictureLocked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1509934553602403069
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440145305521572884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1517142465480697510}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 160}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1002035068778247122
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440145305521572884}
+  m_CullTransparentMesh: 1
+--- !u!114 &3543059529291228612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440145305521572884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: f49a9e98e909d3e48b4c6bf2643a9438, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &1752899529951316559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1186,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2984804020432317774}
+  - {fileID: 8410445866136398170}
   m_Father: {fileID: 4763843037239539787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1095,6 +1253,7 @@ GameObject:
   - component: {fileID: 4084803479001655251}
   - component: {fileID: 8364576698243803588}
   - component: {fileID: 3622454764383723534}
+  - component: {fileID: 539957301799841777}
   m_Layer: 6
   m_Name: Dealer_3
   m_TagString: Untagged
@@ -1161,6 +1320,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &539957301799841777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863331614122396380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439587aaf4b705047a4acaecfb22c925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dealer
+  priceText: {fileID: 8397553412424310615}
+  locked: {fileID: 1418653750999430743}
+  unlocked: {fileID: 5317513777807762544}
 --- !u!1 &3158974079305231316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1491,7 @@ GameObject:
   - component: {fileID: 672162148255695316}
   - component: {fileID: 5008614215816664591}
   - component: {fileID: 4072195822011895395}
+  - component: {fileID: 8923469048366947042}
   m_Layer: 6
   m_Name: Dealer_2
   m_TagString: Untagged
@@ -1383,6 +1558,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8923469048366947042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921985864779227802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439587aaf4b705047a4acaecfb22c925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dealer
+  priceText: {fileID: 4420620566133712553}
+  locked: {fileID: 7886191621915339356}
+  unlocked: {fileID: 6774659907279078390}
 --- !u!1 &4424643216402878106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1841,7 @@ GameObject:
   - component: {fileID: 5763691675869793873}
   - component: {fileID: 4420620566133712553}
   m_Layer: 6
-  m_Name: Text (TMP)
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1884,6 +2074,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8302314948989484331}
+  - {fileID: 1509934553602403069}
   m_Father: {fileID: 8232629456542766967}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2097,6 +2288,7 @@ GameObject:
   - component: {fileID: 6058902920404009500}
   - component: {fileID: 8995086043335611706}
   - component: {fileID: 5267797998256210819}
+  - component: {fileID: 3852882852962822477}
   m_Layer: 6
   m_Name: Dealer_1
   m_TagString: Untagged
@@ -2163,6 +2355,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3852882852962822477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858283306643518234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439587aaf4b705047a4acaecfb22c925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dealer
+  priceText: {fileID: 5497564177698268973}
+  locked: {fileID: 1440145305521572884}
+  unlocked: {fileID: 3158974079305231316}
 --- !u!1 &6492923224852822484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,7 +2768,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1218409949519752036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8923469048366947042}
+        m_TargetAssemblyTypeName: Dealer, Assembly-CSharp
+        m_MethodName: BuyDealer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7705311165807979385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,6 +2858,78 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7886191621915339356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3625405739919487593}
+  - component: {fileID: 580063152391813386}
+  - component: {fileID: 1424096297135051618}
+  m_Layer: 6
+  m_Name: DealerIrlPictureLocked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3625405739919487593
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886191621915339356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6711550041495332384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 160}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &580063152391813386
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886191621915339356}
+  m_CullTransparentMesh: 1
+--- !u!114 &1424096297135051618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886191621915339356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: e0af788dfe739d146ac200ed563da2bc, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &8038748270930509337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,7 +2942,7 @@ GameObject:
   - component: {fileID: 3341765854916758645}
   - component: {fileID: 8397553412424310615}
   m_Layer: 6
-  m_Name: Text (TMP)
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2923,7 +3214,7 @@ GameObject:
   - component: {fileID: 4341380793790299948}
   - component: {fileID: 5497564177698268973}
   m_Layer: 6
-  m_Name: Text (TMP)
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3061,6 +3352,7 @@ GameObject:
   - component: {fileID: 7630516054863487190}
   - component: {fileID: 1666808742261909848}
   - component: {fileID: 8010506073772066056}
+  - component: {fileID: 8935969523567576166}
   m_Layer: 6
   m_Name: Dealers_PopUp_1
   m_TagString: Untagged
@@ -3174,6 +3466,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb108f39c0013aa4fa7ff83373670de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClosePopUp
+--- !u!114 &8935969523567576166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691223733227331617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a5513b26655d04faca9662ad438c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DealerManager
+  dealers:
+  - {fileID: 5858283306643518234}
+  - {fileID: 3921985864779227802}
+  - {fileID: 2863331614122396380}
 --- !u!1 &8796210122176221116
 GameObject:
   m_ObjectHideFlags: 0

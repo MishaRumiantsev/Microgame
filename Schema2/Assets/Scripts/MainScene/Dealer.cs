@@ -1,11 +1,10 @@
-using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
 
 public class Dealer : MonoBehaviour
 {
     NumberFormatter formatter;
-    public Coins coins;
+    Coins coins;
     int dealerPrice;
     bool hasDealer;
 
@@ -13,6 +12,10 @@ public class Dealer : MonoBehaviour
     [SerializeField] GameObject locked;
     [SerializeField] GameObject unlocked;
 
+    private void Start()
+    {
+        coins = FindFirstObjectByType<Coins>();
+    }
 
     public void BuyDealer()
     {
@@ -22,7 +25,6 @@ public class Dealer : MonoBehaviour
             locked.SetActive(false);
         }
     }
-
     public void SetUpDealer(int pDealerPrice, bool pHasDealer, Coins pCoins)
     {
         formatter = new NumberFormatter();
