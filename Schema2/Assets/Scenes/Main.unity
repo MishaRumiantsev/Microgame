@@ -1568,6 +1568,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 38485017610463432, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
     - target: {fileID: 194178839364397987, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1648,10 +1652,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 915429086278518731, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
+    - target: {fileID: 2062608696818198725, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
+    - target: {fileID: 7164979445026306591, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
     - target: {fileID: 7621273619970813995, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_Name
       value: MainUX
       objectReference: {fileID: 0}
+    - target: {fileID: 7807765904909815557, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2513,7 +2533,7 @@ MonoBehaviour:
   locked: {fileID: 146430997}
   unlocked: {fileID: 1501032619}
   coins: {fileID: 325908534}
-  status: {fileID: 295722702}
+  imageStatus: {fileID: 0}
 --- !u!224 &500487065
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2700,6 +2720,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
+--- !u!114 &544026305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
+  m_PrefabInstance: {fileID: 544026304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c768f5dded60a42abcca1732bff4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopUpManagerUI
 --- !u!1 &551254290
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,10 +5013,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorsManager
   floors:
-  - {fileID: 1618331873}
-  - {fileID: 500487064}
-  - {fileID: 1791539568}
-  - {fileID: 1724770304}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   coins: {fileID: 0}
 --- !u!1 &1013298408
 GameObject:
@@ -7539,7 +7570,7 @@ MonoBehaviour:
   locked: {fileID: 379308548}
   unlocked: {fileID: 1686048422}
   coins: {fileID: 325908534}
-  status: {fileID: 821421779}
+  imageStatus: {fileID: 0}
 --- !u!224 &1618331874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7887,7 +7918,7 @@ MonoBehaviour:
   locked: {fileID: 657907303}
   unlocked: {fileID: 765566304}
   coins: {fileID: 325908534}
-  status: {fileID: 1085771836}
+  imageStatus: {fileID: 0}
 --- !u!224 &1724770305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8195,7 +8226,7 @@ MonoBehaviour:
   locked: {fileID: 854047380}
   unlocked: {fileID: 710120852}
   coins: {fileID: 325908534}
-  status: {fileID: 1111247917}
+  imageStatus: {fileID: 0}
 --- !u!224 &1791539569
 RectTransform:
   m_ObjectHideFlags: 0
