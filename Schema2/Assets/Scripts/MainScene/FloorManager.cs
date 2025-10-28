@@ -1,12 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloorManager : MonoBehaviour
 {
     public float income;
     public float maxResources;
     public float duration;
-
 
     public float currentResources;
     bool currentResourcesChanged;
@@ -22,7 +22,7 @@ public class FloorManager : MonoBehaviour
     FloorUpgrade upgrader;
     NumberFormatter formatter;
     public Coins coins;
-    [SerializeField] TextMeshProUGUI status;
+    [SerializeField] Image imageStatus;
 
     private void Update()
     {
@@ -30,9 +30,9 @@ public class FloorManager : MonoBehaviour
         {
             UpdateProgressBar();
         }
-        else if (status.text != "inactive")
+        else if (imageStatus.fillAmount > 0.995f)
         {
-            status.text = "inactive";
+            imageStatus.fillAmount = 0;
         }
         if (currentResourcesChanged)
         {
@@ -62,7 +62,7 @@ public class FloorManager : MonoBehaviour
     }
     void UpdateProgressBar()
     {
-        status.text = $"Working {timer.timeRemainingPercentage}%";
+        imageStatus.fillAmount = timer.timeRemainingPercentage / 100f;
     }
     void AddToCurrentResources()
     {
@@ -95,7 +95,7 @@ public class FloorManager : MonoBehaviour
         }
         else
         {
-            priceText.text = floorPrice.ToString();
+            priceText.text = formatter.FormatNumber(floorPrice).ToString();
         }
 
         currentResources = 0;

@@ -11,16 +11,16 @@ public class Elevator : MonoBehaviour
 
     public float loadTime;
     public float maxLoad;
- 
+
     // variabelen voor het beheren van de liftbeweging
     int currentFloor;
     int targetFloor;
     bool isMoving;
     float elapsedTime;
     float travelTime;
-    Vector3 defaultPosition;
     Vector3 startPosition;
     Vector3 targetPosition;
+    [SerializeField] Transform defaultPosition;
     [SerializeField] List<Transform> elevatorPositions;
 
     string status;
@@ -34,7 +34,6 @@ public class Elevator : MonoBehaviour
     {
         formatter = new NumberFormatter();
 
-        defaultPosition = gameObject.transform.position;
 
         currentLoad = 0;
         currentLoadText.text = formatter.FormatNumber(currentLoad);
@@ -84,7 +83,8 @@ public class Elevator : MonoBehaviour
         {
             for (int i = 0; i < floorsManager.floors.Count; i++)
             {
-                if (floorsManager.floors[i].currentResources > 0 && i > currentFloor)
+            FloorManager floor = floorsManager.floors[i].GetComponent<FloorManager>();
+                if (floor.currentResources > 0 && i > currentFloor)
                 {
                     targetFloor = i;
                     travelTime = targetFloor - currentFloor;
@@ -149,8 +149,10 @@ public class Elevator : MonoBehaviour
     {
         timer.OnTimerComplete -= EndLoad;
         float freeToLoad = maxLoad - currentLoad;
-        float loaded = Math.Min(freeToLoad, floorsManager.floors[currentFloor].currentResources);
-        floorsManager.floors[currentFloor].ChangeCurrentResources(-loaded);
+        FloorManager floor = floorsManager.floors[currentFloor].GetComponent<FloorManager>();
+
+        float loaded = Math.Min(freeToLoad, floor.currentResources);
+        floor.ChangeCurrentResources(-loaded);
         currentLoad += loaded;
         currentLoadText.text = formatter.FormatNumber(currentLoad);
         ChooseNextTargetFloor();
@@ -200,7 +202,7 @@ public class Elevator : MonoBehaviour
         }
         else
         {
-            targetPosition = defaultPosition;
+            targetPosition = defaultPosition.position;
         }
         elapsedTime = 0f;
     }

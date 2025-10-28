@@ -6,7 +6,7 @@ public class Coins : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI coinsText;
     NumberFormatter formatter;
-    private void Start()
+    private void Update()
     {
         formatter = new NumberFormatter();
         coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}";
