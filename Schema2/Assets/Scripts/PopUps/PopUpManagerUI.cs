@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This script manages the display and closure of different pop-up windows in the game.
@@ -15,10 +17,17 @@ public class PopUpManagerUI : MonoBehaviour
     public GameObject Achievements_PopUp;
     public GameObject Stats_PopUp;
     public GameObject Dealers_PopUp;
+    public GameObject Dealers_PopUp_1;
+    public GameObject Dealers_PopUp_2;
+    public GameObject Dealers_PopUp_3;
+    public GameObject Dealers_PopUp_4;
+
     public GameObject Prestige_PopUp;
     public GameObject FloorUpgrade_PopUp;
     public GameObject ElevatorUpgrade_PopUp;
 
+    string sceneName;
+    int sceneNumber;
 
     private void Awake()
     {
@@ -85,7 +94,25 @@ public class PopUpManagerUI : MonoBehaviour
     {
         // Spawn the Dealers pop up prefab
         Debug.Log("Dealers Button Clicked");
-        ShowPopUp(Dealers_PopUp);
+        sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "Prestige_0": 
+                ShowPopUp(Dealers_PopUp_1);
+                break;
+            case "Prestige_1": 
+                ShowPopUp(Dealers_PopUp_2);
+                break;
+            case "Prestige_2":
+                ShowPopUp(Dealers_PopUp_3);
+                break;
+            case "Prestige_3": 
+                ShowPopUp(Dealers_PopUp_4);
+                break;
+            default:
+                ShowPopUp(Dealers_PopUp);
+                break;
+        }
     }
 
     public void PrestigeButton()

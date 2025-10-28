@@ -469,10 +469,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4361939468350704769}
-        m_TargetAssemblyTypeName: FloorUpgrade, Assembly-CSharp
-        m_MethodName: OpenWindow
-        m_Mode: 1
+      - m_Target: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
+        m_TargetAssemblyTypeName: PopUpManagerUI, Assembly-CSharp
+        m_MethodName: FloorLevelButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1034,14 +1034,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42ddf6df3dae3d4497b5c3a0e5f01e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorUpgrade
+  totalPrice: 0
+  level: 0
+  levelsToUpgrade: 0
   levelText: {fileID: 7891767237458340313}
-  floorContainer: {fileID: 6763773148626122032}
-  upgradeWindow: {fileID: 0}
-  levelTextInUpgradeWindow: {fileID: 0}
-  incomeTextInUpgradeWindow: {fileID: 0}
-  durationTextInUpgradeWindow: {fileID: 0}
-  maxResourcesTextInUpgradeWindow: {fileID: 0}
-  priceText: {fileID: 0}
 --- !u!114 &771416071068702009
 MonoBehaviour:
   m_ObjectHideFlags: 0
