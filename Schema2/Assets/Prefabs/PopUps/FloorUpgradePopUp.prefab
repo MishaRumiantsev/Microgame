@@ -402,8 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f100550b6b87e348b137e7e00dd176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorUpgradePopUp
-  floorUpgrade: {fileID: 0}
-  floor: {fileID: 0}
+  index: 0
   incomeText: {fileID: 8510779011744889229}
   cycleText: {fileID: 2179075763851552724}
   capacityText: {fileID: 1777770390848973599}
