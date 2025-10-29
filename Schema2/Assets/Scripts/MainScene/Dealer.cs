@@ -17,12 +17,13 @@ public class Dealer : MonoBehaviour
         coins = FindFirstObjectByType<Coins>();
     }
 
-    public void BuyDealer()
+    public void BuyDealer(int pDealerCount)
     {
         if (coins.TrySpendCoins(dealerPrice))
         {
             hasDealer = true;
             locked.SetActive(false);
+            gameObject.GetComponentInParent<DealerManager>().dealerBuilding[pDealerCount] = true;
         }
     }
     public void SetUpDealer(int pDealerPrice, bool pHasDealer, Coins pCoins)

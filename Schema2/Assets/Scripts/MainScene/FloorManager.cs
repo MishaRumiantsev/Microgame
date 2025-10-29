@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,9 @@ public class FloorManager : MonoBehaviour
     public float currentResources;
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;
+
+    [SerializeField] int floorIndex;
+    public List<bool> buildingFloor;
 
     int floorPrice;
     bool isUnlocked;
@@ -72,6 +76,22 @@ public class FloorManager : MonoBehaviour
     {
         if (coins.TrySpendCoins(floorPrice))
         {
+            switch (FindFirstObjectByType<SceneChecker>().buildingNumber)
+            {
+                case 0:
+                    buildingFloor = PlayerDataManager.Instance.playerData.building0Dealers;
+                    break;
+                case 1:
+                    buildingFloor = PlayerDataManager.Instance.playerData.building1Dealers;
+                    break;
+                case 2:
+                    buildingFloor = PlayerDataManager.Instance.playerData.building2Dealers;
+                    break;
+                case 3:
+                    buildingFloor = PlayerDataManager.Instance.playerData.building3Dealers;
+                    break;
+            }
+            buildingFloor[floorIndex] = true;
             isUnlocked = true;
             locked.SetActive(false);
         }

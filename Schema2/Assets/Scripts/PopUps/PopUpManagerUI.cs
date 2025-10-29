@@ -27,7 +27,6 @@ public class PopUpManagerUI : MonoBehaviour
     public GameObject ElevatorUpgrade_PopUp;
 
     string sceneName;
-    int sceneNumber;
 
     private void Awake()
     {
@@ -39,7 +38,6 @@ public class PopUpManagerUI : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void ShowPopUp(GameObject popUpPrefab)
@@ -94,7 +92,6 @@ public class PopUpManagerUI : MonoBehaviour
     {
         // Spawn the Dealers pop up prefab
         Debug.Log("Dealers Button Clicked");
-        sceneName = SceneManager.GetActiveScene().name;
         switch (sceneName)
         {
             case "Prestige_0": 
