@@ -13,18 +13,22 @@ public class PopUpManagerUI : MonoBehaviour
     private GameObject currentPopUp;
 
     // Assign the pop up prefabs in the inspector
-    public GameObject BattlePass_PopUp;
-    public GameObject Achievements_PopUp;
-    public GameObject Stats_PopUp;
-    public GameObject Dealers_PopUp;
-    public GameObject Dealers_PopUp_1;
-    public GameObject Dealers_PopUp_2;
-    public GameObject Dealers_PopUp_3;
-    public GameObject Dealers_PopUp_4;
+    [SerializeField] GameObject BattlePass_PopUp;
+    [SerializeField] GameObject Achievements_PopUp;
+    [SerializeField] GameObject Stats_PopUp;
+    [SerializeField] GameObject Dealers_PopUp;
+    [SerializeField] GameObject Dealers_PopUp_1;
+    [SerializeField] GameObject Dealers_PopUp_2;
+    [SerializeField] GameObject Dealers_PopUp_3;
+    [SerializeField] GameObject Dealers_PopUp_4;
 
-    public GameObject Prestige_PopUp;
-    public GameObject FloorUpgrade_PopUp;
-    public GameObject ElevatorUpgrade_PopUp;
+    [SerializeField] GameObject Prestige_PopUp;
+    [SerializeField] GameObject FloorUpgrade_PopUp;
+    [SerializeField] GameObject ElevatorUpgrade_PopUp;
+
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip buttonSoundUI;
 
     string sceneName;
     int sceneNumber;
@@ -39,7 +43,11 @@ public class PopUpManagerUI : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ShowPopUp(GameObject popUpPrefab)

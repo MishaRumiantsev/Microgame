@@ -12,7 +12,7 @@ public class FloorManager : MonoBehaviour
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;
 
-    int floorPrice;
+    long floorPrice;
     bool isUnlocked;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] GameObject locked;

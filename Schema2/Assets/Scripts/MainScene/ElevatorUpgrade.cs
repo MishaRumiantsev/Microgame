@@ -16,7 +16,7 @@ public class ElevatorUpgrade : MonoBehaviour
 
     int basisPrice;
     float priceIncreaseFactor;
-    public float totalPrice;
+    public double totalPrice;
 
     public bool enoughCoins;
 

@@ -3,7 +3,7 @@ public class NumberFormatter
     /// <summary>
     /// Formatteert een getal naar een verkorte weergave met achtervoegsels (bijv. 1,2K, 3,5M)
     /// </summary>
-    public string FormatNumber(float pNumber)
+    public string FormatNumber(double pNumber)
     {
         // array met achtervoegsels voor duizends, miljoenen, enz,
         string[] numberSuffixes = { "", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc", };

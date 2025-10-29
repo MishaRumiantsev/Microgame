@@ -21,9 +21,9 @@ public class SellPoint : MonoBehaviour
         active = false;
         currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
     }
-    public void AddResources(float pResources)
+    public void AddResources(double pResources)
     {
-        PlayerDataManager.storedSellPointCoins += Convert.ToInt32(pResources);
+        PlayerDataManager.storedSellPointCoins += Convert.ToInt64(pResources);
         currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
     }
     public void OnClick()
