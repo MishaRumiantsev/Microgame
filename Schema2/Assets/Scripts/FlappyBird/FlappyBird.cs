@@ -13,9 +13,12 @@ public class FlappyBird : MonoBehaviour
     public AudioClip sound5;
     public AudioClip sound6;
     private AudioSource audioSource;
-        
+     [SerializeField] public Vector2 spawnPosition = new Vector2(-2f, 0f);
+
     private void Start()
     {
+        
+        
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -24,7 +27,7 @@ public class FlappyBird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("space indrukken");
+            //Debug.Log("test);
             rb.linearVelocity = Vector2.up * velocity;
             int rNumber = UnityEngine.Random.Range(1, 6);
             switch (rNumber)
@@ -52,13 +55,19 @@ public class FlappyBird : MonoBehaviour
         if (collision.CompareTag("Level"))
         {
             GameManagerFlappyBird.instance.GameOver();
+            transform.position = spawnPosition;
             audioSource.PlayOneShot(sound6);
         }
         if (collision.CompareTag("Finish"))
         {
-            PlayerDataManager.Coins = +10;
-            GameManagerFlappyBird.instance.extraCoins = true;
             GameManagerFlappyBird.instance.GameOver();
+            transform.position = spawnPosition;
+        }
+        if (collision.CompareTag("Coins"))
+        {
+            PlayerDataManager.Coins += 2;
+            GameManagerFlappyBird.instance.totalFlappyCoins += 2;
+            GameManagerFlappyBird.instance.extraCoins = true;
         }
     }
 }
