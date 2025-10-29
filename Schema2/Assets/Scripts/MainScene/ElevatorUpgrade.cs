@@ -5,27 +5,20 @@ public class ElevatorUpgrade : MonoBehaviour
 {
     Elevator elevator;
 
-    int level;
+    public int level;
     [SerializeField] TextMeshProUGUI levelText;
 
     int basisMaxLoad;
     float maxLoadIncreaseFactor;
 
-    int upgradeMultiplier;
-    int levelsToUpgrade;
+    public int upgradeMultiplier;
+    public int levelsToUpgrade;
 
     int basisPrice;
     float priceIncreaseFactor;
-    float totalPrice;
+    public float totalPrice;
 
-    int siblingIndex;
-    [SerializeField] Transform elevatorContainer;
-
-    [SerializeField] TextMeshProUGUI priceText;
-    [SerializeField] TextMeshProUGUI loadTimeText;
-    [SerializeField] TextMeshProUGUI maxLoadText;
-    [SerializeField] TextMeshProUGUI levelTextInUpgradeWindow;
-    [SerializeField] GameObject upgradeWindow;
+    public bool enoughCoins;
 
     NumberFormatter formatter;
     [SerializeField] Coins coins;
@@ -35,11 +28,8 @@ public class ElevatorUpgrade : MonoBehaviour
         elevator = GetComponent<Elevator>();
         formatter = new NumberFormatter();
 
-        siblingIndex = elevatorContainer.GetSiblingIndex();
-
         level = 0;
         levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
-        levelTextInUpgradeWindow.text = formatter.FormatNumber(level + 1);
 
         maxLoadIncreaseFactor = 1.2f;
         basisMaxLoad = 100;
@@ -47,22 +37,15 @@ public class ElevatorUpgrade : MonoBehaviour
         priceIncreaseFactor = 1.2f;
         basisPrice = 150;
 
-        loadTimeText.text = formatter.FormatTime(elevator.loadTime);
-
         CalculateMaxLoad();
         SetMultiplier(1);
     }
-
-    public void OpenWindow()
+    private void Update()
     {
-        elevatorContainer.SetAsLastSibling();
-        upgradeWindow.SetActive(true);
-    }
-    public void CloseWindow()
-    {
-        elevatorContainer.SetSiblingIndex(siblingIndex);
-        upgradeWindow.SetActive(false);
-
+        if (!enoughCoins && totalPrice <= PlayerDataManager.Coins)
+        {
+            enoughCoins = true;
+        }
     }
     public void SetMultiplier(int pUpgradeMultiplier)
     {
@@ -73,6 +56,19 @@ public class ElevatorUpgrade : MonoBehaviour
         {
             float nextLevelPrice = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
             levelsToUpgrade = Mathf.FloorToInt(Mathf.Log(1 + PlayerDataManager.Coins * (priceIncreaseFactor - 1) / nextLevelPrice, priceIncreaseFactor));
+            while (levelsToUpgrade > 1)
+            {
+                totalPrice = nextLevelPrice * (Mathf.Pow(priceIncreaseFactor, levelsToUpgrade) - 1) / (priceIncreaseFactor - 1);
+                if (totalPrice <= PlayerDataManager.Coins)
+                {
+                    break;
+                }
+                levelsToUpgrade--;
+            }
+            if (levelsToUpgrade <= 0)
+            {
+                levelsToUpgrade = 1;
+            }
         }
         CalculateTotalPrice();
     }
@@ -80,25 +76,22 @@ public class ElevatorUpgrade : MonoBehaviour
     {
         float nextLevelPrice = basisPrice * Mathf.Pow(priceIncreaseFactor, level);
         totalPrice = nextLevelPrice * (Mathf.Pow(priceIncreaseFactor, levelsToUpgrade) - 1) / (priceIncreaseFactor - 1);
-        priceText.text = formatter.FormatNumber(totalPrice);
+        enoughCoins = PlayerDataManager.Coins >= totalPrice;
     }
     void CalculateMaxLoad()
     {
         elevator.maxLoad = basisMaxLoad * Mathf.Pow(maxLoadIncreaseFactor, level);
-        maxLoadText.text = formatter.FormatNumber(elevator.maxLoad);
     }
     public void LevelUp()
     {
         if (coins.TrySpendCoins(totalPrice))
         {
             level += levelsToUpgrade;
-            levelTextInUpgradeWindow.text = formatter.FormatNumber(level + 1);
 
             SetMultiplier(upgradeMultiplier);
             CalculateMaxLoad();
 
             levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
-            levelTextInUpgradeWindow.text = formatter.FormatNumber(level + 1);
         }
     }
 }

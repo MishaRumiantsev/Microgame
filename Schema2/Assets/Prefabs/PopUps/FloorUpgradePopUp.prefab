@@ -402,14 +402,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f100550b6b87e348b137e7e00dd176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorUpgradePopUp
-  floorUpgrade: {fileID: 0}
-  floor: {fileID: 0}
+  index: 0
   incomeText: {fileID: 8510779011744889229}
   cycleText: {fileID: 2179075763851552724}
   capacityText: {fileID: 1777770390848973599}
   levelText: {fileID: 1481871874767392580}
   upgradeText: {fileID: 8118864935387942604}
   priceText: {fileID: 1286277081083728529}
+  upgradeButton: {fileID: 2032707447314804810}
+  toggles:
+  - {fileID: 3174390054287850188}
+  - {fileID: 1797764776793854692}
+  - {fileID: 8449087743591872848}
+  - {fileID: 774853071942170987}
 --- !u!1 &1210290994632738974
 GameObject:
   m_ObjectHideFlags: 0

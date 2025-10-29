@@ -8,7 +8,6 @@ public class FloorManager : MonoBehaviour
     public float maxResources;
     public float duration;
 
-
     public float currentResources;
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;
@@ -63,7 +62,7 @@ public class FloorManager : MonoBehaviour
     }
     void UpdateProgressBar()
     {
-        imageStatus.fillAmount = timer.timeRemainingPercentage / 100f;
+        imageStatus.fillAmount = timer.progresPercentage / 100f;
     }
     void AddToCurrentResources()
     {
@@ -96,7 +95,7 @@ public class FloorManager : MonoBehaviour
         }
         else
         {
-            priceText.text = floorPrice.ToString();
+            priceText.text = formatter.FormatNumber(floorPrice).ToString();
         }
 
         currentResources = 0;

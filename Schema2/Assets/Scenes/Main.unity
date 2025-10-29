@@ -584,8 +584,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5331181681834235756, guid: 7f0e9080af0d09b48b541c270c62dd69, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1568,6 +1568,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 38485017610463432, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
     - target: {fileID: 194178839364397987, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1648,10 +1652,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 915429086278518731, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
+    - target: {fileID: 2062608696818198725, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
+    - target: {fileID: 7164979445026306591, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
     - target: {fileID: 7621273619970813995, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_Name
       value: MainUX
       objectReference: {fileID: 0}
+    - target: {fileID: 7807765904909815557, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 544026305}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2181,8 +2201,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5331181681834235756, guid: 7f0e9080af0d09b48b541c270c62dd69, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2504,15 +2524,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fceeb276060b740a70808589b3a173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
+  income: 0
+  maxResources: 0
+  duration: 0
   currentResources: 0
   currentResourcesText: {fileID: 911504867}
-  levelText: {fileID: 2055566142}
-  currentPriceUpgradeText: {fileID: 133790866}
   priceText: {fileID: 669615707}
   locked: {fileID: 146430997}
   unlocked: {fileID: 1501032619}
   coins: {fileID: 325908534}
-  status: {fileID: 295722702}
+  imageStatus: {fileID: 0}
 --- !u!224 &500487065
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2624,8 +2645,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -3830844029429771333, guid: a8b1dc10a543e95479452480957d9daa, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2699,6 +2720,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
+--- !u!114 &544026305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
+  m_PrefabInstance: {fileID: 544026304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c768f5dded60a42abcca1732bff4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopUpManagerUI
 --- !u!1 &551254290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,8 +2986,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -4539008365686513104, guid: eb190b524e90458478250108eb19998b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2998,6 +3030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32461e1ecdcc0b94eb380cd03b2eab20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Elevator
+  currentLoadText: {fileID: 1284458218}
+  loadTime: 0
+  maxLoad: 0
   elevatorPositions:
   - {fileID: 197733065}
   - {fileID: 1493303772}
@@ -3006,7 +3041,6 @@ MonoBehaviour:
   sellPoint: {fileID: 2129044772}
   floorsManager: {fileID: 1011954136}
   statusText: {fileID: 1455539459}
-  currentLoadText: {fileID: 1284458218}
 --- !u!1 &569218534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,8 +3563,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5331181681834235756, guid: 7f0e9080af0d09b48b541c270c62dd69, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4324,8 +4358,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5331181681834235756, guid: 7f0e9080af0d09b48b541c270c62dd69, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4979,10 +5013,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorsManager
   floors:
-  - {fileID: 1618331873}
-  - {fileID: 500487064}
-  - {fileID: 1791539568}
-  - {fileID: 1724770304}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  coins: {fileID: 0}
 --- !u!1 &1013298408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,6 +5291,7 @@ MonoBehaviour:
   GetCoins: {fileID: 0}
   playerDataManager: {fileID: 1492259052}
   popUpManagerAchievements: {fileID: 1043793405}
+  totalcoins: 0
 --- !u!4 &1021968731
 Transform:
   m_ObjectHideFlags: 0
@@ -7525,15 +7561,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fceeb276060b740a70808589b3a173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
+  income: 0
+  maxResources: 0
+  duration: 0
   currentResources: 0
   currentResourcesText: {fileID: 259237237}
-  levelText: {fileID: 1611603007}
-  currentPriceUpgradeText: {fileID: 1025916848}
   priceText: {fileID: 232059166}
   locked: {fileID: 379308548}
   unlocked: {fileID: 1686048422}
   coins: {fileID: 325908534}
-  status: {fileID: 821421779}
+  imageStatus: {fileID: 0}
 --- !u!224 &1618331874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7645,8 +7682,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1256821634824488459, guid: 09c78731e64fdb34087da7377257c72b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7872,15 +7909,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fceeb276060b740a70808589b3a173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
+  income: 0
+  maxResources: 0
+  duration: 0
   currentResources: 0
   currentResourcesText: {fileID: 1866850284}
-  levelText: {fileID: 986057595}
-  currentPriceUpgradeText: {fileID: 385377743}
   priceText: {fileID: 350298343}
   locked: {fileID: 657907303}
   unlocked: {fileID: 765566304}
   coins: {fileID: 325908534}
-  status: {fileID: 1085771836}
+  imageStatus: {fileID: 0}
 --- !u!224 &1724770305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7992,8 +8030,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1256821634824488459, guid: 09c78731e64fdb34087da7377257c72b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8179,15 +8217,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fceeb276060b740a70808589b3a173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
+  income: 0
+  maxResources: 0
+  duration: 0
   currentResources: 0
   currentResourcesText: {fileID: 1377913544}
-  levelText: {fileID: 1797154383}
-  currentPriceUpgradeText: {fileID: 2071482320}
   priceText: {fileID: 1675068313}
   locked: {fileID: 854047380}
   unlocked: {fileID: 710120852}
   coins: {fileID: 325908534}
-  status: {fileID: 1111247917}
+  imageStatus: {fileID: 0}
 --- !u!224 &1791539569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8299,8 +8338,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1256821634824488459, guid: 09c78731e64fdb34087da7377257c72b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9250,8 +9289,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1579591970220082581, guid: a8a343b7484776f4ca3b87d26be7a7c3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
