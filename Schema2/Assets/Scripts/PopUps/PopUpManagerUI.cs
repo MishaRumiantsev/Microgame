@@ -92,6 +92,7 @@ public class PopUpManagerUI : MonoBehaviour
     {
         // Spawn the Dealers pop up prefab
         Debug.Log("Dealers Button Clicked");
+        sceneName = SceneManager.GetActiveScene().name;
         switch (sceneName)
         {
             case "Prestige_0": 

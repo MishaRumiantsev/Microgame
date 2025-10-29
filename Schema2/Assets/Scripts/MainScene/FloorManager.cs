@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class FloorManager : MonoBehaviour
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;
 
-    [SerializeField] int floorIndex;
+    public int index;
     public List<bool> buildingFloor;
 
     int floorPrice;
@@ -63,6 +64,8 @@ public class FloorManager : MonoBehaviour
             currentResources = maxResources;
         }
         currentResourcesChanged = true;
+
+        GameObject.FindFirstObjectByType<FloorsManager>().buildingResources[index] = Convert.ToInt32(currentResources);
     }
     void UpdateProgressBar()
     {
@@ -91,12 +94,12 @@ public class FloorManager : MonoBehaviour
                     buildingFloor = PlayerDataManager.Instance.playerData.building3Dealers;
                     break;
             }
-            buildingFloor[floorIndex] = true;
             isUnlocked = true;
             locked.SetActive(false);
+            GameObject.FindFirstObjectByType<FloorsManager>().buildingFloor[index] = true;
         }
     }
-    public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
+    public void SetUpFloor(int pIndex, int pLevel, int pCurrentResources, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
     {
         formatter = new NumberFormatter();
         timer = GetComponent<Timer>();
@@ -106,6 +109,8 @@ public class FloorManager : MonoBehaviour
 
         ChangeCurrentResources(0);
 
+        currentResources = pCurrentResources;
+        index = pIndex;
         isUnlocked = pIsUnlocked;
         floorPrice = pFloorPrice;
 
@@ -117,8 +122,6 @@ public class FloorManager : MonoBehaviour
         {
             priceText.text = formatter.FormatNumber(floorPrice).ToString();
         }
-
-        currentResources = 0;
 
         upgrader.UpdateStats(pLevel, pBasisIncome, pBasisUpgradePrice, pBasisDuration);
     }
