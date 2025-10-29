@@ -1,4 +1,4 @@
-using System.Xml.Schema;
+using System.Collections.Generic;
 
 [System.Serializable]
 
@@ -9,10 +9,29 @@ public class PlayerData
 {
     public int coins;
     public int storedSellPointCoins;
-    public int prestigeCoins;
 
     //stats
     public int totalCoins;
     public int gainedOffline;
+
+    public List<bool> building0Floors = new List<bool>() { true, false, false };
+    public List<int> building0Upgrades = new List<int>() { 0, 0, 0 };
+    public List<int> building0Resources = new List<int>() { 0, 0, 0 };
+    public List<bool> building0Dealers = new List<bool>() { false, false, false };
+
+    public List<bool> building1Floors = new List<bool>() { true, false, false, false, false };
+    public List<int> building1Upgrades = new List<int>() { 0, 0, 0, 0, 0 };
+    public List<int> building1Resources = new List<int>() { 0, 0, 0, 0, 0 };
+    public List<bool> building1Dealers = new List<bool>() { false, false, false, false, false };
+
+    public List<bool> building2Floors = new List<bool>() { true, false, false, false, false, false, false };
+    public List<int> building2Upgrades = new List<int>() { 0, 0, 0, 0, 0, 0, 0 };
+    public List<int> building2Resources = new List<int>() { 0, 0, 0, 0, 0, 0, 0 };
+    public List<bool> building2Dealers = new List<bool>() { false, false, false, false, false, false, false };
+
+    public List<bool> building3Floors = new List<bool>() { true, false, false, false, false, false, false, false, false, false };
+    public List<int> building3Upgrades = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public List<int> building3Resources = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public List<bool> building3Dealers = new List<bool>() { false, false, false, false, false, false, false, false, false, false };
 
 }
