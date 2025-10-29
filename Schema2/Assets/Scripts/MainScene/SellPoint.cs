@@ -19,10 +19,10 @@ public class SellPoint : MonoBehaviour
         sellSpeed = 5f;
         currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
     }
-    public void AddResources(float pResources)
+    public void AddResources(double pResources)
     {
-        PlayerDataManager.storedSellPointCoins += Convert.ToInt32(pResources);
-        currentResourcesText.text = formatter.FormatNumber(PlayerDataManager.storedSellPointCoins);
+        PlayerDataManager.storedSellPointCoins += Convert.ToInt64(pResources);
+        currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
     }
     public void OnClick()
     {

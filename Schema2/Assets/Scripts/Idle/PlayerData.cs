@@ -7,12 +7,11 @@ using System.Xml.Schema;
 
 public class PlayerData
 {
-    public int coins;
-    public int storedSellPointCoins;
-    public int prestigeCoins;
+    public long coins;
+    public long storedSellPointCoins;
 
     //stats
-    public int totalCoins;
-    public int gainedOffline;
+    public long totalCoins;
+    public long gainedOffline;
 
 }
