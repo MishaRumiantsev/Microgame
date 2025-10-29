@@ -471,7 +471,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 372039619}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075338392}
+        m_TargetAssemblyTypeName: FlappyBirdLoad, Assembly-CSharp
+        m_MethodName: UnloadFlappy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &372039619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +535,7 @@ GameObject:
   - component: {fileID: 526083108}
   - component: {fileID: 526083111}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: flappyCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +558,7 @@ Camera:
   m_GameObject: {fileID: 526083107}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1324,7 +1336,7 @@ Transform:
   m_GameObject: {fileID: 994714771}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3027, y: -0.0361, z: 0}
+  m_LocalPosition: {x: -0.42, y: -0.0361, z: 0}
   m_LocalScale: {x: 0.693682, y: 0.685832, z: 1.8528247}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1349,6 +1361,7 @@ MonoBehaviour:
   sound4: {fileID: 8300000, guid: 04821041c454051428342ffe48e556ab, type: 3}
   sound5: {fileID: 8300000, guid: 6aece84f51a4283418dfb6a75b4772f0, type: 3}
   sound6: {fileID: 8300000, guid: 2b171d237dd5e44408f5c5a99cfd59c9, type: 3}
+  spawnPosition: {x: -1, y: 0}
 --- !u!114 &994714777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1474,6 +1487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075338391}
   - component: {fileID: 1075338390}
+  - component: {fileID: 1075338392}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1499,7 +1513,6 @@ MonoBehaviour:
   tekstFlappyCoinsInGame: {fileID: 1836121289}
   extraCoins: 0
   totalFlappyCoins: 0
-  spawnPosition: {x: -2, y: 0}
 --- !u!4 &1075338391
 Transform:
   m_ObjectHideFlags: 0
@@ -1515,6 +1528,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075338392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075338389}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5cdd317cc6b10419f593205d2a8181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlappyBirdLoad
 --- !u!1 &1082493584
 GameObject:
   m_ObjectHideFlags: 0

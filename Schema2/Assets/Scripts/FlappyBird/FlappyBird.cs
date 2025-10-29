@@ -13,7 +13,7 @@ public class FlappyBird : MonoBehaviour
     public AudioClip sound5;
     public AudioClip sound6;
     private AudioSource audioSource;
-     [SerializeField] public Vector2 spawnPosition = new Vector2(-2f, 0f);
+     [SerializeField] public Vector2 spawnPosition = new Vector2(-1f, 0f);
 
     private void Start()
     {
