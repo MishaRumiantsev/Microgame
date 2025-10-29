@@ -19,7 +19,15 @@ MonoBehaviour:
   m_PlatformBuildProfile:
     rid: 434239066612695105
   m_OverrideGlobalSceneList: 1
-  m_Scenes: []
+  m_Scenes:
+  - m_enabled: 1
+    m_path: Assets/Scenes/Prestiges/Prestige_0.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Prestiges/Prestige_1.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Prestiges/Prestige_2.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Prestiges/Prestige_3.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
