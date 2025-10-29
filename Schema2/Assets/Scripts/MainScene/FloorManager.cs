@@ -8,12 +8,14 @@ public class FloorManager : MonoBehaviour
     public float maxResources;
     public float duration;
 
+    int index;
+
     public float currentResources;
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;
 
     int floorPrice;
-    bool isUnlocked;
+    public bool isUnlocked;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] GameObject locked;
     [SerializeField] GameObject unlocked;
@@ -24,6 +26,8 @@ public class FloorManager : MonoBehaviour
     FloorUpgrade upgrader;
     NumberFormatter formatter;
     public Coins coins;
+
+    FloorsManager floorsManager;
 
     private void Update()
     {
@@ -76,19 +80,27 @@ public class FloorManager : MonoBehaviour
     }
     public void BuyFloor()
     {
-        if (coins.TrySpendCoins(floorPrice))
+        bool isPreviousFloorUnlocked = floorsManager.floors[index - 1].GetComponent<FloorManager>().isUnlocked;
+        if (isPreviousFloorUnlocked)
         {
-            isUnlocked = true;
-            locked.SetActive(false);
+            if (coins.TrySpendCoins(floorPrice))
+            {
+                isUnlocked = true;
+                locked.SetActive(false);
+            }
         }
     }
-    public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
+    public void SetUpFloor(int pIndex, int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
     {
+
         formatter = new NumberFormatter();
         timer = GetComponent<Timer>();
+        floorsManager = FindFirstObjectByType<FloorsManager>();
         upgrader = GetComponent<FloorUpgrade>();
         coins = pCoins;
         timer.OnTimerComplete += AddToCurrentResources;
+
+        index = pIndex;
 
         ChangeCurrentResources(0);
 

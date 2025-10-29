@@ -18,11 +18,11 @@ public class FloorsManager : MonoBehaviour
             FloorManager floor = floors[i].GetComponent<FloorManager>();
             if (i == 0)
             {
-                floor.SetUpFloor(0, floorIncomes[i], floorPrices[i], floorUpgradePrices[i], floorDurations[i], true, coins);
+                floor.SetUpFloor(i, 0, floorIncomes[i], floorPrices[i], floorUpgradePrices[i], floorDurations[i], true, coins);
             }
             else
             {
-                floor.SetUpFloor(0, floorIncomes[i], floorPrices[i], floorUpgradePrices[i], floorDurations[i], false, coins);
+                floor.SetUpFloor(i, 0, floorIncomes[i], floorPrices[i], floorUpgradePrices[i], floorDurations[i], false, coins);
             }
         }
     }
