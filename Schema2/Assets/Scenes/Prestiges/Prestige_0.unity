@@ -763,26 +763,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
-      propertyPath: Dealers_PopUp_1
-      value: 
-      objectReference: {fileID: 8691223733227331617, guid: 3fc2771c56fa95b46a1525b6936b2541, type: 3}
-    - target: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
-      propertyPath: Dealers_PopUp_2
-      value: 
-      objectReference: {fileID: 8691223733227331617, guid: 8bc2a4b0f4096bd46906e2cac4290190, type: 3}
-    - target: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
-      propertyPath: Dealers_PopUp_3
-      value: 
-      objectReference: {fileID: 8691223733227331617, guid: 2d33884bac701bf4dad496ea99c07536, type: 3}
-    - target: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
-      propertyPath: Dealers_PopUp_4
-      value: 
-      objectReference: {fileID: 8691223733227331617, guid: 7a6edba16b897a14583a498824ad8afd, type: 3}
-    - target: {fileID: 1179005970456195070, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
-      propertyPath: FloorUpgrade_PopUp
-      value: 
-      objectReference: {fileID: 1063983982681591938, guid: ed2e7bd6f2e80b940918f199058e8cec, type: 3}
     - target: {fileID: 6559943989724725761, guid: a00251a0cb30f554e8ccb9903a66d172, type: 3}
       propertyPath: m_Name
       value: PopUpManager
@@ -1754,7 +1734,6 @@ MonoBehaviour:
   playerData:
     coins: 0
     storedSellPointCoins: 0
-    prestigeCoins: 0
     totalCoins: 0
     gainedOffline: 0
 --- !u!4 &2066052343
@@ -2228,6 +2207,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
+--- !u!1001 &7532573502165915810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5732787490848512, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_Name
+      value: SfxManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -650
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 457
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162006780828462863, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f44404546eab6049a03c14e3532fab3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2239,3 +2275,4 @@ SceneRoots:
   - {fileID: 5333906112637310272}
   - {fileID: 544026304}
   - {fileID: 2066052343}
+  - {fileID: 7532573502165915810}

@@ -67,6 +67,7 @@ public class ElevatorUpgradePopUp : MonoBehaviour
     }
     public void LevelUp()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.upgradeSfx, transform, 1f);
         elevatorUpgrade.LevelUp();
         UpdateWindow();
     }
