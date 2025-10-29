@@ -18,11 +18,12 @@ public class FloorManager : MonoBehaviour
     [SerializeField] GameObject locked;
     [SerializeField] GameObject unlocked;
 
+    [SerializeField] Image imageStatus;
+
     Timer timer;
     FloorUpgrade upgrader;
     NumberFormatter formatter;
     public Coins coins;
-    [SerializeField] Image imageStatus;
 
     private void Update()
     {
@@ -30,7 +31,7 @@ public class FloorManager : MonoBehaviour
         {
             UpdateProgressBar();
         }
-        else if (imageStatus.fillAmount > 0.995f)
+        else if( imageStatus.fillAmount > 0)
         {
             imageStatus.fillAmount = 0;
         }
@@ -47,6 +48,11 @@ public class FloorManager : MonoBehaviour
         {
             timer.StartTimer(duration);
         }
+        else
+        {
+            float reduction = Mathf.Min(duration * 0.05f, 5f);
+            timer.timeRemaining = Mathf.Max(timer.timeRemaining - reduction, 0);
+        }
     }
     /// <summary>
     /// Wijzigt de hoeveelheeid resources op verdieping 
@@ -62,7 +68,7 @@ public class FloorManager : MonoBehaviour
     }
     void UpdateProgressBar()
     {
-        imageStatus.fillAmount = timer.progresPercentage / 100f;
+        imageStatus.fillAmount = Mathf.MoveTowards(imageStatus.fillAmount, timer.progresPercentage / 100f, Time.deltaTime * 6f);
     }
     void AddToCurrentResources()
     {

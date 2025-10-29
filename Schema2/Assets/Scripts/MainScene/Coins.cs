@@ -7,7 +7,7 @@ public class Coins : MonoBehaviour
     // Referentie naar UI-tekst met aantal vna coins
     [SerializeField] TextMeshProUGUI coinsText;
     NumberFormatter formatter;
-    private void Update()
+    private void Start()
     {
         formatter = new NumberFormatter(); // initialiseer formatter
         coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}"; // update UI
