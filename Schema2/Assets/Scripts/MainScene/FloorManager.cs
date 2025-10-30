@@ -10,8 +10,6 @@ public class FloorManager : MonoBehaviour
     public float maxResources;
     public float duration;
 
-    int index;
-
     public float currentResources;
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;

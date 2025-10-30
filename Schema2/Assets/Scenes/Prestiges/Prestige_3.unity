@@ -3583,6 +3583,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720a410a6f7580b4e97d22dbfcd59e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SellPoint
+--- !u!1 &1832857788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1832857790}
+  - component: {fileID: 1832857789}
+  m_Layer: 0
+  m_Name: FallingObjectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1832857789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832857788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48ac7fa34feed84eabe7d0aca8b09be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallingSpawner
+  prefab: {fileID: 8220260796907175466, guid: d28ad232ed910a843ab0d997e3d33f82, type: 3}
+  locationObject: {fileID: 1832857788}
+  spawnCooldown: 160
+  targetCanvas: {fileID: 2141280760}
+--- !u!4 &1832857790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832857788}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 567, y: 2393.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1935233576 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6763773148626122032, guid: 93fb92c53ebafd843ae50ef96457732b, type: 3}
@@ -3852,6 +3900,8 @@ MonoBehaviour:
     storedSellPointCoins: 0
     totalCoins: 0
     gainedOffline: 0
+    playTime: 0
+    totalUpgrades: 0
     sfxVolume: 0
     musicVolume: 0
     building0Floors: 010000
@@ -4083,3 +4133,4 @@ SceneRoots:
   - {fileID: 205639930}
   - {fileID: 306826744}
   - {fileID: 1392244788}
+  - {fileID: 1832857790}
