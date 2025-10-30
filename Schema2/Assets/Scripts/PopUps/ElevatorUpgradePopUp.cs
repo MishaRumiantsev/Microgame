@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ElevatorUpgradePopUp : MonoBehaviour
 {
@@ -42,15 +42,12 @@ public class ElevatorUpgradePopUp : MonoBehaviour
     }
     public void SetMultiplier(int multiplier)
     {
-        if (elevatorUpgrade != null)
+        int toggleIndex = GetToggleIndex(multiplier);
+        if (toggles[toggleIndex].isOn)
         {
-            int toggleIndex = GetToggleIndex(multiplier);
-            if (toggles[toggleIndex].isOn)
-            {
-                elevatorUpgrade.SetMultiplier(multiplier);
-                priceText.text = formatter.FormatNumber(elevatorUpgrade.totalPrice);
-                upgradeText.text = $"Upgrade x{elevatorUpgrade.levelsToUpgrade}";
-            }
+            elevatorUpgrade.SetMultiplier(multiplier);
+            priceText.text = formatter.FormatNumber(elevatorUpgrade.totalPrice);
+            upgradeText.text = $"Upgrade x{elevatorUpgrade.levelsToUpgrade}";
         }
     }
     int GetToggleIndex(int pMultiplier)

@@ -92,8 +92,6 @@ public class ElevatorUpgrade : MonoBehaviour
             CalculateMaxLoad();
 
             levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
-
-
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -114,8 +113,6 @@ public class FloorUpgrade : MonoBehaviour
             CalculateDuration();
 
             levelText.text = formatter.FormatNumber(level + 1);
-
-            GameObject.FindFirstObjectByType<FloorsManager>().buildingUpgrades[floor.index] = level;
         }
     }
 

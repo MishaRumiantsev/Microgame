@@ -29,6 +29,7 @@ public class PopUpManagerUI : MonoBehaviour
     [SerializeField] GameObject Settings_PopUp;
 
     string sceneName;
+    int sceneNumber;
 
     private void Awake()
     {

@@ -2,7 +2,6 @@ using UnityEngine;
 using System.IO;
 using System;
 using JetBrains.Annotations;
-using NUnit.Framework;
 
 public class PlayerDataManager : MonoBehaviour
 {
@@ -21,7 +20,6 @@ public class PlayerDataManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             savePath = Application.persistentDataPath + "/playerdata.json";
-            print(savePath);
             LoadPlayerData();
             CalculateOfflineEarnings();
         }
@@ -30,6 +28,7 @@ public class PlayerDataManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void SavePlayerData()
     {
         // Save last online time too
@@ -43,6 +42,7 @@ public class PlayerDataManager : MonoBehaviour
         File.WriteAllText(savePath, json);
         Debug.Log("Player data saved!");
     }
+
     public void LoadPlayerData()
     {
         if (File.Exists(savePath))
@@ -75,6 +75,7 @@ public class PlayerDataManager : MonoBehaviour
 
         Debug.Log("Player data reset in memory.");
     }
+
     private void CalculateOfflineEarnings()
     {
         if (lastOnlineTime == DateTime.MinValue)
@@ -94,14 +95,17 @@ public class PlayerDataManager : MonoBehaviour
 
         gainedOffline = coinsEarned;
     }
+
     private void OnApplicationPause(bool pause)
     {
         if (pause) SavePlayerData();
     }
+
     private void OnApplicationQuit()
     {
         SavePlayerData();
     }
+
     [Serializable]
     private class playerDataJsonWrapper
     {
