@@ -451,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 544026305}
     - target: {fileID: 915429086278518731, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BattlePassButton
+      value: FlapButton
       objectReference: {fileID: 0}
     - target: {fileID: 2062608696818198725, guid: 370ba9038a7674a4786d40aa4c9c2550, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1537,6 +1537,7 @@ MonoBehaviour:
   buildingUpgrades: 
   buildingResources: 
   dealerBuilding: 
+  buildingPassiveIncome: []
 --- !u!1001 &1136849699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3104,19 +3105,49 @@ MonoBehaviour:
     building0Floors: 010000
     building0Upgrades: 000000000000000000000000
     building0Resources: 000000000000000000000000
+    building0PassiveIncome:
+    - 0
+    - 0
+    - 0
     building0Dealers: 000000
     building1Floors: 0100000000
     building1Upgrades: 0000000000000000000000000000000000000000
     building1Resources: 0000000000000000000000000000000000000000
+    building1PassiveIncome:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     building1Dealers: 0000000000
     building2Floors: 01000000000000
     building2Upgrades: 00000000000000000000000000000000000000000000000000000000
     building2Resources: 00000000000000000000000000000000000000000000000000000000
+    building2PassiveIncome:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     building2Dealers: 00000000000000
     building3Floors: 01000000000000000000
     building3Upgrades: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
     building3Resources: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    building3PassiveIncome:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     building3Dealers: 00000000000000000000
+    elevatorUpgrades: 00000000000000000000000000000000
 --- !u!4 &2066052343
 Transform:
   m_ObjectHideFlags: 0

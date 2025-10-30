@@ -147,4 +147,11 @@ public class PopUpManagerUI : MonoBehaviour
         Debug.Log("Settings Button Clicked");
         ShowPopUp(Settings_PopUp);
     }
+
+    public void FlapButton()
+    {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
+        Debug.Log("Flappy Button Clicked");
+        SceneManager.LoadScene("FlappyBird2");
+    }
 }

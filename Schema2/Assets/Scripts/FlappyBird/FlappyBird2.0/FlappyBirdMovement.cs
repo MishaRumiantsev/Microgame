@@ -12,9 +12,11 @@ public class FlappyBirdMovement : MonoBehaviour
     [SerializeField] public GameObject coinsInDeathScreen;
     public TextMeshProUGUI coinsInDeathScreenText;
     public int flappyCoins;
+    Coins coins;
     private void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+        coins = FindAnyObjectByType<Coins>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,14 +26,15 @@ public class FlappyBirdMovement : MonoBehaviour
             canvas.SetActive(true);
 
             coinsInDeathScreenText.text = "Coins: " + flappyCoins;
-            PlayerDataManager.Coins += 2;
             //Zo pas ik de coins van playerDataManager aan en voeg ik 2 toe.
             Rigidbody.linearVelocity = Vector2.zero;
             FlappyManager2.instance.DeathScreen();
             //Zo ga ik naar de flappymanager2 script en call ik de method deathscreen
+            Debug.Log(flappyCoins);
         }
         else if (collision.CompareTag("Coins"))
         {
+            coins.ChangeCoins(flappyCoins);
             flappyCoins += 2;
         }
     }

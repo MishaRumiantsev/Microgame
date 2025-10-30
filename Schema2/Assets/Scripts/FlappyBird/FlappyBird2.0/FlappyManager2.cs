@@ -26,4 +26,9 @@ public class FlappyManager2 : MonoBehaviour
         Time.timeScale = 1f;//zo zet ik de time weer op normaal
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
