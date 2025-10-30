@@ -8,22 +8,53 @@ public class FloorsManager : MonoBehaviour
     List<int> floorPrices = new List<int>() { 0, 100, 725, 2856, 12418, 46039, 170436, 540606, 2333718, 7401275 };
     List<float> floorDurations = new List<float> { 5.3f, 6.8f, 12.1f, 23.5f, 34.8f, 69.2f, 105.7f, 198.3f, 312.6f, 560.4f };
     List<int> floorUpgradePrices = new List<int>() { 23, 61, 469, 1685, 7700, 31253, 107984, 323556, 1542058, 4954509 };
-    [SerializeField] Coins coins;
+    public List<bool> buildingFloor;
+    public List<int> buildingUpgrades;
+    public List<int> buildingResources;
+    public List<bool> dealerBuilding;
+    Coins coins;
+
 
 
     void Start()
     {
+        coins = FindFirstObjectByType<Coins>();
+
+        switch (FindFirstObjectByType<SceneChecker>().buildingNumber)
+        {
+            case 0:
+                buildingFloor = PlayerDataManager.Instance.playerData.building0Floors;
+                buildingUpgrades = PlayerDataManager.Instance.playerData.building0Upgrades;
+                buildingResources = PlayerDataManager.Instance.playerData.building0Resources;
+                dealerBuilding = PlayerDataManager.Instance.playerData.building0Dealers;
+                break;
+            case 1:
+                buildingFloor = PlayerDataManager.Instance.playerData.building1Floors;
+                buildingUpgrades = PlayerDataManager.Instance.playerData.building1Upgrades;
+                buildingResources = PlayerDataManager.Instance.playerData.building1Resources;
+                dealerBuilding = PlayerDataManager.Instance.playerData.building1Dealers;
+                break;
+            case 2:
+                buildingFloor = PlayerDataManager.Instance.playerData.building2Floors;
+                buildingUpgrades = PlayerDataManager.Instance.playerData.building2Upgrades;
+                buildingResources = PlayerDataManager.Instance.playerData.building2Resources;
+                dealerBuilding = PlayerDataManager.Instance.playerData.building2Dealers;
+                break;
+            case 3:
+                buildingFloor = PlayerDataManager.Instance.playerData.building3Floors;
+                buildingUpgrades = PlayerDataManager.Instance.playerData.building3Upgrades;
+                buildingResources = PlayerDataManager.Instance.playerData.building3Resources;
+                dealerBuilding = PlayerDataManager.Instance.playerData.building3Dealers;
+
+                break;
+        }
+        
         for (int i = 0; i < floors.Count; i++)
         {
             FloorManager floor = floors[i].GetComponent<FloorManager>();
-            if (i == 0)
-            {
-                floor.SetUpFloor(0, floorIncomes[i], floorPrices[i], floorUpgradePrices[i], floorDurations[i], true, coins);
-            }
-            else
-            {
-                floor.SetUpFloor(0, floorIncomes[i], floorPrices[i], floorUpgradePrices[i], floorDurations[i], false, coins);
-            }
+
+            floor.SetUpFloor(i, buildingUpgrades[i], buildingResources[i], floorIncomes[i], floorPrices[i], floorUpgradePrices[i], floorDurations[i], buildingFloor[i], coins);
+            Debug.Log(buildingFloor[i]);
         }
     }
 }
