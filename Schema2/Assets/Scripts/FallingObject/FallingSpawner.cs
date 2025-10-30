@@ -6,8 +6,8 @@ public class FallingSpawner : MonoBehaviour
     Vector3 spawnLocation;
     [SerializeField]GameObject locationObject;
     [SerializeField] float spawnCooldown;
-    [SerializeField] Sprite sprite;
     private bool isThereFallingObject = false;
+    public Canvas targetCanvas;
 
     private float spawnTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,23 +20,14 @@ public class FallingSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isThereFallingObject)
-        {
-            isThereFallingObject = false;
-        }
         if (spawnTime > 0)
         {
             spawnTime -= Time.deltaTime;
         }
         else if (spawnTime <= 0 && isThereFallingObject == false)
         {
-
-            prefab.GetComponent<SpriteRenderer>().sprite = sprite;
-            prefab.transform.position = spawnLocation;
-            prefab.transform.rotation= Quaternion.identity;
-            prefab.SetActive(true);
+            GameObject newUI = Instantiate(prefab, targetCanvas.transform);
             spawnTime = spawnCooldown;
-            isThereFallingObject=true;
         }
     }
 }

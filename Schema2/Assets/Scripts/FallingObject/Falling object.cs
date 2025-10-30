@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public class Fallingobject : MonoBehaviour
@@ -8,10 +7,12 @@ public class Fallingobject : MonoBehaviour
     public float zigZagWidth = 2f;
     private float startX;
     private float rotationSpeed = 10f;
+    Coins coins;
 
     void Start()
     {
         startX = transform.position.x;
+        coins = FindFirstObjectByType<Coins>();
     }
 
     void Update()
@@ -25,11 +26,12 @@ public class Fallingobject : MonoBehaviour
 
     public void DestroyObject()
     {
-        this.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void ClickMoney()
     {
-        PlayerDataManager.Coins += (long)(PlayerDataManager.Coins * 0.05);
+        coins.ChangeCoins((long)(PlayerDataManager.Coins * 0.05));
+        Debug.Log(PlayerDataManager.Coins);
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2777710355142671960
+--- !u!1 &8220260796907175466
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1712876248308114944}
-  - component: {fileID: 2419700646091779006}
-  - component: {fileID: 6643882438011623808}
-  - component: {fileID: 7112826886399920429}
-  - component: {fileID: 7690335155062174810}
+  - component: {fileID: 3224080849608609117}
+  - component: {fileID: 4257400158309966405}
+  - component: {fileID: 8881414346852270106}
+  - component: {fileID: 9125371834644681486}
+  - component: {fileID: 2598926493514914216}
   m_Layer: 5
-  m_Name: fallingObject
+  m_Name: fall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1712876248308114944
+--- !u!224 &3224080849608609117
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777710355142671960}
+  m_GameObject: {fileID: 8220260796907175466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.73, y: 6.93, z: 1.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -277, y: 1034}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 30, y: 1279}
+  m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &2419700646091779006
+--- !u!222 &4257400158309966405
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777710355142671960}
+  m_GameObject: {fileID: 8220260796907175466}
   m_CullTransparentMesh: 1
---- !u!114 &6643882438011623808
+--- !u!114 &8881414346852270106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777710355142671960}
+  m_GameObject: {fileID: 8220260796907175466}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -77,20 +77,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7112826886399920429
+--- !u!114 &9125371834644681486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777710355142671960}
+  m_GameObject: {fileID: 8220260796907175466}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -117,34 +117,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 6643882438011623808}
+  m_TargetGraphic: {fileID: 8881414346852270106}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7690335155062174810}
-        m_TargetAssemblyTypeName: Fallingobject, Assembly-CSharp
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7690335155062174810
+      m_Calls: []
+--- !u!114 &2598926493514914216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777710355142671960}
+  m_GameObject: {fileID: 8220260796907175466}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c9ff1178524dd0429e30c8632cb3a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fallingobject
-  fallSpeed: 1
+  fallSpeed: 100
   zigZagSpeed: 2
-  zigZagWidth: 2
+  zigZagWidth: 600
