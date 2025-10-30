@@ -44,4 +44,15 @@ public class VisualVolume : MonoBehaviour
             if (musicSlider != null) musicSlider.value = music;
         }
     }
+
+    // Buttons save/reset/get money functionality
+    public void SaveButton()
+    {
+        PlayerDataManager.Instance.SavePlayerData();
+    }
+
+    public void ResetButton()
+    {
+        PlayerDataManager.Instance.DeleteAllPlayerData();
+    }
 }

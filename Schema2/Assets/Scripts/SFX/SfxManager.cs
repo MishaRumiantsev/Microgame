@@ -16,6 +16,9 @@ public class SfxManager : MonoBehaviour
     [SerializeField] public AudioClip prestigeSfx;
 
     [SerializeField] public AudioClip[] sellpointAmbience;
+
+    [SerializeField] public AudioClip[] flappyFlaps;
+    [SerializeField] public AudioClip flappyDead;
     //---------------------------------------------
 
     public static SfxManager instance;
