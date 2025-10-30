@@ -28,7 +28,7 @@ public class ElevatorUpgrade : MonoBehaviour
         elevator = GetComponent<Elevator>();
         formatter = new NumberFormatter();
 
-        level = 0;
+        level = PlayerDataManager.Instance.playerData.elevatorUpgrades[FindFirstObjectByType<SceneChecker>().buildingNumber];
         levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
 
         maxLoadIncreaseFactor = 1.2f;
@@ -87,6 +87,7 @@ public class ElevatorUpgrade : MonoBehaviour
         if (coins.TrySpendCoins(totalPrice))
         {
             level += levelsToUpgrade;
+            PlayerDataManager.Instance.playerData.elevatorUpgrades[FindFirstObjectByType<SceneChecker>().buildingNumber] += levelsToUpgrade; 
 
             SetMultiplier(upgradeMultiplier);
             CalculateMaxLoad();

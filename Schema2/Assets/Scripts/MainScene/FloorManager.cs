@@ -141,4 +141,13 @@ public class FloorManager : MonoBehaviour
 
         upgrader.UpdateStats(pLevel, pBasisIncome, pBasisUpgradePrice, pBasisDuration);
     }
+    public double GetPassiveIncome()
+    {
+        double passiveIncome = 0;
+        if (isUnlocked && floorsManager.dealerBuilding[index])
+        {
+            passiveIncome = income / duration;
+        }
+        return passiveIncome;
+    }
 }
