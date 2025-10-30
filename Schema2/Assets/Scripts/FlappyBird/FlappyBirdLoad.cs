@@ -9,6 +9,7 @@ public class FlappyBirdLoad : MonoBehaviour
     }
     public void UnloadFlappy()
     {
+        SceneManager.LoadScene(0);
         
     }
 }

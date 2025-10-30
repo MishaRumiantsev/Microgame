@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManagerFlappyBird : MonoBehaviour
@@ -7,11 +6,11 @@ public class GameManagerFlappyBird : MonoBehaviour
 
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject extraCoinsText;
-    public TextMeshProUGUI tekstFlappyCoins;
-    public TextMeshProUGUI tekstFlappyCoinsInGame;
+    public TextMesh tekstFlappyCoins;
+    public TextMesh tekstFlappyCoinsInGame;
     public bool extraCoins = false;
     public int totalFlappyCoins = 0;
-
+   
     private void Awake()
     {
         if (instance == null)
@@ -27,7 +26,7 @@ public class GameManagerFlappyBird : MonoBehaviour
         canvas.SetActive(true);
         if (extraCoins == true)
         {
-            tekstFlappyCoins.text = $"+{totalFlappyCoins} Coins";
+            //tekstFlappyCoins.text = $"+{totalFlappyCoins} Coins";
             /*if ()
             {
                 tekstFlappyCoinsInGame.text = $"Coins: {totalFlappyCoins}";

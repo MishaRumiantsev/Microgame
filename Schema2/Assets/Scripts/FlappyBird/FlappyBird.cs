@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class FlappyBird : MonoBehaviour
 {
     [SerializeField] private float velocity = 1.5f;
@@ -27,7 +26,6 @@ public class FlappyBird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("test);
             rb.linearVelocity = Vector2.up * velocity;
             int rNumber = UnityEngine.Random.Range(1, 6);
             switch (rNumber)
@@ -49,6 +47,12 @@ public class FlappyBird : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void Jump()
+    {
+        //Debug.Log("test);
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

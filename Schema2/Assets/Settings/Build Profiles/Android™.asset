@@ -28,6 +28,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/Prestiges/Prestige_2.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Prestiges/Prestige_3.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/FlappyBird.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
