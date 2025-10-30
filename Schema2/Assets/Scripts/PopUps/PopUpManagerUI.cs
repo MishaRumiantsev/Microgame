@@ -42,11 +42,6 @@ public class PopUpManagerUI : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
     public void ShowPopUp(GameObject popUpPrefab)
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.popUpOpen, transform, 1f);

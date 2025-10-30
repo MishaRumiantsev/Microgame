@@ -6,7 +6,7 @@ public class SceneSwitcher : MonoBehaviour
     FloorsManager floorsManager;
     private void Start()
     {
-        floorsManager = GetComponent<FloorsManager>();
+        floorsManager = FindAnyObjectByType<FloorsManager>();
     }
     public void GoToBuildingOne()
     {
