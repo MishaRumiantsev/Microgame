@@ -22,7 +22,7 @@ public class SellPoint : MonoBehaviour
     public void AddResources(double pResources)
     {
         PlayerDataManager.storedSellPointCoins += Convert.ToInt64(pResources);
-        currentResourcesText.text = PlayerDataManager.storedSellPointCoins.ToString();
+        currentResourcesText.text = formatter.FormatNumber(PlayerDataManager.storedSellPointCoins);
     }
     public void OnClick()
     {

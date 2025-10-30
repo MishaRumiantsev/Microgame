@@ -45,6 +45,7 @@ public class FloorUpgradePopUp : MonoBehaviour
     }
     public void LevelUp()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.upgradeSfx, transform, 1f);
         floorUpgrade.LevelUp();
         UpdateWindow();
     }
