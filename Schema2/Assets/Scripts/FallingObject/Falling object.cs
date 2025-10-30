@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Fallingobject : MonoBehaviour
@@ -18,37 +19,13 @@ public class Fallingobject : MonoBehaviour
         float x = startX + Mathf.Sin(Time.time * zigZagSpeed) * zigZagWidth;
         float y = transform.position.y - fallSpeed * Time.deltaTime;
         transform.position = new Vector3(x, y, transform.position.z);
-        transform.Rotate(Vector3.forward, - rotationSpeed * Time.deltaTime);
-        HandleInput();
-        
+        transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
+
     }
 
-    void HandleInput()
+    public void DestroyObject()
     {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-                CheckTouch(touch.position);
-        }
-        else if (Input.GetMouseButtonDown(0))
-        {
-            CheckTouch(Input.mousePosition);
-        }
-    }
-
-    void CheckTouch(Vector2 screenPosition)
-    {
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(screenPosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
-        if (hit.collider != null && hit.collider.gameObject == gameObject)
-        {
-            Destroy(gameObject);
-        }
-    }
-    void Rotation()
-    {
-        
+        Debug.Log("hi");
+       this.gameObject.SetActive(false);
     }
 }
