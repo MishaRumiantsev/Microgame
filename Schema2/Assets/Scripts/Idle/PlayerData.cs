@@ -13,5 +13,6 @@ public class PlayerData
     //stats
     public long totalCoins;
     public long gainedOffline;
-
+    public double playTime;
+    public long totalUpgrades;
 }

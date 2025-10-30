@@ -1,7 +1,6 @@
-using UnityEngine;
-using System.IO;
 using System;
-using JetBrains.Annotations;
+using System.IO;
+using UnityEngine;
 
 public class PlayerDataManager : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class PlayerDataManager : MonoBehaviour
 
     private string savePath;
     private DateTime lastOnlineTime;
+    float sessionStartTime;
 
     //how to call the coins
     //PlayerDataManager.Coins
@@ -22,6 +22,7 @@ public class PlayerDataManager : MonoBehaviour
             savePath = Application.persistentDataPath + "/playerdata.json";
             LoadPlayerData();
             CalculateOfflineEarnings();
+            sessionStartTime = Time.time;
         }
         else
         {
@@ -38,6 +39,7 @@ public class PlayerDataManager : MonoBehaviour
             lastOnlineTime = DateTime.Now.ToString()
         };
 
+        playTime += Time.time - sessionStartTime;
         string json = JsonUtility.ToJson(wrapper, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Player data saved!");
@@ -98,7 +100,14 @@ public class PlayerDataManager : MonoBehaviour
 
     private void OnApplicationPause(bool pause)
     {
-        if (pause) SavePlayerData();
+        if (pause)
+        {
+            SavePlayerData();
+        } 
+        else
+        {
+            sessionStartTime = Time.time;
+        }
     }
 
     private void OnApplicationQuit()
@@ -141,5 +150,14 @@ public class PlayerDataManager : MonoBehaviour
         get => Instance.playerData.gainedOffline;
         set => Instance.playerData.gainedOffline = value;
     }
-    
+    public static double playTime
+    {
+        get => Instance.playerData.playTime;
+        set => Instance.playerData.playTime = value;
+    }
+    public static long totalUpgrades
+    {
+        get => Instance.playerData.totalUpgrades;
+        set => Instance.playerData.totalUpgrades = value;
+    }
 }

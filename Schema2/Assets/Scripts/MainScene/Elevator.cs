@@ -33,6 +33,7 @@ public class Elevator : MonoBehaviour
     Image elevatorImage;
     [SerializeField] List<Sprite> loadLevelSprites;
 
+    ElevatorUpgrade elevatorUpgrade;
     [SerializeField] SellPoint sellPoint;
     [SerializeField] FloorsManager floorsManager;
     [SerializeField] TextMeshProUGUI statusText;
@@ -41,6 +42,7 @@ public class Elevator : MonoBehaviour
         formatter = new NumberFormatter();
 
         timer = GetComponent<Timer>();
+        elevatorUpgrade = GetComponent<ElevatorUpgrade>();
         elevatorImage = GetComponent<Image>();
 
         currentLoad = 0;
@@ -68,6 +70,10 @@ public class Elevator : MonoBehaviour
                 transform.position = targetPosition.position;
                 isMoving = false;
             }
+        } 
+        if (elevatorUpgrade.level >= 5)
+        {
+            OnClick();
         }
     }
     public void OnClick()
