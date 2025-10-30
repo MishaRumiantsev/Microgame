@@ -1474,6 +1474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElevatorComponents
       objectReference: {fileID: 0}
+    - target: {fileID: 7747863924065372168, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
+      propertyPath: coins
+      value: 
+      objectReference: {fileID: 325908534}
     - target: {fileID: 8716940317813299898, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1482,6 +1486,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ElevatorLevelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8767444806980162975, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
+      propertyPath: sellPoint
+      value: 
+      objectReference: {fileID: 1969775712}
+    - target: {fileID: 8767444806980162975, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
+      propertyPath: floorsManager
+      value: 
+      objectReference: {fileID: 1011954136}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2676,6 +2688,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3316299346612155873, guid: a25e83cdd4fa5ae42bb8f0038f75c11c, type: 3}
   m_PrefabInstance: {fileID: 1969775710}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1969775712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2427706266252052663, guid: a25e83cdd4fa5ae42bb8f0038f75c11c, type: 3}
+  m_PrefabInstance: {fileID: 1969775710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720a410a6f7580b4e97d22dbfcd59e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SellPoint
 --- !u!1 &2024361164
 GameObject:
   m_ObjectHideFlags: 0

@@ -835,6 +835,7 @@ MonoBehaviour:
   buildingUpgrades: 
   buildingResources: 
   dealerBuilding: 
+  buildingPassiveIncome: []
 --- !u!1 &1032881303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6620548887595176187, guid: 93fb92c53ebafd843ae50ef96457732b, type: 3}
@@ -1629,6 +1630,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3316299346612155873, guid: a25e83cdd4fa5ae42bb8f0038f75c11c, type: 3}
   m_PrefabInstance: {fileID: 702642385974667615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2060590273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2427706266252052663, guid: a25e83cdd4fa5ae42bb8f0038f75c11c, type: 3}
+  m_PrefabInstance: {fileID: 702642385974667615}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720a410a6f7580b4e97d22dbfcd59e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SellPoint
 --- !u!1 &2066052341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,19 +1682,49 @@ MonoBehaviour:
     building0Floors: 000000
     building0Upgrades: 000000000000000000000000
     building0Resources: 000000000000000000000000
+    building0PassiveIncome:
+    - 0
+    - 0
+    - 0
     building0Dealers: 000000
     building1Floors: 0000000000
     building1Upgrades: 0000000000000000000000000000000000000000
     building1Resources: 0000000000000000000000000000000000000000
+    building1PassiveIncome:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     building1Dealers: 0000000000
     building2Floors: 00000000000000
     building2Upgrades: 00000000000000000000000000000000000000000000000000000000
     building2Resources: 00000000000000000000000000000000000000000000000000000000
+    building2PassiveIncome:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     building2Dealers: 00000000000000
     building3Floors: 00000000000000000000
     building3Upgrades: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
     building3Resources: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    building3PassiveIncome:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     building3Dealers: 00000000000000000000
+    elevatorUpgrades: 00000000000000000000000000000000
 --- !u!4 &2066052343
 Transform:
   m_ObjectHideFlags: 0
@@ -1790,6 +1832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElevatorComponents
       objectReference: {fileID: 0}
+    - target: {fileID: 7747863924065372168, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
+      propertyPath: coins
+      value: 
+      objectReference: {fileID: 325908534}
     - target: {fileID: 8716940317813299898, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1798,6 +1844,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ElevatorLevelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8767444806980162975, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
+      propertyPath: sellPoint
+      value: 
+      objectReference: {fileID: 2060590273}
+    - target: {fileID: 8767444806980162975, guid: b6ad88af96400f74daaacee3ead80761, type: 3}
+      propertyPath: floorsManager
+      value: 
+      objectReference: {fileID: 1011954136}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
