@@ -32,7 +32,7 @@ public class DealerManager : MonoBehaviour
         {
             Dealer dealer = dealers[i].GetComponent<Dealer>();
 
-            dealer.SetUpDealer(dealerPrice[i], dealerBuilding[i], coins);
+            dealer.SetUpDealer(i, dealerPrice[i], dealerBuilding[i], coins);
         }
     }
 }

@@ -7,15 +7,13 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("Prestige_0");
     }
-    public void GoToBuildingTwo()
+public void GoToBuildingTwo()
     {
         SceneManager.LoadScene("Prestige_1");
-
     }
     public void GoToBuildingThree()
     {
         SceneManager.LoadScene("Prestige_2");
-
     }
     public void GoToBuildingFour()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,28 +14,33 @@ public class FloorManager : MonoBehaviour
     bool currentResourcesChanged;
     [SerializeField] TextMeshProUGUI currentResourcesText;
 
-    [SerializeField] int floorIndex;
+    public int index;
     public List<bool> buildingFloor;
 
-    int floorPrice;
+    long floorPrice;
     bool isUnlocked;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] GameObject locked;
     [SerializeField] GameObject unlocked;
 
+    [SerializeField] Image imageStatus;
+
     Timer timer;
     FloorUpgrade upgrader;
     NumberFormatter formatter;
     public Coins coins;
-    [SerializeField] Image imageStatus;
 
     private void Update()
     {
         if (timer.isRunning)
         {
             UpdateProgressBar();
+        } 
+        else if (IsDealer())
+        {
+            timer.StartTimer(duration);
         }
-        else if (imageStatus.fillAmount > 0.995f)
+        else if (imageStatus.fillAmount > 0)
         {
             imageStatus.fillAmount = 0;
         }
@@ -45,11 +51,37 @@ public class FloorManager : MonoBehaviour
         }
     }
 
+    bool IsDealer()
+    {
+        bool dealerIsAsigned = false;
+        switch (FindFirstObjectByType<SceneChecker>().buildingNumber)
+        {
+            case 0:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building0Dealers[index];
+                break;
+            case 1:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building1Dealers[index];
+                break;
+            case 2:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building2Dealers[index];
+                break;
+            case 3:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building3Dealers[index];
+                break;
+        }
+        return dealerIsAsigned;
+    }
     public void OnClick()
     {
+        if (PlayerDataManager.Instance.playerData.building1Dealers.Count > 1)
         if (!timer.isRunning)
         {
             timer.StartTimer(duration);
+        }
+        else
+        {
+            float reduction = Mathf.Min(duration * 0.05f, 5f);
+            timer.timeRemaining = Mathf.Max(timer.timeRemaining - reduction, 0);
         }
     }
     /// <summary>
@@ -63,10 +95,12 @@ public class FloorManager : MonoBehaviour
             currentResources = maxResources;
         }
         currentResourcesChanged = true;
+
+        GameObject.FindFirstObjectByType<FloorsManager>().buildingResources[index] = Convert.ToInt32(currentResources);
     }
     void UpdateProgressBar()
     {
-        imageStatus.fillAmount = timer.progresPercentage / 100f;
+        imageStatus.fillAmount = Mathf.MoveTowards(imageStatus.fillAmount, timer.progresPercentage / 100f, Time.deltaTime * 6f);
     }
     void AddToCurrentResources()
     {
@@ -91,12 +125,12 @@ public class FloorManager : MonoBehaviour
                     buildingFloor = PlayerDataManager.Instance.playerData.building3Dealers;
                     break;
             }
-            buildingFloor[floorIndex] = true;
             isUnlocked = true;
             locked.SetActive(false);
+            GameObject.FindFirstObjectByType<FloorsManager>().buildingFloor[index] = true;
         }
     }
-    public void SetUpFloor(int pLevel, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
+    public void SetUpFloor(int pIndex, int pLevel, int pCurrentResources, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
     {
         formatter = new NumberFormatter();
         timer = GetComponent<Timer>();
@@ -106,6 +140,8 @@ public class FloorManager : MonoBehaviour
 
         ChangeCurrentResources(0);
 
+        currentResources = pCurrentResources;
+        index = pIndex;
         isUnlocked = pIsUnlocked;
         floorPrice = pFloorPrice;
 
@@ -117,8 +153,6 @@ public class FloorManager : MonoBehaviour
         {
             priceText.text = formatter.FormatNumber(floorPrice).ToString();
         }
-
-        currentResources = 0;
 
         upgrader.UpdateStats(pLevel, pBasisIncome, pBasisUpgradePrice, pBasisDuration);
     }

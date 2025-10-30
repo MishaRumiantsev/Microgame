@@ -13,18 +13,20 @@ public class PopUpManagerUI : MonoBehaviour
     private GameObject currentPopUp;
 
     // Assign the pop up prefabs in the inspector
-    public GameObject BattlePass_PopUp;
-    public GameObject Achievements_PopUp;
-    public GameObject Stats_PopUp;
-    public GameObject Dealers_PopUp;
-    public GameObject Dealers_PopUp_1;
-    public GameObject Dealers_PopUp_2;
-    public GameObject Dealers_PopUp_3;
-    public GameObject Dealers_PopUp_4;
+    [SerializeField] GameObject BattlePass_PopUp;
+    [SerializeField] GameObject Achievements_PopUp;
+    [SerializeField] GameObject Stats_PopUp;
+    [SerializeField] GameObject Dealers_PopUp;
+    [SerializeField] GameObject Dealers_PopUp_1;
+    [SerializeField] GameObject Dealers_PopUp_2;
+    [SerializeField] GameObject Dealers_PopUp_3;
+    [SerializeField] GameObject Dealers_PopUp_4;
 
-    public GameObject Prestige_PopUp;
-    public GameObject FloorUpgrade_PopUp;
-    public GameObject ElevatorUpgrade_PopUp;
+    [SerializeField] GameObject Prestige_PopUp;
+    [SerializeField] GameObject FloorUpgrade_PopUp;
+    [SerializeField] GameObject ElevatorUpgrade_PopUp;
+
+    [SerializeField] GameObject Settings_PopUp;
 
     string sceneName;
 
@@ -42,6 +44,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void ShowPopUp(GameObject popUpPrefab)
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.popUpOpen, transform, 1f);
         // Close existing pop up
         if (currentPopUp != null)
         {
@@ -69,6 +72,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void BattlePassButton()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         // Spawn the Battle Pass pop up prefab
         Debug.Log("Battle Pass Button Clicked");
         ShowPopUp(BattlePass_PopUp);
@@ -76,6 +80,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void AchievementsButton()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         // Spawn the Achievements pop up prefab
         Debug.Log("Achievements Button Clicked");
         ShowPopUp(Achievements_PopUp);
@@ -83,6 +88,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void StatsButton()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         // Spawn the Stats pop up prefab
         Debug.Log("Stats Button Clicked");
         ShowPopUp(Stats_PopUp);
@@ -90,8 +96,10 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void DealersButton()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         // Spawn the Dealers pop up prefab
         Debug.Log("Dealers Button Clicked");
+        sceneName = SceneManager.GetActiveScene().name;
         switch (sceneName)
         {
             case "Prestige_0": 
@@ -114,18 +122,28 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void PrestigeButton()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         // Spawn the Prestige pop up prefab
         Debug.Log("Prestige Button Clicked");
         ShowPopUp(Prestige_PopUp);
     }
     public void FloorLevelButton(int floorIndex)
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         ShowPopUp(FloorUpgrade_PopUp);
         FloorUpgradePopUp popUpScript = currentPopUp.GetComponent<FloorUpgradePopUp>();
         popUpScript.index = floorIndex;
     }
     public void ElevatorLevelButton()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         ShowPopUp(ElevatorUpgrade_PopUp);
+    }
+
+    public void SettingsButton()
+    {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
+        Debug.Log("Settings Button Clicked");
+        ShowPopUp(Settings_PopUp);
     }
 }

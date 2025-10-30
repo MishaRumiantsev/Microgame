@@ -7,7 +7,7 @@ public class Coins : MonoBehaviour
     // Referentie naar UI-tekst met aantal vna coins
     [SerializeField] TextMeshProUGUI coinsText;
     NumberFormatter formatter;
-    private void Update()
+    private void Start()
     {
         formatter = new NumberFormatter(); // initialiseer formatter
         coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}"; // update UI
@@ -15,20 +15,20 @@ public class Coins : MonoBehaviour
     /// <summary>
     /// Verandert aantal van de coins met opgegeven bedrag
     /// </summary>
-    public void ChangeCoins(float pAmount)
+    public void ChangeCoins(double pAmount)
     {
-        PlayerDataManager.Coins += Convert.ToInt32(pAmount);
+        PlayerDataManager.Coins += Convert.ToInt64(pAmount);
         // als de bedrag is positiev, voeg die bedrag ook aan totaal van coins
         if (pAmount > 0)
         {
-            PlayerDataManager.totalCoins += Convert.ToInt32(pAmount);
+            PlayerDataManager.totalCoins += Convert.ToInt64(pAmount);
         }
         coinsText.text = $"Coins: {formatter.FormatNumber(PlayerDataManager.Coins)}"; // update ui
     }
     /// <summary>
     /// Probeert opgegeven bedrag aan munten uit te geven, als het gelukt is, geeft true terug
     /// </summary>
-    public bool TrySpendCoins(float pAmount)
+    public bool TrySpendCoins(double pAmount)
     {
         // als speler genoeg coin geeft trek het bedrag af en geeft true terug, anders - geeft false terug
         if (PlayerDataManager.Coins >= pAmount)
