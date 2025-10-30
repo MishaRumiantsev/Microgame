@@ -31,7 +31,6 @@ public class PopUpManagerUI : MonoBehaviour
     [SerializeField] private AudioClip buttonSoundUI;
 
     string sceneName;
-    int sceneNumber;
 
     private void Awake()
     {

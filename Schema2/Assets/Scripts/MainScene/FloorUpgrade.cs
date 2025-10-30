@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -115,6 +116,7 @@ public class FloorUpgrade : MonoBehaviour
             levelText.text = formatter.FormatNumber(level + 1);
 
             PlayerDataManager.totalUpgrades += levelsToUpgrade;
+            GameObject.FindFirstObjectByType<FloorsManager>().buildingUpgrades[floor.index] = level;
         }
     }
 
