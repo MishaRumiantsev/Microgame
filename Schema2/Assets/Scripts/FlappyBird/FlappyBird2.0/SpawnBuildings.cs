@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SpawnBuildings : MonoBehaviour
 {
-    [SerializeField] private float maxTime = 1.5f;
-    [SerializeField] private float heightRange = 0.45f;
+    [SerializeField] private float maxTime;
+    [SerializeField] private float heightRange;
     [SerializeField] private GameObject building;
     [SerializeField] private GameObject finish;
 
