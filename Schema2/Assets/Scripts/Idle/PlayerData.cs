@@ -7,12 +7,15 @@ using System.Collections.Generic;
 
 public class PlayerData
 {
-    public int coins;
-    public int storedSellPointCoins;
+    public long coins;
+    public long storedSellPointCoins;
 
     //stats
-    public int totalCoins;
-    public int gainedOffline;
+    public long totalCoins;
+    public long gainedOffline;
+
+    public float sfxVolume;
+    public float musicVolume;
 
     public List<bool> building0Floors = new List<bool>() { true, false, false };
     public List<int> building0Upgrades = new List<int>() { 0, 0, 0 };

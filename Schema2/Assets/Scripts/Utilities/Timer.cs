@@ -4,7 +4,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     // hoeveel tijd is er nog over
-    float timeRemaining;
+    public float timeRemaining;
     // duur van de timer
     float duration;
     // percentage van voortgang

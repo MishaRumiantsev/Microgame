@@ -108,28 +108,46 @@ public class PlayerDataManager : MonoBehaviour
         public PlayerData data;
         public string lastOnlineTime;
     }
-    public static int Coins
+
+    public static long Coins
     {
         get => Instance.playerData.coins;
         set => Instance.playerData.coins = value;
     }
-    public static int storedSellPointCoins
+
+    public static long storedSellPointCoins
     {
         get => Instance.playerData.storedSellPointCoins;
         set => Instance.playerData.storedSellPointCoins = value;
     }
-    public static int totalCoins
+
+    public static long totalCoins
     {
         get => Instance.playerData.totalCoins;
         set => Instance.playerData.totalCoins = value;
     }
-    public static int totalSpent
+
+    public static long totalSpent
     {
         get => Instance.playerData.totalCoins - Instance.playerData.coins;
     }
-    public static int gainedOffline
+
+    public static long gainedOffline
     {
         get => Instance.playerData.gainedOffline;
         set => Instance.playerData.gainedOffline = value;
     }
+
+    public static float sfxVolume
+    {
+        get => Instance.playerData.sfxVolume;
+        set => Instance.playerData.sfxVolume = value;
+    }
+
+    public static float musicVolume
+    {
+        get => Instance.playerData.musicVolume;
+        set => Instance.playerData.musicVolume = value;
+    }
+
 }

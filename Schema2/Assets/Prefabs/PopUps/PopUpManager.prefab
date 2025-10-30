@@ -49,9 +49,14 @@ MonoBehaviour:
   Achievements_PopUp: {fileID: 1794842950844988532, guid: f454a29e1d289d2449e8b8311c28eea2, type: 3}
   Stats_PopUp: {fileID: 4551647661226378046, guid: 65ebdc72f7f35df449d7df9487e9ab8d, type: 3}
   Dealers_PopUp: {fileID: 8691223733227331617, guid: 3526e91f21c37b643b51009abac2d22c, type: 3}
+  Dealers_PopUp_1: {fileID: 8691223733227331617, guid: 3fc2771c56fa95b46a1525b6936b2541, type: 3}
+  Dealers_PopUp_2: {fileID: 8691223733227331617, guid: 8bc2a4b0f4096bd46906e2cac4290190, type: 3}
+  Dealers_PopUp_3: {fileID: 8691223733227331617, guid: 2d33884bac701bf4dad496ea99c07536, type: 3}
+  Dealers_PopUp_4: {fileID: 8691223733227331617, guid: 7a6edba16b897a14583a498824ad8afd, type: 3}
   Prestige_PopUp: {fileID: 5413021478736434146, guid: 6a00bdca667c1bf47a782ad982778f31, type: 3}
   FloorUpgrade_PopUp: {fileID: 1063983982681591938, guid: ed2e7bd6f2e80b940918f199058e8cec, type: 3}
   ElevatorUpgrade_PopUp: {fileID: 5765662639752292625, guid: c50c1a928ba202945b30cb1d7196bb8e, type: 3}
+  Settings_PopUp: {fileID: 7061700350545136155, guid: df66f175dd5784d4d9b03cd11702553c, type: 3}
 --- !u!212 &183047961997761212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1672395418865947620, guid: 8ba33d14cf13659498bc4bf80d8768a3, type: 3}
+  m_Sprite: {fileID: 8379930775115762468, guid: 8ba33d14cf13659498bc4bf80d8768a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,4 +115,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-  FloorUpgrade_PopUp: {fileID: 8251845019681128388, guid: ed2e7bd6f2e80b940918f199058e8cec, type: 3}

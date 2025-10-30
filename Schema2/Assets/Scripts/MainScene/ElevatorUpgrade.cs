@@ -16,7 +16,7 @@ public class ElevatorUpgrade : MonoBehaviour
 
     int basisPrice;
     float priceIncreaseFactor;
-    public float totalPrice;
+    public double totalPrice;
 
     public bool enoughCoins;
 
@@ -92,6 +92,8 @@ public class ElevatorUpgrade : MonoBehaviour
             CalculateMaxLoad();
 
             levelText.text = $"Level: {formatter.FormatNumber(level + 1)}";
+
+
         }
     }
 }
