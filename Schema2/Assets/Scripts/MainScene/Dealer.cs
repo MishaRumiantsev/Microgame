@@ -44,6 +44,7 @@ public class Dealer : MonoBehaviour
         if (hasDealer)
         {
             locked.SetActive(false);
+            picLocked.SetActive(false);
         }
         else
         {
