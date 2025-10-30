@@ -616,6 +616,11 @@ MonoBehaviour:
   - {fileID: 5278629152631120034}
   - {fileID: 727865888247701642}
   - {fileID: 3623467767682797783}
+  loadLevelSprites:
+  - {fileID: -4539008365686513104, guid: eb190b524e90458478250108eb19998b, type: 3}
+  - {fileID: -7576476122445821243, guid: 2b18bffc9407e654caf391c3c81f51ab, type: 3}
+  - {fileID: -5617808243999603632, guid: f7fe3d9eac3c14943b0a2931a986fc2d, type: 3}
+  - {fileID: 6734448317920684786, guid: 897249a4fcacc17418e654284fc48cab, type: 3}
   sellPoint: {fileID: 0}
   floorsManager: {fileID: 0}
   statusText: {fileID: 7576990217367764513}
@@ -650,6 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282ce2ecae76dd24383b33a6271b21b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
+  timeRemaining: 0
   progresPercentage: 0
   isRunning: 0
 --- !u!1 &4275206804261296528

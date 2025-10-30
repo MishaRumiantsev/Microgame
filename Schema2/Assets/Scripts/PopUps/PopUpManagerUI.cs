@@ -57,6 +57,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void CloseCurrentPopUp()
     {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.popUpClose, transform, 1f);
         Debug.Log($"Attempting to close popup. currentPopUp is {(currentPopUp == null ? "null" : "not null")}");
         if (currentPopUp != null)
         {

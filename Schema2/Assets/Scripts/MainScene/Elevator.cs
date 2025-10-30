@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Elevator : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class Elevator : MonoBehaviour
     Timer timer;
     NumberFormatter formatter;
 
+    int loadLevel;
+    Image elevatorImage;
+    [SerializeField] List<Sprite> loadLevelSprites;
+
+    ElevatorUpgrade elevatorUpgrade;
     [SerializeField] SellPoint sellPoint;
     [SerializeField] FloorsManager floorsManager;
     [SerializeField] TextMeshProUGUI statusText;
@@ -35,7 +41,12 @@ public class Elevator : MonoBehaviour
     {
         formatter = new NumberFormatter();
 
+        timer = GetComponent<Timer>();
+        elevatorUpgrade = GetComponent<ElevatorUpgrade>();
+        elevatorImage = GetComponent<Image>();
+
         currentLoad = 0;
+        ChangeImage();
         currentLoadText.text = formatter.FormatNumber(currentLoad);
 
         loadTime = 3;
@@ -44,8 +55,6 @@ public class Elevator : MonoBehaviour
         currentFloor = -1;
 
         isMoving = false;
-
-        timer = GetComponent<Timer>();
     }
     private void Update()
     {
@@ -61,6 +70,10 @@ public class Elevator : MonoBehaviour
                 transform.position = targetPosition.position;
                 isMoving = false;
             }
+        } 
+        if (elevatorUpgrade.level >= 5)
+        {
+            OnClick();
         }
     }
     public void OnClick()
@@ -149,11 +162,12 @@ public class Elevator : MonoBehaviour
     {
         timer.OnTimerComplete -= EndLoad;
         float freeToLoad = maxLoad - currentLoad;
-        FloorManager floor = floorsManager.floors[currentFloor].GetComponent<FloorManager>();
 
+        FloorManager floor = floorsManager.floors[currentFloor].GetComponent<FloorManager>();
         float loaded = Math.Min(freeToLoad, floor.currentResources);
         floor.ChangeCurrentResources(-loaded);
         currentLoad += loaded;
+        ChangeImage();
         currentLoadText.text = formatter.FormatNumber(currentLoad);
         ChooseNextTargetFloor();
         if (currentFloor != targetFloor)
@@ -185,6 +199,7 @@ public class Elevator : MonoBehaviour
         timer.OnTimerComplete -= EndUnload;
         sellPoint.AddResources(currentLoad);
         currentLoad = 0;
+        ChangeImage();
         currentLoadText.text = formatter.FormatNumber(currentLoad);
         status = "inactive";
         statusText.text = status;
@@ -205,5 +220,25 @@ public class Elevator : MonoBehaviour
             targetPosition.position = defaultPosition.position;
         }
         elapsedTime = 0f;
+    }
+    void ChangeImage()
+    {
+        if (currentLoad == 0)
+        {
+            loadLevel = 0;
+        }
+        else if (currentLoad / maxLoad <= 1f / 3f)
+        {
+            loadLevel = 1;
+        }
+        else if (currentLoad / maxLoad <= 2f / 3f)
+        {
+            loadLevel = 2;
+        }
+        else
+        {
+            loadLevel = 3;
+        }
+        elevatorImage.sprite = loadLevelSprites[loadLevel];
     }
 }

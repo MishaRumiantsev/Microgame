@@ -7,10 +7,12 @@ public class Fallingobject : MonoBehaviour
     public float zigZagWidth = 2f;
     private float startX;
     private float rotationSpeed = 10f;
+    Coins coins;
 
     void Start()
     {
         startX = transform.position.x;
+        coins = FindFirstObjectByType<Coins>();
     }
 
     void Update()
@@ -18,37 +20,18 @@ public class Fallingobject : MonoBehaviour
         float x = startX + Mathf.Sin(Time.time * zigZagSpeed) * zigZagWidth;
         float y = transform.position.y - fallSpeed * Time.deltaTime;
         transform.position = new Vector3(x, y, transform.position.z);
-        transform.Rotate(Vector3.forward, - rotationSpeed * Time.deltaTime);
-        HandleInput();
-        
+        transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
+
     }
 
-    void HandleInput()
+    public void DestroyObject()
     {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-                CheckTouch(touch.position);
-        }
-        else if (Input.GetMouseButtonDown(0))
-        {
-            CheckTouch(Input.mousePosition);
-        }
+        Destroy(gameObject);
     }
 
-    void CheckTouch(Vector2 screenPosition)
+    public void ClickMoney()
     {
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(screenPosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
-        if (hit.collider != null && hit.collider.gameObject == gameObject)
-        {
-            Destroy(gameObject);
-        }
-    }
-    void Rotation()
-    {
-        
+        coins.ChangeCoins((long)(PlayerDataManager.Coins * 0.05));
+        Debug.Log(PlayerDataManager.Coins);
     }
 }

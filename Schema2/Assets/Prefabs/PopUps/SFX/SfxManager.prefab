@@ -48,11 +48,18 @@ MonoBehaviour:
   buttonSfx: {fileID: 8300000, guid: 942ab05643d900e458de3bec4fc0edf2, type: 3}
   upgradeSfx: {fileID: 8300000, guid: 128ef977cb3be954c820d53b64278746, type: 3}
   popUpOpen: {fileID: 8300000, guid: 5ab8fde810524b945b8d05828ed17869, type: 3}
-  popUpClose: {fileID: 0}
+  popUpClose: {fileID: 8300000, guid: 778b4a8ad65efe642b078c3c729ea1d2, type: 3}
   prestigeSfx: {fileID: 8300000, guid: 9d84c9e63ac0d78448a94d4f8027044f, type: 3}
   sellpointAmbience:
   - {fileID: 8300000, guid: 90b9fa1f2761d244b86f33586de80392, type: 3}
   - {fileID: 8300000, guid: 70f29f211c08bd24ab78f41f3fb61f08, type: 3}
+  flappyFlaps:
+  - {fileID: 8300000, guid: 551927729bf4e57428a3fc532c79dff3, type: 3}
+  - {fileID: 8300000, guid: 0713d99bd4c1b194eb9aff4df80b5395, type: 3}
+  - {fileID: 8300000, guid: 642ab902b8ee2b14b8e43806eef258b7, type: 3}
+  - {fileID: 8300000, guid: e2e1c5ade86ff45409a5e1b9f7081e55, type: 3}
+  - {fileID: 8300000, guid: ceec0e6c2049312408f08d10183b2fd4, type: 3}
+  flappyDead: {fileID: 8300000, guid: b8e04a0c1b7854a479f708e63d1654f5, type: 3}
   audioSourcePrefab: {fileID: 2934423099685372203, guid: 72168804680662e4291ed9dba9649fd2, type: 3}
 --- !u!212 &740262723052159766
 SpriteRenderer:
