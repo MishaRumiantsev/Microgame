@@ -35,8 +35,12 @@ public class FloorManager : MonoBehaviour
         if (timer.isRunning)
         {
             UpdateProgressBar();
+        } 
+        else if (IsDealer())
+        {
+            timer.StartTimer(duration);
         }
-        else if( imageStatus.fillAmount > 0)
+        else if (imageStatus.fillAmount > 0)
         {
             imageStatus.fillAmount = 0;
         }
@@ -47,8 +51,29 @@ public class FloorManager : MonoBehaviour
         }
     }
 
+    bool IsDealer()
+    {
+        bool dealerIsAsigned = false;
+        switch (FindFirstObjectByType<SceneChecker>().buildingNumber)
+        {
+            case 0:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building0Dealers[index];
+                break;
+            case 1:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building1Dealers[index];
+                break;
+            case 2:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building2Dealers[index];
+                break;
+            case 3:
+                dealerIsAsigned = PlayerDataManager.Instance.playerData.building3Dealers[index];
+                break;
+        }
+        return dealerIsAsigned;
+    }
     public void OnClick()
     {
+        if (PlayerDataManager.Instance.playerData.building1Dealers.Count > 1)
         if (!timer.isRunning)
         {
             timer.StartTimer(duration);

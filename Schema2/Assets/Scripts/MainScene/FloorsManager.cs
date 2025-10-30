@@ -11,6 +11,7 @@ public class FloorsManager : MonoBehaviour
     public List<bool> buildingFloor;
     public List<int> buildingUpgrades;
     public List<int> buildingResources;
+    public List<bool> dealerBuilding;
     Coins coins;
 
 
@@ -25,22 +26,25 @@ public class FloorsManager : MonoBehaviour
                 buildingFloor = PlayerDataManager.Instance.playerData.building0Floors;
                 buildingUpgrades = PlayerDataManager.Instance.playerData.building0Upgrades;
                 buildingResources = PlayerDataManager.Instance.playerData.building0Resources;
+                dealerBuilding = PlayerDataManager.Instance.playerData.building0Dealers;
                 break;
             case 1:
                 buildingFloor = PlayerDataManager.Instance.playerData.building1Floors;
                 buildingUpgrades = PlayerDataManager.Instance.playerData.building1Upgrades;
                 buildingResources = PlayerDataManager.Instance.playerData.building1Resources;
+                dealerBuilding = PlayerDataManager.Instance.playerData.building1Dealers;
                 break;
             case 2:
                 buildingFloor = PlayerDataManager.Instance.playerData.building2Floors;
                 buildingUpgrades = PlayerDataManager.Instance.playerData.building2Upgrades;
                 buildingResources = PlayerDataManager.Instance.playerData.building2Resources;
-
+                dealerBuilding = PlayerDataManager.Instance.playerData.building2Dealers;
                 break;
             case 3:
                 buildingFloor = PlayerDataManager.Instance.playerData.building3Floors;
                 buildingUpgrades = PlayerDataManager.Instance.playerData.building3Upgrades;
                 buildingResources = PlayerDataManager.Instance.playerData.building3Resources;
+                dealerBuilding = PlayerDataManager.Instance.playerData.building3Dealers;
 
                 break;
         }
