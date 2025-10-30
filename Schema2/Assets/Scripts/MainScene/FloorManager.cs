@@ -113,24 +113,27 @@ public class FloorManager : MonoBehaviour
         bool isPreviousFloorUnlocked = floorsManager.floors[index - 1].GetComponent<FloorManager>().isUnlocked;
         if (isPreviousFloorUnlocked)
         {
-            switch (FindFirstObjectByType<SceneChecker>().buildingNumber)
+            if (coins.TrySpendCoins(floorPrice))
             {
-                case 0:
-                    buildingFloor = PlayerDataManager.Instance.playerData.building0Dealers;
-                    break;
-                case 1:
-                    buildingFloor = PlayerDataManager.Instance.playerData.building1Dealers;
-                    break;
-                case 2:
-                    buildingFloor = PlayerDataManager.Instance.playerData.building2Dealers;
-                    break;
-                case 3:
-                    buildingFloor = PlayerDataManager.Instance.playerData.building3Dealers;
-                    break;
+                switch (FindFirstObjectByType<SceneChecker>().buildingNumber)
+                {
+                    case 0:
+                        buildingFloor = PlayerDataManager.Instance.playerData.building0Dealers;
+                        break;
+                    case 1:
+                        buildingFloor = PlayerDataManager.Instance.playerData.building1Dealers;
+                        break;
+                    case 2:
+                        buildingFloor = PlayerDataManager.Instance.playerData.building2Dealers;
+                        break;
+                    case 3:
+                        buildingFloor = PlayerDataManager.Instance.playerData.building3Dealers;
+                        break;
+                }
+                isUnlocked = true;
+                locked.SetActive(false);
+                GameObject.FindFirstObjectByType<FloorsManager>().buildingFloor[index] = true;
             }
-            isUnlocked = true;
-            locked.SetActive(false);
-            GameObject.FindFirstObjectByType<FloorsManager>().buildingFloor[index] = true;
         }
     }
     public void SetUpFloor(int pIndex, int pLevel, int pCurrentResources, int pBasisIncome, int pFloorPrice, int pBasisUpgradePrice, float pBasisDuration, bool pIsUnlocked, Coins pCoins)
@@ -162,5 +165,14 @@ public class FloorManager : MonoBehaviour
         }
 
         upgrader.UpdateStats(pLevel, pBasisIncome, pBasisUpgradePrice, pBasisDuration);
+    }
+    public double GetPassiveIncome()
+    {
+        double passiveIncome = 0;
+        if (isUnlocked && floorsManager.dealerBuilding[index])
+        {
+            passiveIncome = income / duration;
+        }
+        return passiveIncome;
     }
 }
