@@ -141,5 +141,17 @@ public class PlayerDataManager : MonoBehaviour
         get => Instance.playerData.gainedOffline;
         set => Instance.playerData.gainedOffline = value;
     }
-    
+
+    public static float sfxVolume
+    {
+        get => Instance.playerData.sfxVolume;
+        set => Instance.playerData.sfxVolume = value;
+    }
+
+    public static float musicVolume
+    {
+        get => Instance.playerData.musicVolume;
+        set => Instance.playerData.musicVolume = value;
+    }
+
 }

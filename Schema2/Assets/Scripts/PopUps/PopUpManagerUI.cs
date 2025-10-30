@@ -26,6 +26,8 @@ public class PopUpManagerUI : MonoBehaviour
     [SerializeField] GameObject FloorUpgrade_PopUp;
     [SerializeField] GameObject ElevatorUpgrade_PopUp;
 
+    [SerializeField] GameObject Settings_PopUp;
+
     string sceneName;
     int sceneNumber;
 
@@ -137,5 +139,12 @@ public class PopUpManagerUI : MonoBehaviour
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         ShowPopUp(ElevatorUpgrade_PopUp);
+    }
+
+    public void SettingsButton()
+    {
+        SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
+        Debug.Log("Settings Button Clicked");
+        ShowPopUp(Settings_PopUp);
     }
 }

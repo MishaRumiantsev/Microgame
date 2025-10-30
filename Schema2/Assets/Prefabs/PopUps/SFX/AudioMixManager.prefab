@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6559943989724725761
+--- !u!1 &1749691197231697826
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,62 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6921466073457133480}
-  - component: {fileID: 1179005970456195070}
-  - component: {fileID: 183047961997761212}
+  - component: {fileID: 3579035411671853770}
+  - component: {fileID: 6204019839881870546}
+  - component: {fileID: 7219043847668350100}
   m_Layer: 0
-  m_Name: PopUpManager
+  m_Name: AudioMixManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6921466073457133480
+--- !u!4 &3579035411671853770
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6559943989724725761}
+  m_GameObject: {fileID: 1749691197231697826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 150.42998, y: 150.42998, z: 150.42998}
+  m_LocalPosition: {x: -676, y: 866.449, z: 0}
+  m_LocalScale: {x: 150, y: 150, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1179005970456195070
+--- !u!114 &6204019839881870546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6559943989724725761}
+  m_GameObject: {fileID: 1749691197231697826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45c768f5dded60a42abcca1732bff4f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b80725d44bab024bb0059ab6b91521f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PopUpManagerUI
-  BattlePass_PopUp: {fileID: 6136860907887847876, guid: be1b4c672d0ef4049bff6b79bffb8bdb, type: 3}
-  Achievements_PopUp: {fileID: 1794842950844988532, guid: f454a29e1d289d2449e8b8311c28eea2, type: 3}
-  Stats_PopUp: {fileID: 4551647661226378046, guid: 65ebdc72f7f35df449d7df9487e9ab8d, type: 3}
-  Dealers_PopUp: {fileID: 8691223733227331617, guid: 3526e91f21c37b643b51009abac2d22c, type: 3}
-  Dealers_PopUp_1: {fileID: 8691223733227331617, guid: 3fc2771c56fa95b46a1525b6936b2541, type: 3}
-  Dealers_PopUp_2: {fileID: 8691223733227331617, guid: 8bc2a4b0f4096bd46906e2cac4290190, type: 3}
-  Dealers_PopUp_3: {fileID: 8691223733227331617, guid: 2d33884bac701bf4dad496ea99c07536, type: 3}
-  Dealers_PopUp_4: {fileID: 8691223733227331617, guid: 7a6edba16b897a14583a498824ad8afd, type: 3}
-  Prestige_PopUp: {fileID: 5413021478736434146, guid: 6a00bdca667c1bf47a782ad982778f31, type: 3}
-  FloorUpgrade_PopUp: {fileID: 1063983982681591938, guid: ed2e7bd6f2e80b940918f199058e8cec, type: 3}
-  ElevatorUpgrade_PopUp: {fileID: 5765662639752292625, guid: c50c1a928ba202945b30cb1d7196bb8e, type: 3}
-  Settings_PopUp: {fileID: 7061700350545136155, guid: df66f175dd5784d4d9b03cd11702553c, type: 3}
---- !u!212 &183047961997761212
+  m_EditorClassIdentifier: Assembly-CSharp::AudioMixManager
+  audioMixer: {fileID: 24100000, guid: d4e07409b911e974f982e97262da2299, type: 2}
+--- !u!212 &7219043847668350100
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6559943989724725761}
+  m_GameObject: {fileID: 1749691197231697826}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -104,7 +93,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8379930775115762468, guid: 8ba33d14cf13659498bc4bf80d8768a3, type: 3}
+  m_Sprite: {fileID: -4213810488027576176, guid: 8ba33d14cf13659498bc4bf80d8768a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

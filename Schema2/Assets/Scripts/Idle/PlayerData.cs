@@ -14,4 +14,6 @@ public class PlayerData
     public long totalCoins;
     public long gainedOffline;
 
+    public float sfxVolume;
+    public float musicVolume;
 }
