@@ -1,16 +1,18 @@
-using UnityEngine;
-using System.IO;
 using System;
-using JetBrains.Annotations;
-using NUnit.Framework;
+using System.IO;
+using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerDataManager : MonoBehaviour
 {
     public static PlayerDataManager Instance;
     public PlayerData playerData = new PlayerData();
 
+    FloorsManager floorsManager;
+
     private string savePath;
     private DateTime lastOnlineTime;
+    float sessionStartTime;
 
     //how to call the coins
     //PlayerDataManager.Coins
@@ -24,6 +26,7 @@ public class PlayerDataManager : MonoBehaviour
             print(savePath);
             LoadPlayerData();
             CalculateOfflineEarnings();
+            sessionStartTime = Time.time;
         }
         else
         {
@@ -38,7 +41,10 @@ public class PlayerDataManager : MonoBehaviour
             data = playerData,
             lastOnlineTime = DateTime.Now.ToString()
         };
+        floorsManager = FindFirstObjectByType<FloorsManager>();
+        floorsManager.SavePassiveIncomeOfBuilding();
 
+        playTime += Time.time - sessionStartTime;
         string json = JsonUtility.ToJson(wrapper, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Player data saved!");
@@ -81,22 +87,41 @@ public class PlayerDataManager : MonoBehaviour
             return;
 
         TimeSpan offlineTime = DateTime.Now - lastOnlineTime;
-        double hoursAway = offlineTime.TotalHours;
+        double secondsAway = offlineTime.TotalSeconds;
 
-        // Example: 100 coins per hour offline
-        int coinsEarned = Mathf.FloorToInt((float)(hoursAway * 100));
+        double passiveIncome = 0;
+        passiveIncome += CalculatePassiveIncomeOfBuilding(Instance.playerData.building0PassiveIncome);
+        passiveIncome += CalculatePassiveIncomeOfBuilding(Instance.playerData.building1PassiveIncome);
+        passiveIncome += CalculatePassiveIncomeOfBuilding(Instance.playerData.building2PassiveIncome);
+        passiveIncome += CalculatePassiveIncomeOfBuilding(Instance.playerData.building3PassiveIncome);
+
+        long coinsEarned = (long)(passiveIncome * secondsAway);
 
         if (coinsEarned > 0)
         {
             playerData.coins += coinsEarned;
-            Debug.Log($"You were away for {hoursAway:F2} hours and earned {coinsEarned} coins!");
+            gainedOffline += coinsEarned;
         }
-
-        gainedOffline = coinsEarned;
+    }
+    double CalculatePassiveIncomeOfBuilding(List<double> pBuildingPassiveIncome)
+    {
+        double passiveIncome = 0;
+        for (int i = 0; i < pBuildingPassiveIncome.Count; i++)
+        {
+            passiveIncome += pBuildingPassiveIncome[i];
+        }
+        return passiveIncome;
     }
     private void OnApplicationPause(bool pause)
     {
-        if (pause) SavePlayerData();
+        if (pause)
+        {
+            SavePlayerData();
+        }
+        else
+        {
+            sessionStartTime = Time.time;
+        }
     }
     private void OnApplicationQuit()
     {
@@ -136,6 +161,16 @@ public class PlayerDataManager : MonoBehaviour
     {
         get => Instance.playerData.gainedOffline;
         set => Instance.playerData.gainedOffline = value;
+    }
+    public static double playTime
+    {
+        get => Instance.playerData.playTime;
+        set => Instance.playerData.playTime = value;
+    }
+    public static long totalUpgrades
+    {
+        get => Instance.playerData.totalUpgrades;
+        set => Instance.playerData.totalUpgrades = value;
     }
 
     public static float sfxVolume
