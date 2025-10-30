@@ -13,7 +13,6 @@ public class FlappyManager2 : MonoBehaviour
     {
         if (instance == null)
         {
-
             instance = this;
         }
         Time.timeScale = 1f;
@@ -24,7 +23,7 @@ public class FlappyManager2 : MonoBehaviour
     }
     public void restartGame()
     {
-        Time.timeScale = 1f; // Zet tijd weer normaal
+        Time.timeScale = 1f;//zo zet ik de time weer op normaal
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

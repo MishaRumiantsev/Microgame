@@ -7,5 +7,6 @@ public class MoveBuildings : MonoBehaviour
     private void Update()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
+        //Hij veranderd de positie van het object waar het op staat, dit gebeurt overtime door de * deltatime 
     }
 }
