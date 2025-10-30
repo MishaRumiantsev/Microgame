@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7779959283412688550}
   - component: {fileID: 2892491993312357884}
   - component: {fileID: 8326002592646567125}
+  - component: {fileID: 5390823649471534214}
   m_Layer: 0
   m_Name: MusicManager
-  m_TagString: Untagged
+  m_TagString: music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,3 +287,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5390823649471534214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78861075414711825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8fdea5eaa502b439e9c0d868522b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DDOL
