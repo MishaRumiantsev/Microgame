@@ -28,7 +28,7 @@ MonoBehaviour:
     m_path: Assets/Scenes/Prestiges/Prestige_2.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Prestiges/Prestige_3.unity
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/Scenes/FlappyBird2.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
@@ -44,7 +44,7 @@ MonoBehaviour:
     - line: '|   targetDevice: 2'
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
-    - line: '|   companyName: Planners'
+    - line: '|   companyName: Stamgroep 2'
     - line: '|   productName: Schema 2'
     - line: '|   defaultCursor: {instanceID: 0}'
     - line: '|   cursorHotspot: {x: 0, y: 0}'
@@ -175,7 +175,7 @@ MonoBehaviour:
     - line: '|   loadStoreDebugModeEnabled: 0'
     - line: '|   visionOSBundleVersion: 1.0'
     - line: '|   tvOSBundleVersion: 1.0'
-    - line: '|   bundleVersion: Alpha 1.0'
+    - line: '|   bundleVersion: Release'
     - line: '|   preloadedAssets:'
     - line: '|   - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
         type: 3}'
