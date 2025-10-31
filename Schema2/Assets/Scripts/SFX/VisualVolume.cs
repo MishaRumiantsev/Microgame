@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class VisualVolume : MonoBehaviour
 {
+    //References to UI sliders
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider musicSlider;
 
@@ -10,14 +11,16 @@ public class VisualVolume : MonoBehaviour
 
     private void Start()
     {
+        //Find AudioMixManager in scene
         audioMix = Object.FindFirstObjectByType<AudioMixManager>();
     }
 
     private void OnEnable()
     {
-        // essential guard: avoid null reference if PlayerDataManager not initialized
+        //Safeguard in case PlayerDataManager is not initialized yet
         if (PlayerDataManager.Instance == null) return;
 
+        //Get saved volume levels from PlayerDataManager
         float sfx = Mathf.Clamp01(PlayerDataManager.sfxVolume);
         float music = Mathf.Clamp01(PlayerDataManager.musicVolume);
 
@@ -39,13 +42,12 @@ public class VisualVolume : MonoBehaviour
         }
         else
         {
-            // If you don't want this branch, ensure AudioMixManager exists in the scene and is found in Start.
             if (sfxSlider != null) sfxSlider.value = sfx;
             if (musicSlider != null) musicSlider.value = music;
         }
     }
 
-    // Buttons save/reset/get money functionality
+    //Buttons save/reset/get money functionality
     public void SaveButton()
     {
         PlayerDataManager.Instance.SavePlayerData();

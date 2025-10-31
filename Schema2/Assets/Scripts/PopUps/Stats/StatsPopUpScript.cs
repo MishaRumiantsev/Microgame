@@ -6,6 +6,7 @@ public class StatsPopUpScript : MonoBehaviour
 {
     public static StatsPopUpScript Instance { get; private set; }
 
+    //References to UI text elements
     [SerializeField] TextMeshProUGUI totalCoinsText;
     [SerializeField] TextMeshProUGUI totalSpentText;
     [SerializeField] TextMeshProUGUI gainedOfflineText;
@@ -29,6 +30,7 @@ public class StatsPopUpScript : MonoBehaviour
 
     private void Update()
     {
+        //Update stats display every frame
         totalCoinsText.text = $"Total Coins: {formatter.FormatNumber(PlayerDataManager.totalCoins)}";
         totalSpentText.text = $"Total Spent: {formatter.FormatNumber(PlayerDataManager.totalSpent)}";
         gainedOfflineText.text = $"Gained Offline: {formatter.FormatNumber(PlayerDataManager.gainedOffline)}";

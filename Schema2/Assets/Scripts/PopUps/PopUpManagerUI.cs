@@ -11,7 +11,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     private GameObject currentPopUp;
 
-    // Assign the pop up prefabs in the inspector
+    //Assign the pop up prefabs in the inspector
     [SerializeField] GameObject BattlePass_PopUp;
     [SerializeField] GameObject Achievements_PopUp;
     [SerializeField] GameObject Stats_PopUp;
@@ -31,7 +31,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     private void Awake()
     {
-        // Ensures only one PopUpManager exists
+        //Ensures only one PopUpManager exists
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -44,13 +44,13 @@ public class PopUpManagerUI : MonoBehaviour
     public void ShowPopUp(GameObject popUpPrefab)
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.popUpOpen, transform, 1f);
-        // Close existing pop up
+        //Close existing pop up
         if (currentPopUp != null)
         {
             Destroy(currentPopUp);
         }
 
-        // Spawn new one
+        //Spawn new one
         currentPopUp = Instantiate(popUpPrefab, Vector3.zero, Quaternion.identity);
     }
 
@@ -73,7 +73,7 @@ public class PopUpManagerUI : MonoBehaviour
     public void BattlePassButton()
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
-        // Spawn the Battle Pass pop up prefab
+        //Spawn the Battle Pass pop up prefab
         Debug.Log("Battle Pass Button Clicked");
         ShowPopUp(BattlePass_PopUp);
     }
@@ -81,7 +81,7 @@ public class PopUpManagerUI : MonoBehaviour
     public void AchievementsButton()
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
-        // Spawn the Achievements pop up prefab
+        //Spawn the Achievements pop up prefab
         Debug.Log("Achievements Button Clicked");
         ShowPopUp(Achievements_PopUp);
     }
@@ -89,7 +89,7 @@ public class PopUpManagerUI : MonoBehaviour
     public void StatsButton()
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
-        // Spawn the Stats pop up prefab
+        //Spawn the Stats pop up prefab
         Debug.Log("Stats Button Clicked");
         ShowPopUp(Stats_PopUp);
     }
@@ -97,7 +97,7 @@ public class PopUpManagerUI : MonoBehaviour
     public void DealersButton()
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
-        // Spawn the Dealers pop up prefab
+        //Spawn the Dealers pop up prefab
         Debug.Log("Dealers Button Clicked");
         sceneName = SceneManager.GetActiveScene().name;
         switch (sceneName)
@@ -123,25 +123,28 @@ public class PopUpManagerUI : MonoBehaviour
     public void PrestigeButton()
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
-        // Spawn the Prestige pop up prefab
+        //Spawn the Prestige pop up prefab
         Debug.Log("Prestige Button Clicked");
         ShowPopUp(Prestige_PopUp);
     }
     public void FloorLevelButton(int floorIndex)
     {
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
+        //Spawn the Floor Upgrade pop up prefab
         ShowPopUp(FloorUpgrade_PopUp);
         FloorUpgradePopUp popUpScript = currentPopUp.GetComponent<FloorUpgradePopUp>();
         popUpScript.index = floorIndex;
     }
     public void ElevatorLevelButton()
     {
+        //Spawn the Elevator Upgrade pop up prefab
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         ShowPopUp(ElevatorUpgrade_PopUp);
     }
 
     public void SettingsButton()
     {
+        //Spawn the Settings pop up prefab
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         Debug.Log("Settings Button Clicked");
         ShowPopUp(Settings_PopUp);
@@ -149,6 +152,7 @@ public class PopUpManagerUI : MonoBehaviour
 
     public void FlapButton()
     {
+        //Spawn the Flappy Bird scene
         SfxManager.instance.PlaySfxClip(SfxManager.instance.buttonSfx, transform, 1f);
         Debug.Log("Flappy Button Clicked");
         SceneManager.LoadScene("FlappyBird2");
